@@ -1,0 +1,23 @@
+%Program to add 3 to input at dipswitches%
+%  If output>F, then set output=F%
+
+WIDTH=8;
+DEPTH=64;
+
+ADDRESS_RADIX=HEX;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN  %modify this section for your program%
+
+  0 :   A0 ;  %ANDC 0  clear accum (AND with 0)%
+  1 :   9F ;  %ADD  F  load input (from memory map address F)%
+  2 :   83 ;  %ADDC 3  add constant 3 to accum%
+  3 :   70 ;  %SKC     skip next instruction if carried (>F)%
+  4 :   06 ;  %JMP 06  jump so do nothing to accum%
+  5 :   CF ;  % ORC F  set accum to F%
+  6 :   5F ;  %STA  F  store value in memory map output (address F)%
+  7 :   00 ;  %JMP 00  jump back to do again%
+
+[8..3F]:  00 ;  %set rest of memory to 0%
+
+END;

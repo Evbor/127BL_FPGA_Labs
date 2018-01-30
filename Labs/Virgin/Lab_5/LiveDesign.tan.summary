@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 6.381 ns
+From           : SW_USER[0]
+To             : debouncer:inst16|inst15
+From Clock     : 
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 11.817 ns
+From           : mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[37]
+To             : DIG0_SEG[4]
+From Clock     : fclk
+To Clock       : 
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.761 ns
+From           : SW_USER[1]
+To             : debouncer:inst14|inst15
+From Clock     : 
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'fclk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 142.23 MHz ( period = 7.031 ns )
+From           : debouncer:inst14|seqdebounce:inst20|stateout
+To             : mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[0]
+From Clock     : fclk
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

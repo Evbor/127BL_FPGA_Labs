@@ -1,0 +1,316 @@
+Analysis & Synthesis report for LiveDesign
+Tue Feb 01 18:06:34 2005
+Version 4.2 Build 156 11/29/2004 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. State Machine - |Counter|seqdebounce:inst20|ss
+  5. Hierarchy
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis Equations
+  8. Analysis & Synthesis Source Files Read
+  9. Analysis & Synthesis Resource Usage Summary
+ 10. WYSIWYG Cells
+ 11. General Register Statistics
+ 12. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2004 Altera Corporation
+Any  megafunction  design,  and related netlist (encrypted  or  decrypted),
+support information,  device programming or simulation file,  and any other
+associated  documentation or information  provided by  Altera  or a partner
+under  Altera's   Megafunction   Partnership   Program  may  be  used  only
+to program  PLD  devices (but not masked  PLD  devices) from  Altera.   Any
+other  use  of such  megafunction  design,  netlist,  support  information,
+device programming or simulation file,  or any other  related documentation
+or information  is prohibited  for  any  other purpose,  including, but not
+limited to  modification,  reverse engineering,  de-compiling, or use  with
+any other  silicon devices,  unless such use is  explicitly  licensed under
+a separate agreement with  Altera  or a megafunction partner.  Title to the
+intellectual property,  including patents,  copyrights,  trademarks,  trade
+secrets,  or maskworks,  embodied in any such megafunction design, netlist,
+support  information,  device programming or simulation file,  or any other
+related documentation or information provided by  Altera  or a megafunction
+partner, remains with Altera, the megafunction partner, or their respective
+licensors. No other licenses, including any licenses needed under any third
+party's intellectual property, are provided herein.
+
+
+
++-----------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                          ;
++-----------------------------+-----------------------------------------+
+; Analysis & Synthesis Status ; Successful - Tue Feb 01 18:06:34 2005   ;
+; Quartus II Version          ; 4.2 Build 156 11/29/2004 SJ Web Edition ;
+; Revision Name               ; LiveDesign                              ;
+; Top-level Entity Name       ; Counter                                 ;
+; Family                      ; Cyclone                                 ;
+; Total logic elements        ; 99                                      ;
+; Total pins                  ; 51                                      ;
+; Total virtual pins          ; 0                                       ;
+; Total memory bits           ; 0                                       ;
+; Total PLLs                  ; 0                                       ;
++-----------------------------+-----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                     ;
++--------------------------------------------------------------------+--------------+---------------+
+; Option                                                             ; Setting      ; Default Value ;
++--------------------------------------------------------------------+--------------+---------------+
+; Device                                                             ; EP1C12F324C8 ;               ;
+; Family name                                                        ; Cyclone      ; Stratix       ;
+; Top-level entity name                                              ; Counter      ; LiveDesign    ;
+; Use smart compilation                                              ; Normal       ; Normal        ;
+; Restructure Multiplexers                                           ; Auto         ; Auto          ;
+; Create Debugging Nodes for IP Cores                                ; off          ; off           ;
+; Preserve fewer node names                                          ; On           ; On            ;
+; Disable OpenCore Plus hardware evaluation                          ; Off          ; Off           ;
+; Verilog Version                                                    ; Verilog_2001 ; Verilog_2001  ;
+; VHDL Version                                                       ; VHDL93       ; VHDL93        ;
+; State Machine Processing                                           ; Auto         ; Auto          ;
+; Extract Verilog State Machines                                     ; On           ; On            ;
+; Extract VHDL State Machines                                        ; On           ; On            ;
+; NOT Gate Push-Back                                                 ; On           ; On            ;
+; Power-Up Don't Care                                                ; On           ; On            ;
+; Remove Redundant Logic Cells                                       ; Off          ; Off           ;
+; Remove Duplicate Registers                                         ; On           ; On            ;
+; Ignore CARRY Buffers                                               ; Off          ; Off           ;
+; Ignore CASCADE Buffers                                             ; Off          ; Off           ;
+; Ignore GLOBAL Buffers                                              ; Off          ; Off           ;
+; Ignore ROW GLOBAL Buffers                                          ; Off          ; Off           ;
+; Ignore LCELL Buffers                                               ; Off          ; Off           ;
+; Ignore SOFT Buffers                                                ; On           ; On            ;
+; Limit AHDL Integers to 32 Bits                                     ; Off          ; Off           ;
+; Optimization Technique -- Cyclone                                  ; Balanced     ; Balanced      ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70           ; 70            ;
+; Auto Carry Chains                                                  ; On           ; On            ;
+; Auto Open-Drain Pins                                               ; On           ; On            ;
+; Remove Duplicate Logic                                             ; On           ; On            ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off          ; Off           ;
+; Perform gate-level register retiming                               ; Off          ; Off           ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On           ; On            ;
+; Auto ROM Replacement                                               ; On           ; On            ;
+; Auto RAM Replacement                                               ; On           ; On            ;
+; Auto Shift Register Replacement                                    ; On           ; On            ;
+; Auto Clock Enable Replacement                                      ; On           ; On            ;
+; Allows Synchronous Control Signal Usage in Normal Mode Logic Cells ; On           ; On            ;
+; Auto RAM Block Balancing                                           ; On           ; On            ;
+; Auto Resource Sharing                                              ; Off          ; Off           ;
+; Allow Any RAM Size For Recognition                                 ; Off          ; Off           ;
+; Allow Any ROM Size For Recognition                                 ; Off          ; Off           ;
+; Allow Any Shift Register Size For Recognition                      ; Off          ; Off           ;
+; Enable M512 Memory Blocks                                          ; On           ; On            ;
++--------------------------------------------------------------------+--------------+---------------+
+
+
++------------------------------------------------+
+; State Machine - |Counter|seqdebounce:inst20|ss ;
++-------+------+------+-------+------------------+
+; Name  ; loww ; high ; highw ; low              ;
++-------+------+------+-------+------------------+
+; low   ; 0    ; 0    ; 0     ; 0                ;
+; highw ; 0    ; 0    ; 1     ; 1                ;
+; high  ; 0    ; 1    ; 0     ; 1                ;
+; loww  ; 1    ; 0    ; 0     ; 1                ;
++-------+------+------+-------+------------------+
+
+
++-----------+
+; Hierarchy ;
++-----------+
+Counter
+ |-- 7segment:inst
+ |-- 7segment:inst1
+ |-- mf_count1:inst2
+      |-- lpm_counter:lpm_counter_component
+           |-- cntr_718:auto_generated
+ |-- 7segment:inst3
+ |-- 7segment:inst6
+ |-- 7segment:inst9
+ |-- 7segment:inst10
+ |-- mf_count2:inst17
+      |-- lpm_counter:lpm_counter_component
+           |-- cntr_9r7:auto_generated
+ |-- inhb:inst18
+ |-- seqdebounce:inst20
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                      ;
++-------------------------------------------+-------------+--------------+-------------+------+--------------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------+
+; Compilation Hierarchy Node                ; Logic Cells ; LC Registers ; Memory Bits ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Full Hierarchy Name                                                                 ;
++-------------------------------------------+-------------+--------------+-------------+------+--------------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------+
+; |Counter                                  ; 99 (2)      ; 52           ; 0           ; 51   ; 0            ; 47 (0)       ; 5 (2)             ; 47 (0)           ; 45 (0)          ; |Counter                                                                            ;
+;    |7segment:inst10|                      ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst10                                                            ;
+;    |7segment:inst1|                       ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst1                                                             ;
+;    |7segment:inst3|                       ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst3                                                             ;
+;    |7segment:inst6|                       ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst6                                                             ;
+;    |7segment:inst9|                       ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst9                                                             ;
+;    |7segment:inst|                        ; 7 (7)       ; 0            ; 0           ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|7segment:inst                                                              ;
+;    |inhb:inst18|                          ; 1 (1)       ; 0            ; 0           ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |Counter|inhb:inst18                                                                ;
+;    |mf_count1:inst2|                      ; 24 (0)      ; 24           ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 24 (0)           ; 24 (0)          ; |Counter|mf_count1:inst2                                                            ;
+;       |lpm_counter:lpm_counter_component| ; 24 (0)      ; 24           ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 24 (0)           ; 24 (0)          ; |Counter|mf_count1:inst2|lpm_counter:lpm_counter_component                          ;
+;          |cntr_718:auto_generated|        ; 24 (24)     ; 24           ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 24 (24)          ; 24 (24)         ; |Counter|mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated  ;
+;    |mf_count2:inst17|                     ; 21 (0)      ; 20           ; 0           ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 20 (0)           ; 21 (0)          ; |Counter|mf_count2:inst17                                                           ;
+;       |lpm_counter:lpm_counter_component| ; 21 (0)      ; 20           ; 0           ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 20 (0)           ; 21 (0)          ; |Counter|mf_count2:inst17|lpm_counter:lpm_counter_component                         ;
+;          |cntr_9r7:auto_generated|        ; 21 (21)     ; 20           ; 0           ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 20 (20)          ; 21 (21)         ; |Counter|mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated ;
+;    |seqdebounce:inst20|                   ; 9 (9)       ; 6            ; 0           ; 0    ; 0            ; 3 (3)        ; 3 (3)             ; 3 (3)            ; 0 (0)           ; |Counter|seqdebounce:inst20                                                         ;
++-------------------------------------------+-------------+--------------+-------------+------+--------------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------+
+; Analysis & Synthesis Equations ;
++--------------------------------+
+The equations can be found in C:/quartus2we/Class127B/LabSolutions/Lab4.2/LiveDesign.map.eqn.
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                   ;
++----------------------------------+-----------------+---------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Name with Absolute Path                                        ;
++----------------------------------+-----------------+---------------------------------------------------------------------+
+; 7segment.tdf                     ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/7segment.tdf            ;
+; Counter.bdf                      ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/Counter.bdf             ;
+; seqdebounce.tdf                  ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/seqdebounce.tdf         ;
+; mf_count1.tdf                    ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/mf_count1.tdf           ;
+; lpm_counter.inc                  ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_counter.inc         ;
+; lpm_counter.tdf                  ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_counter.tdf         ;
+; lpm_constant.inc                 ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_constant.inc        ;
+; lpm_decode.inc                   ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_decode.inc          ;
+; lpm_add_sub.inc                  ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_add_sub.inc         ;
+; cmpconst.inc                     ; yes             ; c:/altera/quartus42/libraries/megafunctions/cmpconst.inc            ;
+; lpm_compare.inc                  ; yes             ; c:/altera/quartus42/libraries/megafunctions/lpm_compare.inc         ;
+; dffeea.inc                       ; yes             ; c:/altera/quartus42/libraries/megafunctions/dffeea.inc              ;
+; alt_synch_counter.inc            ; yes             ; c:/altera/quartus42/libraries/megafunctions/alt_synch_counter.inc   ;
+; alt_synch_counter_f.inc          ; yes             ; c:/altera/quartus42/libraries/megafunctions/alt_synch_counter_f.inc ;
+; alt_counter_f10ke.inc            ; yes             ; c:/altera/quartus42/libraries/megafunctions/alt_counter_f10ke.inc   ;
+; alt_counter_stratix.inc          ; yes             ; c:/altera/quartus42/libraries/megafunctions/alt_counter_stratix.inc ;
+; aglobal42.inc                    ; yes             ; c:/altera/quartus42/libraries/megafunctions/aglobal42.inc           ;
+; db/cntr_718.tdf                  ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/db/cntr_718.tdf         ;
+; inhb.bdf                         ; yes             ; c:/altera/quartus42/libraries/others/maxplus2/inhb.bdf              ;
+; mf_count2.tdf                    ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/mf_count2.tdf           ;
+; db/cntr_9r7.tdf                  ; yes             ; C:/quartus2we/Class127B/LabSolutions/Lab4.2/db/cntr_9r7.tdf         ;
++----------------------------------+-----------------+---------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++-----------------------------------+---------+
+; Resource                          ; Usage   ;
++-----------------------------------+---------+
+; Logic cells                       ; 99      ;
+; Total combinational functions     ; 94      ;
+; Total 4-input functions           ; 46      ;
+; Total 3-input functions           ; 0       ;
+; Total 2-input functions           ; 27      ;
+; Total 1-input functions           ; 20      ;
+; Total 0-input functions           ; 1       ;
+; Combinational cells for routing   ; 0       ;
+; Total registers                   ; 52      ;
+; Total logic cells in carry chains ; 45      ;
+; I/O pins                          ; 51      ;
+; Maximum fan-out node              ; fclk    ;
+; Maximum fan-out                   ; 52      ;
+; Total fan-out                     ; 444     ;
+; Average fan-out                   ; 2.96    ;
++-----------------------------------+---------+
+
+
++----------------------------------------------------------------+
+; WYSIWYG Cells                                                  ;
++--------------------------------------------------------+-------+
+; Statistic                                              ; Value ;
++--------------------------------------------------------+-------+
+; Number of WYSIWYG cells                                ; 45    ;
+; Number of synthesis-generated cells                    ; 54    ;
+; Number of WYSIWYG LUTs                                 ; 45    ;
+; Number of synthesis-generated LUTs                     ; 49    ;
+; Number of WYSIWYG registers                            ; 44    ;
+; Number of synthesis-generated registers                ; 8     ;
+; Number of cells with combinational logic only          ; 47    ;
+; Number of cells with registers only                    ; 5     ;
+; Number of cells with combinational logic and registers ; 47    ;
++--------------------------------------------------------+-------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 52    ;
+; Number of registers using Synchronous Clear  ; 44    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Output Enable      ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 4.2 Build 156 11/29/2004 SJ Web Edition
+    Info: Processing started: Tue Feb 01 18:06:31 2005
+Info: Command: quartus_map --import_settings_files=on --export_settings_files=off LiveDesign -c LiveDesign
+Warning: Can't analyze file -- file C:/quartus2we/Class127B/LabSolutions/Lab4.2/LEDtest.bdf is missing
+Info: Found 1 design units, including 1 entities, in source file 7segment.tdf
+    Info: Found entity 1: 7segment
+Info: Found 1 design units, including 1 entities, in source file Counter.bdf
+    Info: Found entity 1: Counter
+Info: Found 1 design units, including 1 entities, in source file seqdebounce.tdf
+    Info: Found entity 1: seqdebounce
+Info: Using design file mf_count1.tdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info: Found entity 1: mf_count1
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/quartus42/libraries/megafunctions/lpm_counter.tdf
+    Info: Found entity 1: lpm_counter
+Info: Found 1 design units, including 1 entities, in source file db/cntr_718.tdf
+    Info: Found entity 1: cntr_718
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/quartus42/libraries/others/maxplus2/inhb.bdf
+    Info: Found entity 1: inhb
+Info: Using design file mf_count2.tdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info: Found entity 1: mf_count2
+Info: Found 1 design units, including 1 entities, in source file db/cntr_9r7.tdf
+    Info: Found entity 1: cntr_9r7
+Info: State machine "|Counter|seqdebounce:inst20|ss" contains 4 states and 2 state bits
+Info: Selected Auto state machine encoding method for state machine "|Counter|seqdebounce:inst20|ss"
+Info: Encoding result for state machine "|Counter|seqdebounce:inst20|ss"
+    Info: Completed encoding using 4 state bits
+        Info: Encoded state bit "seqdebounce:inst20|loww"
+        Info: Encoded state bit "seqdebounce:inst20|high"
+        Info: Encoded state bit "seqdebounce:inst20|highw"
+        Info: Encoded state bit "seqdebounce:inst20|low"
+    Info: State "|Counter|seqdebounce:inst20|low" uses code string "0000"
+    Info: State "|Counter|seqdebounce:inst20|highw" uses code string "0011"
+    Info: State "|Counter|seqdebounce:inst20|high" uses code string "0101"
+    Info: State "|Counter|seqdebounce:inst20|loww" uses code string "1001"
+Warning: Output pins are stuck at VCC or GND
+    Warning: Pin "DIG0_SEG[7]" stuck at GND
+    Warning: Pin "DIG1_SEG[7]" stuck at GND
+    Warning: Pin "DIG2_SEG[7]" stuck at GND
+    Warning: Pin "DIG3_SEG[7]" stuck at GND
+    Warning: Pin "DIG4_SEG[7]" stuck at GND
+    Warning: Pin "DIG5_SEG[7]" stuck at GND
+Info: Implemented 150 device resources after synthesis - the final resource count might be different
+    Info: Implemented 3 input pins
+    Info: Implemented 48 output pins
+    Info: Implemented 99 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Processing ended: Tue Feb 01 18:06:34 2005
+    Info: Elapsed time: 00:00:03
+
+

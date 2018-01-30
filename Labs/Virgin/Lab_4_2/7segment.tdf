@@ -1,0 +1,49 @@
+SUBDESIGN 7segment %converts hexidecimal number to drive 7 segment LED display%
+(
+	hex[3..0]	: INPUT; %4 bit input in hexidecimal%
+	dp			: INPUT; %8th segment is decimal point%
+	blank		: INPUT; %blanks all LEDs%
+	leds[7..0]	: OUTPUT; %connect to 7-segment LEDs & decimal point%
+)
+BEGIN
+
+%Definition of output pins for 7 segment display:%
+
+%     0				%
+%   -----			%
+%   |   |			%
+% 5 |   |1			%
+%   | 6 |			%
+%   -----			%
+%   |   |			%
+% 4 |   |2			%
+%   |   |			%
+%   -----  . 7		%
+%     3				%
+
+	TABLE							
+	blank,hex[3..0]	=> leds[6..0];	%Truth table for 7 segment%
+	
+	0,    H"0"		=> B"0111111"; 	%If not blank, then display led's according to hexidecimal value%
+	0,	  H"1"		=> B"0000110";
+	0,	  H"2"		=> B"1011011";
+	0,	  H"3"		=> B"1001111";
+	0,	  H"4"		=> B"1100110";
+	0,	  H"5"		=> B"1101101";
+	0,	  H"6"		=> B"1111101";
+	0,	  H"7"		=> B"0000111";
+	0,	  H"8"		=> B"1111111";
+	0,	  H"9"		=> B"1100111";
+	0,	  H"A"		=> B"1110111";
+	0,	  H"B"		=> B"1111100";
+	0,	  H"C"		=> B"1011000";
+	0,	  H"D"		=> B"1011110";
+	0,	  H"E"		=> B"1111001";
+	0,	  H"F"		=> B"1110001";
+	
+	1,    x			=> B"0000000"; 	%Blanks all leds when blank=1, x means "don't care", or "any number"%
+	END TABLE;
+	
+	leds[7] = dp AND (NOT blank);	%Logic equation for decimal point%
+	
+END;

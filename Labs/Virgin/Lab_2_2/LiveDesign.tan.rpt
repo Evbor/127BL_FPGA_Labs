@@ -1,0 +1,137 @@
+Timing Analyzer report for LiveDesign
+Wed Jan 12 18:54:38 2005
+Version 4.2 Build 156 11/29/2004 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. tpd
+  5. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2004 Altera Corporation
+Any  megafunction  design,  and related netlist (encrypted  or  decrypted),
+support information,  device programming or simulation file,  and any other
+associated  documentation or information  provided by  Altera  or a partner
+under  Altera's   Megafunction   Partnership   Program  may  be  used  only
+to program  PLD  devices (but not masked  PLD  devices) from  Altera.   Any
+other  use  of such  megafunction  design,  netlist,  support  information,
+device programming or simulation file,  or any other  related documentation
+or information  is prohibited  for  any  other purpose,  including, but not
+limited to  modification,  reverse engineering,  de-compiling, or use  with
+any other  silicon devices,  unless such use is  explicitly  licensed under
+a separate agreement with  Altera  or a megafunction partner.  Title to the
+intellectual property,  including patents,  copyrights,  trademarks,  trade
+secrets,  or maskworks,  embodied in any such megafunction design, netlist,
+support  information,  device programming or simulation file,  or any other
+related documentation or information provided by  Altera  or a megafunction
+partner, remains with Altera, the megafunction partner, or their respective
+licensors. No other licenses, including any licenses needed under any third
+party's intellectual property, are provided herein.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                             ;
++------------------------------+-------+---------------+-------------+-----------+-------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time ; From      ; To          ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+-------------+-----------+-------------+------------+----------+--------------+
+; Worst-case tpd               ; N/A   ; None          ; 17.656 ns   ; SW_DIP[3] ; DIG5_SEG[6] ;            ;          ; 0            ;
+; Total number of failed paths ;       ;               ;             ;           ;             ;            ;          ; 0            ;
++------------------------------+-------+---------------+-------------+-----------+-------------+------------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                ; Setting            ; From ; To ; Entity Name ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                           ; EP1C12F324C8       ;      ;    ;             ;
+; Timing Models                                         ; Final              ;      ;    ;             ;
+; Number of source nodes to report per destination node ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                 ; 10                 ;      ;    ;             ;
+; Number of paths to report                             ; 200                ;      ;    ;             ;
+; Report Minumum Timing Checks                          ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                            ; Off                ;      ;    ;             ;
+; Clock Analysis Only                                   ; Off                ;      ;    ;             ;
+; Default hold multicycle                               ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains             ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                ; On                 ;      ;    ;             ;
+; Cut off clear and preset signal paths                 ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                        ; On                 ;      ;    ;             ;
+; Ignore Clock Settings                                 ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements               ; Off                ;      ;    ;             ;
+; Do Min/Max analysis using Rise/Fall delays            ; Off                ;      ;    ;             ;
+; Enable Recovery/Removal analysis                      ; Off                ;      ;    ;             ;
+; Use Clock Latency for PLL offset                      ; Off                ;      ;    ;             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+
+
++-----------------------------------------------------------------------+
+; tpd                                                                   ;
++-------+-------------------+-----------------+-----------+-------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From      ; To          ;
++-------+-------------------+-----------------+-----------+-------------+
+; N/A   ; None              ; 17.656 ns       ; SW_DIP[3] ; DIG5_SEG[6] ;
+; N/A   ; None              ; 17.548 ns       ; SW_DIP[3] ; DIG5_SEG[5] ;
+; N/A   ; None              ; 17.537 ns       ; SW_DIP[3] ; DIG5_SEG[1] ;
+; N/A   ; None              ; 17.537 ns       ; SW_DIP[3] ; DIG5_SEG[3] ;
+; N/A   ; None              ; 17.535 ns       ; SW_DIP[3] ; DIG5_SEG[2] ;
+; N/A   ; None              ; 17.534 ns       ; SW_DIP[3] ; DIG5_SEG[0] ;
+; N/A   ; None              ; 17.420 ns       ; SW_DIP[1] ; DIG5_SEG[6] ;
+; N/A   ; None              ; 17.396 ns       ; SW_DIP[2] ; DIG5_SEG[6] ;
+; N/A   ; None              ; 17.313 ns       ; SW_DIP[1] ; DIG5_SEG[5] ;
+; N/A   ; None              ; 17.304 ns       ; SW_DIP[1] ; DIG5_SEG[3] ;
+; N/A   ; None              ; 17.303 ns       ; SW_DIP[1] ; DIG5_SEG[2] ;
+; N/A   ; None              ; 17.302 ns       ; SW_DIP[1] ; DIG5_SEG[1] ;
+; N/A   ; None              ; 17.291 ns       ; SW_DIP[1] ; DIG5_SEG[0] ;
+; N/A   ; None              ; 17.285 ns       ; SW_DIP[2] ; DIG5_SEG[5] ;
+; N/A   ; None              ; 17.277 ns       ; SW_DIP[2] ; DIG5_SEG[3] ;
+; N/A   ; None              ; 17.273 ns       ; SW_DIP[2] ; DIG5_SEG[2] ;
+; N/A   ; None              ; 17.272 ns       ; SW_DIP[2] ; DIG5_SEG[1] ;
+; N/A   ; None              ; 17.269 ns       ; SW_DIP[2] ; DIG5_SEG[0] ;
+; N/A   ; None              ; 17.084 ns       ; SW_DIP[3] ; DIG5_SEG[4] ;
+; N/A   ; None              ; 16.851 ns       ; SW_DIP[1] ; DIG5_SEG[4] ;
+; N/A   ; None              ; 16.828 ns       ; SW_DIP[2] ; DIG5_SEG[4] ;
+; N/A   ; None              ; 16.434 ns       ; SW_DIP[0] ; DIG5_SEG[6] ;
+; N/A   ; None              ; 16.319 ns       ; SW_DIP[0] ; DIG5_SEG[5] ;
+; N/A   ; None              ; 16.311 ns       ; SW_DIP[0] ; DIG5_SEG[0] ;
+; N/A   ; None              ; 16.310 ns       ; SW_DIP[0] ; DIG5_SEG[3] ;
+; N/A   ; None              ; 16.309 ns       ; SW_DIP[0] ; DIG5_SEG[2] ;
+; N/A   ; None              ; 16.308 ns       ; SW_DIP[0] ; DIG5_SEG[1] ;
+; N/A   ; None              ; 15.861 ns       ; SW_DIP[0] ; DIG5_SEG[4] ;
+; N/A   ; None              ; 9.574 ns        ; SW_DIP[0] ; LED[0]      ;
+; N/A   ; None              ; 9.497 ns        ; SW_DIP[3] ; LED[3]      ;
+; N/A   ; None              ; 9.249 ns        ; SW_DIP[2] ; LED[2]      ;
+; N/A   ; None              ; 8.996 ns        ; SW_DIP[1] ; LED[1]      ;
++-------+-------------------+-----------------+-----------+-------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Timing Analyzer
+    Info: Version 4.2 Build 156 11/29/2004 SJ Web Edition
+    Info: Processing started: Wed Jan 12 18:54:38 2005
+Info: Command: quartus_tan --import_settings_files=off --export_settings_files=off LiveDesign -c LiveDesign --timing_analysis_only
+Info: Longest tpd from source pin "SW_DIP[3]" to destination pin "DIG5_SEG[6]" is 17.656 ns
+    Info: 1: + IC(0.000 ns) + CELL(1.475 ns) = 1.475 ns; Loc. = PIN_T5; Fanout = 8; PIN Node = 'SW_DIP[3]'
+    Info: 2: + IC(11.811 ns) + CELL(0.590 ns) = 13.876 ns; Loc. = LC_X52_Y22_N4; Fanout = 1; COMB Node = '7segment:inst|leds[6]~79'
+    Info: 3: + IC(1.672 ns) + CELL(2.108 ns) = 17.656 ns; Loc. = PIN_C16; Fanout = 0; PIN Node = 'DIG5_SEG[6]'
+    Info: Total cell delay = 4.173 ns ( 23.64 % )
+    Info: Total interconnect delay = 13.483 ns ( 76.36 % )
+Info: Quartus II Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Processing ended: Wed Jan 12 18:54:38 2005
+    Info: Elapsed time: 00:00:00
+
+

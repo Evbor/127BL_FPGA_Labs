@@ -1,0 +1,10 @@
+(
+	q_sig[]
+) = mf_counter	(
+	.cin = cin_sig,
+	.clock = clock_sig,
+	.sclr = sclr_sig
+)
+RETURNS (
+	.q[]
+);

@@ -1,0 +1,35 @@
+SUBDESIGN seqdebounce
+(
+	clock		: INPUT; %input clock%
+	in			: INPUT; %input to be debounce%
+	done		: INPUT; %time delay output, 1 when done%
+	stateout	: OUTPUT; %state machine output%
+	statecnt	: OUTPUT; %state machine output%
+)
+	
+VARIABLE
+	ss: MACHINE OF BITS (stateout,statecnt)
+		WITH STATES	(low 	= B"01",	%low state          (clear  counter)%
+					 highw	= B"10",	%high waiting state (enable counter)%
+					 high	= B"11",	%high state         (clear  counter)%
+					 loww	= B"00");	%low waiting state  (enable counter)%
+
+BEGIN
+	ss.clk = clock;		%connects clock to all D flip flops of state machine%
+	
+	TABLE
+		ss   ,in,done => ss;
+		
+		low  , 0, x   => low;
+		low  , 1, x   => highw;
+		highw, x, 0   => highw;
+		highw, x, 1   => high;
+		high,  1, x   => high;
+		high,  0, x   => loww;
+		loww,  x, 0   => loww;
+		loww,  x, 1   => low;
+	END TABLE;
+END;
+					
+					
+						

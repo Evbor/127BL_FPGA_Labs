@@ -1,0 +1,1442 @@
+--H1_safe_q[23] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[23] at LC_X31_Y24_N6
+--operation mode is normal
+
+H1_safe_q[23]_carry_eqn = (!H1L16 & H1L36) # (H1L16 & H1L46);
+H1_safe_q[23]_lut_out = H1_safe_q[23] $ (!E1_5 & H1_safe_q[23]_carry_eqn);
+H1_safe_q[23] = DFFEAS(H1_safe_q[23]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+
+--H1_safe_q[21] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[21] at LC_X31_Y24_N4
+--operation mode is arithmetic
+
+H1_safe_q[21]_carry_eqn = (!H1L74 & H1L85) # (H1L74 & H1L95);
+H1_safe_q[21]_lut_out = H1_safe_q[21] $ (!E1_5 & H1_safe_q[21]_carry_eqn);
+H1_safe_q[21] = DFFEAS(H1_safe_q[21]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L16 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella21~COUT at LC_X31_Y24_N4
+--operation mode is arithmetic
+
+H1L16 = CARRY(!H1L95 # !H1_safe_q[21]);
+
+
+--H1_safe_q[22] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[22] at LC_X31_Y24_N5
+--operation mode is arithmetic
+
+H1_safe_q[22]_carry_eqn = H1L16;
+H1_safe_q[22]_lut_out = H1_safe_q[22] $ (!E1_5 & !H1_safe_q[22]_carry_eqn);
+H1_safe_q[22] = DFFEAS(H1_safe_q[22]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L36 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella22~COUT at LC_X31_Y24_N5
+--operation mode is arithmetic
+
+H1L36_cout_0 = H1_safe_q[22] & !H1L16;
+H1L36 = CARRY(H1L36_cout_0);
+
+--H1L46 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella22~COUTCOUT1_1 at LC_X31_Y24_N5
+--operation mode is arithmetic
+
+H1L46_cout_1 = H1_safe_q[22] & !H1L16;
+H1L46 = CARRY(H1L46_cout_1);
+
+
+--H1_safe_q[20] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[20] at LC_X31_Y24_N3
+--operation mode is arithmetic
+
+H1_safe_q[20]_carry_eqn = (!H1L74 & H1L55) # (H1L74 & H1L65);
+H1_safe_q[20]_lut_out = H1_safe_q[20] $ (!E1_5 & !H1_safe_q[20]_carry_eqn);
+H1_safe_q[20] = DFFEAS(H1_safe_q[20]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L85 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella20~COUT at LC_X31_Y24_N3
+--operation mode is arithmetic
+
+H1L85_cout_0 = H1_safe_q[20] & !H1L55;
+H1L85 = CARRY(H1L85_cout_0);
+
+--H1L95 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella20~COUTCOUT1_1 at LC_X31_Y24_N3
+--operation mode is arithmetic
+
+H1L95_cout_1 = H1_safe_q[20] & !H1L65;
+H1L95 = CARRY(H1L95_cout_1);
+
+
+--B2L7 is 7segment:inst1|leds[6]~176 at LC_X31_Y24_N7
+--operation mode is normal
+
+B2L7 = H1_safe_q[23] # H1_safe_q[22] & !H1_safe_q[21] # !H1_safe_q[20] # !H1_safe_q[22] & H1_safe_q[21];
+
+
+--B2L6 is 7segment:inst1|leds[5]~98 at LC_X14_Y25_N6
+--operation mode is normal
+
+B2L6 = H1_safe_q[21] & !H1_safe_q[23] & H1_safe_q[20] # !H1_safe_q[22] # !H1_safe_q[21] & H1_safe_q[23] & H1_safe_q[22] # !H1_safe_q[23] & H1_safe_q[20] & !H1_safe_q[22];
+
+
+--B2L5 is 7segment:inst1|leds[4]~100 at LC_X14_Y25_N4
+--operation mode is normal
+
+B2L5 = H1_safe_q[21] & H1_safe_q[20] & !H1_safe_q[23] # !H1_safe_q[21] & H1_safe_q[22] & !H1_safe_q[23] # !H1_safe_q[22] & H1_safe_q[20];
+
+
+--B2L4 is 7segment:inst1|leds[3]~102 at LC_X14_Y25_N8
+--operation mode is normal
+
+B2L4 = H1_safe_q[20] & H1_safe_q[21] $ (!H1_safe_q[22]) # !H1_safe_q[20] & H1_safe_q[21] & H1_safe_q[23] & !H1_safe_q[22] # !H1_safe_q[21] & !H1_safe_q[23] & H1_safe_q[22];
+
+
+--B2L3 is 7segment:inst1|leds[2]~104 at LC_X14_Y25_N2
+--operation mode is normal
+
+B2L3 = H1_safe_q[23] & H1_safe_q[22] & H1_safe_q[21] # !H1_safe_q[20] # !H1_safe_q[23] & H1_safe_q[21] & !H1_safe_q[20] & !H1_safe_q[22];
+
+
+--B2L2 is 7segment:inst1|leds[1]~106 at LC_X14_Y25_N5
+--operation mode is normal
+
+B2L2 = H1_safe_q[21] & H1_safe_q[20] & H1_safe_q[23] # !H1_safe_q[20] & H1_safe_q[22] # !H1_safe_q[21] & H1_safe_q[22] & H1_safe_q[20] $ H1_safe_q[23];
+
+
+--B2L1 is 7segment:inst1|leds[0]~108 at LC_X14_Y25_N9
+--operation mode is normal
+
+B2L1 = H1_safe_q[21] & H1_safe_q[20] & H1_safe_q[23] & !H1_safe_q[22] # !H1_safe_q[21] & H1_safe_q[22] $ (H1_safe_q[20] & !H1_safe_q[23]);
+
+
+--H1_safe_q[19] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[19] at LC_X31_Y24_N2
+--operation mode is arithmetic
+
+H1_safe_q[19]_carry_eqn = (!H1L74 & H1L25) # (H1L74 & H1L35);
+H1_safe_q[19]_lut_out = H1_safe_q[19] $ (!E1_5 & H1_safe_q[19]_carry_eqn);
+H1_safe_q[19] = DFFEAS(H1_safe_q[19]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L55 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella19~COUT at LC_X31_Y24_N2
+--operation mode is arithmetic
+
+H1L55_cout_0 = !H1L25 # !H1_safe_q[19];
+H1L55 = CARRY(H1L55_cout_0);
+
+--H1L65 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella19~COUTCOUT1_1 at LC_X31_Y24_N2
+--operation mode is arithmetic
+
+H1L65_cout_1 = !H1L35 # !H1_safe_q[19];
+H1L65 = CARRY(H1L65_cout_1);
+
+
+--H1_safe_q[17] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[17] at LC_X31_Y24_N0
+--operation mode is arithmetic
+
+H1_safe_q[17]_carry_eqn = H1L74;
+H1_safe_q[17]_lut_out = H1_safe_q[17] $ (!E1_5 & H1_safe_q[17]_carry_eqn);
+H1_safe_q[17] = DFFEAS(H1_safe_q[17]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L94 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella17~COUT at LC_X31_Y24_N0
+--operation mode is arithmetic
+
+H1L94_cout_0 = !H1L74 # !H1_safe_q[17];
+H1L94 = CARRY(H1L94_cout_0);
+
+--H1L05 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella17~COUTCOUT1_1 at LC_X31_Y24_N0
+--operation mode is arithmetic
+
+H1L05_cout_1 = !H1L74 # !H1_safe_q[17];
+H1L05 = CARRY(H1L05_cout_1);
+
+
+--H1_safe_q[18] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[18] at LC_X31_Y24_N1
+--operation mode is arithmetic
+
+H1_safe_q[18]_carry_eqn = (!H1L74 & H1L94) # (H1L74 & H1L05);
+H1_safe_q[18]_lut_out = H1_safe_q[18] $ (!E1_5 & !H1_safe_q[18]_carry_eqn);
+H1_safe_q[18] = DFFEAS(H1_safe_q[18]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L25 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella18~COUT at LC_X31_Y24_N1
+--operation mode is arithmetic
+
+H1L25_cout_0 = H1_safe_q[18] & !H1L94;
+H1L25 = CARRY(H1L25_cout_0);
+
+--H1L35 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella18~COUTCOUT1_1 at LC_X31_Y24_N1
+--operation mode is arithmetic
+
+H1L35_cout_1 = H1_safe_q[18] & !H1L05;
+H1L35 = CARRY(H1L35_cout_1);
+
+
+--H1_safe_q[16] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[16] at LC_X31_Y25_N9
+--operation mode is arithmetic
+
+H1_safe_q[16]_carry_eqn = (!H1L33 & H1L44) # (H1L33 & H1L54);
+H1_safe_q[16]_lut_out = H1_safe_q[16] $ (!E1_5 & !H1_safe_q[16]_carry_eqn);
+H1_safe_q[16] = DFFEAS(H1_safe_q[16]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L74 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella16~COUT at LC_X31_Y25_N9
+--operation mode is arithmetic
+
+H1L74 = CARRY(H1_safe_q[16] & !H1L54);
+
+
+--B1L7 is 7segment:inst|leds[6]~176 at LC_X26_Y26_N6
+--operation mode is normal
+
+B1L7 = H1_safe_q[19] # H1_safe_q[18] & !H1_safe_q[16] # !H1_safe_q[17] # !H1_safe_q[18] & H1_safe_q[17];
+
+
+--B1L6 is 7segment:inst|leds[5]~98 at LC_X26_Y26_N2
+--operation mode is normal
+
+B1L6 = H1_safe_q[18] & H1_safe_q[17] & H1_safe_q[16] & !H1_safe_q[19] # !H1_safe_q[17] & H1_safe_q[19] # !H1_safe_q[18] & !H1_safe_q[19] & H1_safe_q[17] # H1_safe_q[16];
+
+
+--B1L5 is 7segment:inst|leds[4]~100 at LC_X26_Y26_N7
+--operation mode is normal
+
+B1L5 = H1_safe_q[17] & H1_safe_q[16] & !H1_safe_q[19] # !H1_safe_q[17] & H1_safe_q[18] & !H1_safe_q[19] # !H1_safe_q[18] & H1_safe_q[16];
+
+
+--B1L4 is 7segment:inst|leds[3]~102 at LC_X26_Y26_N8
+--operation mode is normal
+
+B1L4 = H1_safe_q[16] & H1_safe_q[18] $ !H1_safe_q[17] # !H1_safe_q[16] & H1_safe_q[18] & !H1_safe_q[17] & !H1_safe_q[19] # !H1_safe_q[18] & H1_safe_q[17] & H1_safe_q[19];
+
+
+--B1L3 is 7segment:inst|leds[2]~104 at LC_X26_Y26_N4
+--operation mode is normal
+
+B1L3 = H1_safe_q[18] & H1_safe_q[19] & H1_safe_q[17] # !H1_safe_q[16] # !H1_safe_q[18] & H1_safe_q[17] & !H1_safe_q[16] & !H1_safe_q[19];
+
+
+--B1L2 is 7segment:inst|leds[1]~106 at LC_X26_Y26_N9
+--operation mode is normal
+
+B1L2 = H1_safe_q[17] & H1_safe_q[16] & H1_safe_q[19] # !H1_safe_q[16] & H1_safe_q[18] # !H1_safe_q[17] & H1_safe_q[18] & H1_safe_q[16] $ H1_safe_q[19];
+
+
+--B1L1 is 7segment:inst|leds[0]~108 at LC_X26_Y26_N5
+--operation mode is normal
+
+B1L1 = H1_safe_q[18] & !H1_safe_q[17] & H1_safe_q[19] # !H1_safe_q[16] # !H1_safe_q[18] & H1_safe_q[16] & H1_safe_q[17] $ !H1_safe_q[19];
+
+
+--H1_safe_q[15] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[15] at LC_X31_Y25_N8
+--operation mode is arithmetic
+
+H1_safe_q[15]_carry_eqn = (!H1L33 & H1L14) # (H1L33 & H1L24);
+H1_safe_q[15]_lut_out = H1_safe_q[15] $ (!E1_5 & H1_safe_q[15]_carry_eqn);
+H1_safe_q[15] = DFFEAS(H1_safe_q[15]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L44 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella15~COUT at LC_X31_Y25_N8
+--operation mode is arithmetic
+
+H1L44_cout_0 = !H1L14 # !H1_safe_q[15];
+H1L44 = CARRY(H1L44_cout_0);
+
+--H1L54 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella15~COUTCOUT1_1 at LC_X31_Y25_N8
+--operation mode is arithmetic
+
+H1L54_cout_1 = !H1L24 # !H1_safe_q[15];
+H1L54 = CARRY(H1L54_cout_1);
+
+
+--H1_safe_q[13] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[13] at LC_X31_Y25_N6
+--operation mode is arithmetic
+
+H1_safe_q[13]_carry_eqn = (!H1L33 & H1L53) # (H1L33 & H1L63);
+H1_safe_q[13]_lut_out = H1_safe_q[13] $ (!E1_5 & H1_safe_q[13]_carry_eqn);
+H1_safe_q[13] = DFFEAS(H1_safe_q[13]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L83 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella13~COUT at LC_X31_Y25_N6
+--operation mode is arithmetic
+
+H1L83_cout_0 = !H1L53 # !H1_safe_q[13];
+H1L83 = CARRY(H1L83_cout_0);
+
+--H1L93 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella13~COUTCOUT1_1 at LC_X31_Y25_N6
+--operation mode is arithmetic
+
+H1L93_cout_1 = !H1L63 # !H1_safe_q[13];
+H1L93 = CARRY(H1L93_cout_1);
+
+
+--H1_safe_q[14] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[14] at LC_X31_Y25_N7
+--operation mode is arithmetic
+
+H1_safe_q[14]_carry_eqn = (!H1L33 & H1L83) # (H1L33 & H1L93);
+H1_safe_q[14]_lut_out = H1_safe_q[14] $ (!E1_5 & !H1_safe_q[14]_carry_eqn);
+H1_safe_q[14] = DFFEAS(H1_safe_q[14]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L14 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella14~COUT at LC_X31_Y25_N7
+--operation mode is arithmetic
+
+H1L14_cout_0 = H1_safe_q[14] & !H1L83;
+H1L14 = CARRY(H1L14_cout_0);
+
+--H1L24 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella14~COUTCOUT1_1 at LC_X31_Y25_N7
+--operation mode is arithmetic
+
+H1L24_cout_1 = H1_safe_q[14] & !H1L93;
+H1L24 = CARRY(H1L24_cout_1);
+
+
+--H1_safe_q[12] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[12] at LC_X31_Y25_N5
+--operation mode is arithmetic
+
+H1_safe_q[12]_carry_eqn = H1L33;
+H1_safe_q[12]_lut_out = H1_safe_q[12] $ (!E1_5 & !H1_safe_q[12]_carry_eqn);
+H1_safe_q[12] = DFFEAS(H1_safe_q[12]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L53 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella12~COUT at LC_X31_Y25_N5
+--operation mode is arithmetic
+
+H1L53_cout_0 = H1_safe_q[12] & !H1L33;
+H1L53 = CARRY(H1L53_cout_0);
+
+--H1L63 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella12~COUTCOUT1_1 at LC_X31_Y25_N5
+--operation mode is arithmetic
+
+H1L63_cout_1 = H1_safe_q[12] & !H1L33;
+H1L63 = CARRY(H1L63_cout_1);
+
+
+--B4L7 is 7segment:inst6|leds[6]~176 at LC_X32_Y26_N9
+--operation mode is normal
+
+B4L7 = H1_safe_q[15] # H1_safe_q[13] & !H1_safe_q[14] # !H1_safe_q[12] # !H1_safe_q[13] & H1_safe_q[14];
+
+
+--B4L6 is 7segment:inst6|leds[5]~98 at LC_X32_Y26_N5
+--operation mode is normal
+
+B4L6 = H1_safe_q[15] & !H1_safe_q[13] & H1_safe_q[14] # !H1_safe_q[15] & H1_safe_q[12] & H1_safe_q[13] # !H1_safe_q[14] # !H1_safe_q[12] & H1_safe_q[13] & !H1_safe_q[14];
+
+
+--B4L5 is 7segment:inst6|leds[4]~100 at LC_X32_Y26_N7
+--operation mode is normal
+
+B4L5 = H1_safe_q[13] & !H1_safe_q[15] & H1_safe_q[12] # !H1_safe_q[13] & H1_safe_q[14] & !H1_safe_q[15] # !H1_safe_q[14] & H1_safe_q[12];
+
+
+--B4L4 is 7segment:inst6|leds[3]~102 at LC_X32_Y26_N2
+--operation mode is normal
+
+B4L4 = H1_safe_q[12] & H1_safe_q[13] $ !H1_safe_q[14] # !H1_safe_q[12] & H1_safe_q[15] & H1_safe_q[13] & !H1_safe_q[14] # !H1_safe_q[15] & !H1_safe_q[13] & H1_safe_q[14];
+
+
+--B4L3 is 7segment:inst6|leds[2]~104 at LC_X32_Y26_N8
+--operation mode is normal
+
+B4L3 = H1_safe_q[15] & H1_safe_q[14] & H1_safe_q[13] # !H1_safe_q[12] # !H1_safe_q[15] & !H1_safe_q[12] & H1_safe_q[13] & !H1_safe_q[14];
+
+
+--B4L2 is 7segment:inst6|leds[1]~106 at LC_X32_Y26_N4
+--operation mode is normal
+
+B4L2 = H1_safe_q[15] & H1_safe_q[12] & H1_safe_q[13] # !H1_safe_q[12] & H1_safe_q[14] # !H1_safe_q[15] & H1_safe_q[14] & H1_safe_q[12] $ H1_safe_q[13];
+
+
+--B4L1 is 7segment:inst6|leds[0]~108 at LC_X32_Y26_N6
+--operation mode is normal
+
+B4L1 = H1_safe_q[13] & H1_safe_q[15] & H1_safe_q[12] & !H1_safe_q[14] # !H1_safe_q[13] & H1_safe_q[14] $ (!H1_safe_q[15] & H1_safe_q[12]);
+
+
+--H1_safe_q[11] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[11] at LC_X31_Y25_N4
+--operation mode is arithmetic
+
+H1_safe_q[11]_carry_eqn = (!H1L91 & H1L03) # (H1L91 & H1L13);
+H1_safe_q[11]_lut_out = H1_safe_q[11] $ (!E1_5 & H1_safe_q[11]_carry_eqn);
+H1_safe_q[11] = DFFEAS(H1_safe_q[11]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L33 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella11~COUT at LC_X31_Y25_N4
+--operation mode is arithmetic
+
+H1L33 = CARRY(!H1L13 # !H1_safe_q[11]);
+
+
+--H1_safe_q[9] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[9] at LC_X31_Y25_N2
+--operation mode is arithmetic
+
+H1_safe_q[9]_carry_eqn = (!H1L91 & H1L42) # (H1L91 & H1L52);
+H1_safe_q[9]_lut_out = H1_safe_q[9] $ (!E1_5 & H1_safe_q[9]_carry_eqn);
+H1_safe_q[9] = DFFEAS(H1_safe_q[9]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L72 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella9~COUT at LC_X31_Y25_N2
+--operation mode is arithmetic
+
+H1L72_cout_0 = !H1L42 # !H1_safe_q[9];
+H1L72 = CARRY(H1L72_cout_0);
+
+--H1L82 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella9~COUTCOUT1_1 at LC_X31_Y25_N2
+--operation mode is arithmetic
+
+H1L82_cout_1 = !H1L52 # !H1_safe_q[9];
+H1L82 = CARRY(H1L82_cout_1);
+
+
+--H1_safe_q[10] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[10] at LC_X31_Y25_N3
+--operation mode is arithmetic
+
+H1_safe_q[10]_carry_eqn = (!H1L91 & H1L72) # (H1L91 & H1L82);
+H1_safe_q[10]_lut_out = H1_safe_q[10] $ (!E1_5 & !H1_safe_q[10]_carry_eqn);
+H1_safe_q[10] = DFFEAS(H1_safe_q[10]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L03 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella10~COUT at LC_X31_Y25_N3
+--operation mode is arithmetic
+
+H1L03_cout_0 = H1_safe_q[10] & !H1L72;
+H1L03 = CARRY(H1L03_cout_0);
+
+--H1L13 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella10~COUTCOUT1_1 at LC_X31_Y25_N3
+--operation mode is arithmetic
+
+H1L13_cout_1 = H1_safe_q[10] & !H1L82;
+H1L13 = CARRY(H1L13_cout_1);
+
+
+--H1_safe_q[8] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[8] at LC_X31_Y25_N1
+--operation mode is arithmetic
+
+H1_safe_q[8]_carry_eqn = (!H1L91 & H1L12) # (H1L91 & H1L22);
+H1_safe_q[8]_lut_out = H1_safe_q[8] $ (!E1_5 & !H1_safe_q[8]_carry_eqn);
+H1_safe_q[8] = DFFEAS(H1_safe_q[8]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L42 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella8~COUT at LC_X31_Y25_N1
+--operation mode is arithmetic
+
+H1L42_cout_0 = H1_safe_q[8] & !H1L12;
+H1L42 = CARRY(H1L42_cout_0);
+
+--H1L52 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella8~COUTCOUT1_1 at LC_X31_Y25_N1
+--operation mode is arithmetic
+
+H1L52_cout_1 = H1_safe_q[8] & !H1L22;
+H1L52 = CARRY(H1L52_cout_1);
+
+
+--B3L7 is 7segment:inst3|leds[6]~176 at LC_X36_Y26_N2
+--operation mode is normal
+
+B3L7 = H1_safe_q[11] # H1_safe_q[10] & !H1_safe_q[8] # !H1_safe_q[9] # !H1_safe_q[10] & H1_safe_q[9];
+
+
+--B3L6 is 7segment:inst3|leds[5]~98 at LC_X36_Y26_N8
+--operation mode is normal
+
+B3L6 = H1_safe_q[10] & H1_safe_q[9] & H1_safe_q[8] & !H1_safe_q[11] # !H1_safe_q[9] & H1_safe_q[11] # !H1_safe_q[10] & !H1_safe_q[11] & H1_safe_q[9] # H1_safe_q[8];
+
+
+--B3L5 is 7segment:inst3|leds[4]~100 at LC_X36_Y26_N7
+--operation mode is normal
+
+B3L5 = H1_safe_q[9] & H1_safe_q[8] & !H1_safe_q[11] # !H1_safe_q[9] & H1_safe_q[10] & !H1_safe_q[11] # !H1_safe_q[10] & H1_safe_q[8];
+
+
+--B3L4 is 7segment:inst3|leds[3]~102 at LC_X36_Y26_N5
+--operation mode is normal
+
+B3L4 = H1_safe_q[8] & H1_safe_q[10] $ !H1_safe_q[9] # !H1_safe_q[8] & H1_safe_q[10] & !H1_safe_q[9] & !H1_safe_q[11] # !H1_safe_q[10] & H1_safe_q[9] & H1_safe_q[11];
+
+
+--B3L3 is 7segment:inst3|leds[2]~104 at LC_X36_Y26_N9
+--operation mode is normal
+
+B3L3 = H1_safe_q[10] & H1_safe_q[11] & H1_safe_q[9] # !H1_safe_q[8] # !H1_safe_q[10] & H1_safe_q[9] & !H1_safe_q[8] & !H1_safe_q[11];
+
+
+--B3L2 is 7segment:inst3|leds[1]~106 at LC_X36_Y26_N6
+--operation mode is normal
+
+B3L2 = H1_safe_q[9] & H1_safe_q[8] & H1_safe_q[11] # !H1_safe_q[8] & H1_safe_q[10] # !H1_safe_q[9] & H1_safe_q[10] & H1_safe_q[8] $ H1_safe_q[11];
+
+
+--B3L1 is 7segment:inst3|leds[0]~108 at LC_X36_Y26_N4
+--operation mode is normal
+
+B3L1 = H1_safe_q[10] & !H1_safe_q[9] & H1_safe_q[11] # !H1_safe_q[8] # !H1_safe_q[10] & H1_safe_q[8] & H1_safe_q[9] $ !H1_safe_q[11];
+
+
+--H1_safe_q[7] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[7] at LC_X31_Y25_N0
+--operation mode is arithmetic
+
+H1_safe_q[7]_carry_eqn = H1L91;
+H1_safe_q[7]_lut_out = H1_safe_q[7] $ (!E1_5 & H1_safe_q[7]_carry_eqn);
+H1_safe_q[7] = DFFEAS(H1_safe_q[7]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L12 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella7~COUT at LC_X31_Y25_N0
+--operation mode is arithmetic
+
+H1L12_cout_0 = !H1L91 # !H1_safe_q[7];
+H1L12 = CARRY(H1L12_cout_0);
+
+--H1L22 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella7~COUTCOUT1_1 at LC_X31_Y25_N0
+--operation mode is arithmetic
+
+H1L22_cout_1 = !H1L91 # !H1_safe_q[7];
+H1L22 = CARRY(H1L22_cout_1);
+
+
+--H1_safe_q[5] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[5] at LC_X31_Y26_N8
+--operation mode is arithmetic
+
+H1_safe_q[5]_carry_eqn = (!H1L5 & H1L31) # (H1L5 & H1L41);
+H1_safe_q[5]_lut_out = H1_safe_q[5] $ (!E1_5 & H1_safe_q[5]_carry_eqn);
+H1_safe_q[5] = DFFEAS(H1_safe_q[5]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L61 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella5~COUT at LC_X31_Y26_N8
+--operation mode is arithmetic
+
+H1L61_cout_0 = !H1L31 # !H1_safe_q[5];
+H1L61 = CARRY(H1L61_cout_0);
+
+--H1L71 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella5~COUTCOUT1_1 at LC_X31_Y26_N8
+--operation mode is arithmetic
+
+H1L71_cout_1 = !H1L41 # !H1_safe_q[5];
+H1L71 = CARRY(H1L71_cout_1);
+
+
+--H1_safe_q[6] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[6] at LC_X31_Y26_N9
+--operation mode is arithmetic
+
+H1_safe_q[6]_carry_eqn = (!H1L5 & H1L61) # (H1L5 & H1L71);
+H1_safe_q[6]_lut_out = H1_safe_q[6] $ (!E1_5 & !H1_safe_q[6]_carry_eqn);
+H1_safe_q[6] = DFFEAS(H1_safe_q[6]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L91 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella6~COUT at LC_X31_Y26_N9
+--operation mode is arithmetic
+
+H1L91 = CARRY(H1_safe_q[6] & !H1L71);
+
+
+--H1_safe_q[4] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[4] at LC_X31_Y26_N7
+--operation mode is arithmetic
+
+H1_safe_q[4]_carry_eqn = (!H1L5 & H1L01) # (H1L5 & H1L11);
+H1_safe_q[4]_lut_out = H1_safe_q[4] $ (!E1_5 & !H1_safe_q[4]_carry_eqn);
+H1_safe_q[4] = DFFEAS(H1_safe_q[4]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L31 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella4~COUT at LC_X31_Y26_N7
+--operation mode is arithmetic
+
+H1L31_cout_0 = H1_safe_q[4] & !H1L01;
+H1L31 = CARRY(H1L31_cout_0);
+
+--H1L41 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella4~COUTCOUT1_1 at LC_X31_Y26_N7
+--operation mode is arithmetic
+
+H1L41_cout_1 = H1_safe_q[4] & !H1L11;
+H1L41 = CARRY(H1L41_cout_1);
+
+
+--B6L7 is 7segment:inst10|leds[6]~176 at LC_X46_Y26_N2
+--operation mode is normal
+
+B6L7 = H1_safe_q[7] # H1_safe_q[5] & !H1_safe_q[6] # !H1_safe_q[4] # !H1_safe_q[5] & H1_safe_q[6];
+
+
+--B6L6 is 7segment:inst10|leds[5]~98 at LC_X46_Y26_N8
+--operation mode is normal
+
+B6L6 = H1_safe_q[5] & !H1_safe_q[7] & H1_safe_q[4] # !H1_safe_q[6] # !H1_safe_q[5] & H1_safe_q[7] & H1_safe_q[6] # !H1_safe_q[7] & H1_safe_q[4] & !H1_safe_q[6];
+
+
+--B6L5 is 7segment:inst10|leds[4]~100 at LC_X46_Y26_N9
+--operation mode is normal
+
+B6L5 = H1_safe_q[5] & H1_safe_q[4] & !H1_safe_q[7] # !H1_safe_q[5] & H1_safe_q[6] & !H1_safe_q[7] # !H1_safe_q[6] & H1_safe_q[4];
+
+
+--B6L4 is 7segment:inst10|leds[3]~102 at LC_X46_Y26_N4
+--operation mode is normal
+
+B6L4 = H1_safe_q[4] & H1_safe_q[5] $ (!H1_safe_q[6]) # !H1_safe_q[4] & H1_safe_q[5] & H1_safe_q[7] & !H1_safe_q[6] # !H1_safe_q[5] & !H1_safe_q[7] & H1_safe_q[6];
+
+
+--B6L3 is 7segment:inst10|leds[2]~104 at LC_X46_Y26_N7
+--operation mode is normal
+
+B6L3 = H1_safe_q[7] & H1_safe_q[6] & H1_safe_q[5] # !H1_safe_q[4] # !H1_safe_q[7] & H1_safe_q[5] & !H1_safe_q[4] & !H1_safe_q[6];
+
+
+--B6L2 is 7segment:inst10|leds[1]~106 at LC_X46_Y26_N5
+--operation mode is normal
+
+B6L2 = H1_safe_q[5] & H1_safe_q[4] & H1_safe_q[7] # !H1_safe_q[4] & H1_safe_q[6] # !H1_safe_q[5] & H1_safe_q[6] & H1_safe_q[4] $ H1_safe_q[7];
+
+
+--B6L1 is 7segment:inst10|leds[0]~108 at LC_X46_Y26_N6
+--operation mode is normal
+
+B6L1 = H1_safe_q[5] & H1_safe_q[4] & H1_safe_q[7] & !H1_safe_q[6] # !H1_safe_q[5] & H1_safe_q[6] $ (H1_safe_q[4] & !H1_safe_q[7]);
+
+
+--H1_safe_q[3] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[3] at LC_X31_Y26_N6
+--operation mode is arithmetic
+
+H1_safe_q[3]_carry_eqn = (!H1L5 & H1L7) # (H1L5 & H1L8);
+H1_safe_q[3]_lut_out = H1_safe_q[3] $ (!E1_5 & H1_safe_q[3]_carry_eqn);
+H1_safe_q[3] = DFFEAS(H1_safe_q[3]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L01 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella3~COUT at LC_X31_Y26_N6
+--operation mode is arithmetic
+
+H1L01_cout_0 = !H1L7 # !H1_safe_q[3];
+H1L01 = CARRY(H1L01_cout_0);
+
+--H1L11 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella3~COUTCOUT1_1 at LC_X31_Y26_N6
+--operation mode is arithmetic
+
+H1L11_cout_1 = !H1L8 # !H1_safe_q[3];
+H1L11 = CARRY(H1L11_cout_1);
+
+
+--H1_safe_q[1] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[1] at LC_X31_Y26_N4
+--operation mode is arithmetic
+
+H1_safe_q[1]_lut_out = H1_safe_q[1] $ (!E1_5 & H1L2);
+H1_safe_q[1] = DFFEAS(H1_safe_q[1]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L5 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella1~COUT at LC_X31_Y26_N4
+--operation mode is arithmetic
+
+H1L5 = CARRY(!H1L3 # !H1_safe_q[1]);
+
+
+--H1_safe_q[2] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[2] at LC_X31_Y26_N5
+--operation mode is arithmetic
+
+H1_safe_q[2]_carry_eqn = H1L5;
+H1_safe_q[2]_lut_out = H1_safe_q[2] $ (!E1_5 & !H1_safe_q[2]_carry_eqn);
+H1_safe_q[2] = DFFEAS(H1_safe_q[2]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L7 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella2~COUT at LC_X31_Y26_N5
+--operation mode is arithmetic
+
+H1L7_cout_0 = H1_safe_q[2] & !H1L5;
+H1L7 = CARRY(H1L7_cout_0);
+
+--H1L8 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella2~COUTCOUT1_1 at LC_X31_Y26_N5
+--operation mode is arithmetic
+
+H1L8_cout_1 = H1_safe_q[2] & !H1L5;
+H1L8 = CARRY(H1L8_cout_1);
+
+
+--H1_safe_q[0] is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|safe_q[0] at LC_X31_Y26_N3
+--operation mode is arithmetic
+
+H1_safe_q[0]_lut_out = E1_5 $ !H1_safe_q[0];
+H1_safe_q[0] = DFFEAS(H1_safe_q[0]_lut_out, GLOBAL(fclk), VCC, , , , , !SW_USER[0], );
+
+--H1L2 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella0~COUT at LC_X31_Y26_N3
+--operation mode is arithmetic
+
+H1L2_cout_0 = H1_safe_q[0];
+H1L2 = CARRY(H1L2_cout_0);
+
+--H1L3 is mf_count1:inst2|lpm_counter:lpm_counter_component|cntr_718:auto_generated|counter_cella0~COUTCOUT1_1 at LC_X31_Y26_N3
+--operation mode is arithmetic
+
+H1L3_cout_1 = H1_safe_q[0];
+H1L3 = CARRY(H1L3_cout_1);
+
+
+--B5L7 is 7segment:inst9|leds[6]~176 at LC_X31_Y26_N1
+--operation mode is normal
+
+B5L7 = H1_safe_q[3] # H1_safe_q[1] & !H1_safe_q[2] # !H1_safe_q[0] # !H1_safe_q[1] & H1_safe_q[2];
+
+
+--B5L6 is 7segment:inst9|leds[5]~98 at LC_X31_Y26_N2
+--operation mode is normal
+
+B5L6 = H1_safe_q[3] & !H1_safe_q[1] & H1_safe_q[2] # !H1_safe_q[3] & H1_safe_q[0] & H1_safe_q[1] # !H1_safe_q[2] # !H1_safe_q[0] & H1_safe_q[1] & !H1_safe_q[2];
+
+
+--B5L5 is 7segment:inst9|leds[4]~100 at LC_X31_Y26_N0
+--operation mode is normal
+
+B5L5 = H1_safe_q[1] & !H1_safe_q[3] & H1_safe_q[0] # !H1_safe_q[1] & H1_safe_q[2] & !H1_safe_q[3] # !H1_safe_q[2] & H1_safe_q[0];
+
+
+--B5L4 is 7segment:inst9|leds[3]~102 at LC_X45_Y25_N2
+--operation mode is normal
+
+B5L4 = H1_safe_q[0] & H1_safe_q[2] $ !H1_safe_q[1] # !H1_safe_q[0] & H1_safe_q[2] & !H1_safe_q[1] & !H1_safe_q[3] # !H1_safe_q[2] & H1_safe_q[1] & H1_safe_q[3];
+
+
+--B5L3 is 7segment:inst9|leds[2]~104 at LC_X45_Y25_N5
+--operation mode is normal
+
+B5L3 = H1_safe_q[2] & H1_safe_q[3] & H1_safe_q[1] # !H1_safe_q[0] # !H1_safe_q[2] & !H1_safe_q[0] & H1_safe_q[1] & !H1_safe_q[3];
+
+
+--B5L2 is 7segment:inst9|leds[1]~106 at LC_X45_Y25_N4
+--operation mode is normal
+
+B5L2 = H1_safe_q[1] & H1_safe_q[0] & H1_safe_q[3] # !H1_safe_q[0] & H1_safe_q[2] # !H1_safe_q[1] & H1_safe_q[2] & H1_safe_q[0] $ H1_safe_q[3];
+
+
+--B5L1 is 7segment:inst9|leds[0]~108 at LC_X45_Y25_N6
+--operation mode is normal
+
+B5L1 = H1_safe_q[2] & !H1_safe_q[1] & H1_safe_q[3] # !H1_safe_q[0] # !H1_safe_q[2] & H1_safe_q[0] & H1_safe_q[1] $ !H1_safe_q[3];
+
+
+--F1_stateout is seqdebounce:inst20|stateout at LC_X15_Y24_N7
+--operation mode is normal
+
+F1_stateout_lut_out = F1L4 # F1L3;
+F1_stateout = DFFEAS(F1_stateout_lut_out, GLOBAL(fclk), VCC, , , , , , );
+
+
+--inst16 is inst16 at LC_X31_Y24_N9
+--operation mode is normal
+
+inst16_lut_out = !F1_stateout;
+inst16 = DFFEAS(inst16_lut_out, GLOBAL(fclk), VCC, , , , , , );
+
+
+--E1_5 is inhb:inst18|5 at LC_X31_Y24_N8
+--operation mode is normal
+
+E1_5 = F1_stateout # inst16;
+
+
+--J1_cout is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|cout at LC_X15_Y24_N5
+--operation mode is normal
+
+J1_cout_carry_eqn = J1L65;
+J1_cout = !J1_cout_carry_eqn;
+
+
+--F1L4 is seqdebounce:inst20|high~2 at LC_X15_Y24_N9
+--operation mode is normal
+
+F1_high_qfbk = F1_high;
+F1L4 = J1_cout & F1_highw # inst15 & F1_high_qfbk # !J1_cout & inst15 & F1_high_qfbk;
+
+--F1_high is seqdebounce:inst20|high at LC_X15_Y24_N9
+--operation mode is normal
+
+F1_high = DFFEAS(F1L4, GLOBAL(fclk), VCC, , , , , , );
+
+
+--F1_low is seqdebounce:inst20|low at LC_X14_Y24_N2
+--operation mode is normal
+
+F1_low_lut_out = !F1L7;
+F1_low = DFFEAS(F1_low_lut_out, GLOBAL(fclk), VCC, , , , , , );
+
+
+--F1L3 is seqdebounce:inst20|highw~2 at LC_X15_Y24_N6
+--operation mode is normal
+
+F1_highw_qfbk = F1_highw;
+F1L3 = J1_cout & inst15 & !F1_low # !J1_cout & F1_highw_qfbk # inst15 & !F1_low;
+
+--F1_highw is seqdebounce:inst20|highw at LC_X15_Y24_N6
+--operation mode is normal
+
+F1_highw = DFFEAS(F1L3, GLOBAL(fclk), VCC, , , , , , );
+
+
+--J1_safe_q[19] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[19] at LC_X15_Y24_N4
+--operation mode is arithmetic
+
+J1_safe_q[19]_carry_eqn = (!J1L24 & J1L35) # (J1L24 & J1L45);
+J1_safe_q[19]_lut_out = J1_safe_q[19] $ J1_safe_q[19]_carry_eqn;
+J1_safe_q[19] = DFFEAS(J1_safe_q[19]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L65 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella19~COUT at LC_X15_Y24_N4
+--operation mode is arithmetic
+
+J1L65 = CARRY(!J1L45 # !J1_safe_q[19]);
+
+
+--F1_loww is seqdebounce:inst20|loww at LC_X14_Y24_N5
+--operation mode is normal
+
+F1_loww_lut_out = inst15 & !J1_cout & F1_loww # !inst15 & F1_high # !J1_cout & F1_loww;
+F1_loww = DFFEAS(F1_loww_lut_out, GLOBAL(fclk), VCC, , , , , , );
+
+
+--F1L7 is seqdebounce:inst20|low~34 at LC_X14_Y24_N4
+--operation mode is normal
+
+inst15_qfbk = inst15;
+F1L7 = F1_low & J1_cout & F1_loww # !F1_low & !inst15_qfbk;
+
+--inst15 is inst15 at LC_X14_Y24_N4
+--operation mode is normal
+
+inst15 = DFFEAS(F1L7, GLOBAL(fclk), VCC, , , SW_USER[1], , , VCC);
+
+
+--F1_statecnt is seqdebounce:inst20|statecnt at LC_X15_Y24_N8
+--operation mode is normal
+
+F1_statecnt_lut_out = F1L4 # F1L7;
+F1_statecnt = DFFEAS(F1_statecnt_lut_out, GLOBAL(fclk), VCC, , , , , , );
+
+
+--J1_safe_q[18] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[18] at LC_X15_Y24_N3
+--operation mode is arithmetic
+
+J1_safe_q[18]_carry_eqn = (!J1L24 & J1L05) # (J1L24 & J1L15);
+J1_safe_q[18]_lut_out = J1_safe_q[18] $ !J1_safe_q[18]_carry_eqn;
+J1_safe_q[18] = DFFEAS(J1_safe_q[18]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L35 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella18~COUT at LC_X15_Y24_N3
+--operation mode is arithmetic
+
+J1L35_cout_0 = J1_safe_q[18] & !J1L05;
+J1L35 = CARRY(J1L35_cout_0);
+
+--J1L45 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella18~COUTCOUT1_1 at LC_X15_Y24_N3
+--operation mode is arithmetic
+
+J1L45_cout_1 = J1_safe_q[18] & !J1L15;
+J1L45 = CARRY(J1L45_cout_1);
+
+
+--J1_safe_q[17] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[17] at LC_X15_Y24_N2
+--operation mode is arithmetic
+
+J1_safe_q[17]_carry_eqn = (!J1L24 & J1L74) # (J1L24 & J1L84);
+J1_safe_q[17]_lut_out = J1_safe_q[17] $ (J1_safe_q[17]_carry_eqn);
+J1_safe_q[17] = DFFEAS(J1_safe_q[17]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L05 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella17~COUT at LC_X15_Y24_N2
+--operation mode is arithmetic
+
+J1L05_cout_0 = !J1L74 # !J1_safe_q[17];
+J1L05 = CARRY(J1L05_cout_0);
+
+--J1L15 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella17~COUTCOUT1_1 at LC_X15_Y24_N2
+--operation mode is arithmetic
+
+J1L15_cout_1 = !J1L84 # !J1_safe_q[17];
+J1L15 = CARRY(J1L15_cout_1);
+
+
+--J1_safe_q[16] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[16] at LC_X15_Y24_N1
+--operation mode is arithmetic
+
+J1_safe_q[16]_carry_eqn = (!J1L24 & J1L44) # (J1L24 & J1L54);
+J1_safe_q[16]_lut_out = J1_safe_q[16] $ (!J1_safe_q[16]_carry_eqn);
+J1_safe_q[16] = DFFEAS(J1_safe_q[16]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L74 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella16~COUT at LC_X15_Y24_N1
+--operation mode is arithmetic
+
+J1L74_cout_0 = J1_safe_q[16] & !J1L44;
+J1L74 = CARRY(J1L74_cout_0);
+
+--J1L84 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella16~COUTCOUT1_1 at LC_X15_Y24_N1
+--operation mode is arithmetic
+
+J1L84_cout_1 = J1_safe_q[16] & !J1L54;
+J1L84 = CARRY(J1L84_cout_1);
+
+
+--J1_safe_q[15] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[15] at LC_X15_Y24_N0
+--operation mode is arithmetic
+
+J1_safe_q[15]_carry_eqn = J1L24;
+J1_safe_q[15]_lut_out = J1_safe_q[15] $ J1_safe_q[15]_carry_eqn;
+J1_safe_q[15] = DFFEAS(J1_safe_q[15]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L44 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella15~COUT at LC_X15_Y24_N0
+--operation mode is arithmetic
+
+J1L44_cout_0 = !J1L24 # !J1_safe_q[15];
+J1L44 = CARRY(J1L44_cout_0);
+
+--J1L54 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella15~COUTCOUT1_1 at LC_X15_Y24_N0
+--operation mode is arithmetic
+
+J1L54_cout_1 = !J1L24 # !J1_safe_q[15];
+J1L54 = CARRY(J1L54_cout_1);
+
+
+--J1_safe_q[14] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[14] at LC_X15_Y25_N9
+--operation mode is arithmetic
+
+J1_safe_q[14]_carry_eqn = (!J1L82 & J1L93) # (J1L82 & J1L04);
+J1_safe_q[14]_lut_out = J1_safe_q[14] $ (!J1_safe_q[14]_carry_eqn);
+J1_safe_q[14] = DFFEAS(J1_safe_q[14]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L24 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella14~COUT at LC_X15_Y25_N9
+--operation mode is arithmetic
+
+J1L24 = CARRY(J1_safe_q[14] & !J1L04);
+
+
+--J1_safe_q[13] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[13] at LC_X15_Y25_N8
+--operation mode is arithmetic
+
+J1_safe_q[13]_carry_eqn = (!J1L82 & J1L63) # (J1L82 & J1L73);
+J1_safe_q[13]_lut_out = J1_safe_q[13] $ J1_safe_q[13]_carry_eqn;
+J1_safe_q[13] = DFFEAS(J1_safe_q[13]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L93 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella13~COUT at LC_X15_Y25_N8
+--operation mode is arithmetic
+
+J1L93_cout_0 = !J1L63 # !J1_safe_q[13];
+J1L93 = CARRY(J1L93_cout_0);
+
+--J1L04 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella13~COUTCOUT1_1 at LC_X15_Y25_N8
+--operation mode is arithmetic
+
+J1L04_cout_1 = !J1L73 # !J1_safe_q[13];
+J1L04 = CARRY(J1L04_cout_1);
+
+
+--J1_safe_q[12] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[12] at LC_X15_Y25_N7
+--operation mode is arithmetic
+
+J1_safe_q[12]_carry_eqn = (!J1L82 & J1L33) # (J1L82 & J1L43);
+J1_safe_q[12]_lut_out = J1_safe_q[12] $ (!J1_safe_q[12]_carry_eqn);
+J1_safe_q[12] = DFFEAS(J1_safe_q[12]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L63 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella12~COUT at LC_X15_Y25_N7
+--operation mode is arithmetic
+
+J1L63_cout_0 = J1_safe_q[12] & !J1L33;
+J1L63 = CARRY(J1L63_cout_0);
+
+--J1L73 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella12~COUTCOUT1_1 at LC_X15_Y25_N7
+--operation mode is arithmetic
+
+J1L73_cout_1 = J1_safe_q[12] & !J1L43;
+J1L73 = CARRY(J1L73_cout_1);
+
+
+--J1_safe_q[11] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[11] at LC_X15_Y25_N6
+--operation mode is arithmetic
+
+J1_safe_q[11]_carry_eqn = (!J1L82 & J1L03) # (J1L82 & J1L13);
+J1_safe_q[11]_lut_out = J1_safe_q[11] $ (J1_safe_q[11]_carry_eqn);
+J1_safe_q[11] = DFFEAS(J1_safe_q[11]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L33 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella11~COUT at LC_X15_Y25_N6
+--operation mode is arithmetic
+
+J1L33_cout_0 = !J1L03 # !J1_safe_q[11];
+J1L33 = CARRY(J1L33_cout_0);
+
+--J1L43 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella11~COUTCOUT1_1 at LC_X15_Y25_N6
+--operation mode is arithmetic
+
+J1L43_cout_1 = !J1L13 # !J1_safe_q[11];
+J1L43 = CARRY(J1L43_cout_1);
+
+
+--J1_safe_q[10] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[10] at LC_X15_Y25_N5
+--operation mode is arithmetic
+
+J1_safe_q[10]_carry_eqn = J1L82;
+J1_safe_q[10]_lut_out = J1_safe_q[10] $ !J1_safe_q[10]_carry_eqn;
+J1_safe_q[10] = DFFEAS(J1_safe_q[10]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L03 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella10~COUT at LC_X15_Y25_N5
+--operation mode is arithmetic
+
+J1L03_cout_0 = J1_safe_q[10] & !J1L82;
+J1L03 = CARRY(J1L03_cout_0);
+
+--J1L13 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella10~COUTCOUT1_1 at LC_X15_Y25_N5
+--operation mode is arithmetic
+
+J1L13_cout_1 = J1_safe_q[10] & !J1L82;
+J1L13 = CARRY(J1L13_cout_1);
+
+
+--J1_safe_q[9] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[9] at LC_X15_Y25_N4
+--operation mode is arithmetic
+
+J1_safe_q[9]_carry_eqn = (!J1L41 & J1L52) # (J1L41 & J1L62);
+J1_safe_q[9]_lut_out = J1_safe_q[9] $ J1_safe_q[9]_carry_eqn;
+J1_safe_q[9] = DFFEAS(J1_safe_q[9]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L82 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella9~COUT at LC_X15_Y25_N4
+--operation mode is arithmetic
+
+J1L82 = CARRY(!J1L62 # !J1_safe_q[9]);
+
+
+--J1_safe_q[8] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[8] at LC_X15_Y25_N3
+--operation mode is arithmetic
+
+J1_safe_q[8]_carry_eqn = (!J1L41 & J1L22) # (J1L41 & J1L32);
+J1_safe_q[8]_lut_out = J1_safe_q[8] $ !J1_safe_q[8]_carry_eqn;
+J1_safe_q[8] = DFFEAS(J1_safe_q[8]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L52 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella8~COUT at LC_X15_Y25_N3
+--operation mode is arithmetic
+
+J1L52_cout_0 = J1_safe_q[8] & !J1L22;
+J1L52 = CARRY(J1L52_cout_0);
+
+--J1L62 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella8~COUTCOUT1_1 at LC_X15_Y25_N3
+--operation mode is arithmetic
+
+J1L62_cout_1 = J1_safe_q[8] & !J1L32;
+J1L62 = CARRY(J1L62_cout_1);
+
+
+--J1_safe_q[7] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[7] at LC_X15_Y25_N2
+--operation mode is arithmetic
+
+J1_safe_q[7]_carry_eqn = (!J1L41 & J1L91) # (J1L41 & J1L02);
+J1_safe_q[7]_lut_out = J1_safe_q[7] $ (J1_safe_q[7]_carry_eqn);
+J1_safe_q[7] = DFFEAS(J1_safe_q[7]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L22 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella7~COUT at LC_X15_Y25_N2
+--operation mode is arithmetic
+
+J1L22_cout_0 = !J1L91 # !J1_safe_q[7];
+J1L22 = CARRY(J1L22_cout_0);
+
+--J1L32 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella7~COUTCOUT1_1 at LC_X15_Y25_N2
+--operation mode is arithmetic
+
+J1L32_cout_1 = !J1L02 # !J1_safe_q[7];
+J1L32 = CARRY(J1L32_cout_1);
+
+
+--J1_safe_q[6] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[6] at LC_X15_Y25_N1
+--operation mode is arithmetic
+
+J1_safe_q[6]_carry_eqn = (!J1L41 & J1L61) # (J1L41 & J1L71);
+J1_safe_q[6]_lut_out = J1_safe_q[6] $ (!J1_safe_q[6]_carry_eqn);
+J1_safe_q[6] = DFFEAS(J1_safe_q[6]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L91 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella6~COUT at LC_X15_Y25_N1
+--operation mode is arithmetic
+
+J1L91_cout_0 = J1_safe_q[6] & !J1L61;
+J1L91 = CARRY(J1L91_cout_0);
+
+--J1L02 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella6~COUTCOUT1_1 at LC_X15_Y25_N1
+--operation mode is arithmetic
+
+J1L02_cout_1 = J1_safe_q[6] & !J1L71;
+J1L02 = CARRY(J1L02_cout_1);
+
+
+--J1_safe_q[5] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[5] at LC_X15_Y25_N0
+--operation mode is arithmetic
+
+J1_safe_q[5]_carry_eqn = J1L41;
+J1_safe_q[5]_lut_out = J1_safe_q[5] $ J1_safe_q[5]_carry_eqn;
+J1_safe_q[5] = DFFEAS(J1_safe_q[5]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L61 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella5~COUT at LC_X15_Y25_N0
+--operation mode is arithmetic
+
+J1L61_cout_0 = !J1L41 # !J1_safe_q[5];
+J1L61 = CARRY(J1L61_cout_0);
+
+--J1L71 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella5~COUTCOUT1_1 at LC_X15_Y25_N0
+--operation mode is arithmetic
+
+J1L71_cout_1 = !J1L41 # !J1_safe_q[5];
+J1L71 = CARRY(J1L71_cout_1);
+
+
+--J1_safe_q[4] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[4] at LC_X15_Y26_N9
+--operation mode is arithmetic
+
+J1_safe_q[4]_lut_out = J1_safe_q[4] $ (!J1L11);
+J1_safe_q[4] = DFFEAS(J1_safe_q[4]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L41 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella4~COUT at LC_X15_Y26_N9
+--operation mode is arithmetic
+
+J1L41 = CARRY(J1_safe_q[4] & !J1L21);
+
+
+--J1_safe_q[3] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[3] at LC_X15_Y26_N8
+--operation mode is arithmetic
+
+J1_safe_q[3]_lut_out = J1_safe_q[3] $ J1L8;
+J1_safe_q[3] = DFFEAS(J1_safe_q[3]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L11 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella3~COUT at LC_X15_Y26_N8
+--operation mode is arithmetic
+
+J1L11_cout_0 = !J1L8 # !J1_safe_q[3];
+J1L11 = CARRY(J1L11_cout_0);
+
+--J1L21 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella3~COUTCOUT1_1 at LC_X15_Y26_N8
+--operation mode is arithmetic
+
+J1L21_cout_1 = !J1L9 # !J1_safe_q[3];
+J1L21 = CARRY(J1L21_cout_1);
+
+
+--J1_safe_q[2] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[2] at LC_X15_Y26_N7
+--operation mode is arithmetic
+
+J1_safe_q[2]_lut_out = J1_safe_q[2] $ (!J1L5);
+J1_safe_q[2] = DFFEAS(J1_safe_q[2]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L8 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella2~COUT at LC_X15_Y26_N7
+--operation mode is arithmetic
+
+J1L8_cout_0 = J1_safe_q[2] & !J1L5;
+J1L8 = CARRY(J1L8_cout_0);
+
+--J1L9 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella2~COUTCOUT1_1 at LC_X15_Y26_N7
+--operation mode is arithmetic
+
+J1L9_cout_1 = J1_safe_q[2] & !J1L6;
+J1L9 = CARRY(J1L9_cout_1);
+
+
+--J1_safe_q[1] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[1] at LC_X15_Y26_N6
+--operation mode is arithmetic
+
+J1_safe_q[1]_lut_out = J1_safe_q[1] $ (J1L2);
+J1_safe_q[1] = DFFEAS(J1_safe_q[1]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L5 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella1~COUT at LC_X15_Y26_N6
+--operation mode is arithmetic
+
+J1L5_cout_0 = !J1L2 # !J1_safe_q[1];
+J1L5 = CARRY(J1L5_cout_0);
+
+--J1L6 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella1~COUTCOUT1_1 at LC_X15_Y26_N6
+--operation mode is arithmetic
+
+J1L6_cout_1 = !J1L3 # !J1_safe_q[1];
+J1L6 = CARRY(J1L6_cout_1);
+
+
+--J1_safe_q[0] is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[0] at LC_X15_Y26_N5
+--operation mode is arithmetic
+
+J1_safe_q[0]_lut_out = !J1_safe_q[0];
+J1_safe_q[0] = DFFEAS(J1_safe_q[0]_lut_out, GLOBAL(fclk), VCC, , , , , F1_statecnt, );
+
+--J1L2 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella0~COUT at LC_X15_Y26_N5
+--operation mode is arithmetic
+
+J1L2_cout_0 = J1_safe_q[0];
+J1L2 = CARRY(J1L2_cout_0);
+
+--J1L3 is mf_count2:inst17|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella0~COUTCOUT1_1 at LC_X15_Y26_N5
+--operation mode is arithmetic
+
+J1L3_cout_1 = J1_safe_q[0];
+J1L3 = CARRY(J1L3_cout_1);
+
+
+--fclk is fclk at PIN_J16
+--operation mode is input
+
+fclk = INPUT();
+
+
+--SW_USER[0] is SW_USER[0] at PIN_D2
+--operation mode is input
+
+SW_USER[0] = INPUT();
+
+
+--SW_USER[1] is SW_USER[1] at PIN_C2
+--operation mode is input
+
+SW_USER[1] = INPUT();
+
+
+--DIG0_SEG[7] is DIG0_SEG[7] at PIN_C5
+--operation mode is output
+
+DIG0_SEG[7] = OUTPUT(GND);
+
+
+--DIG0_SEG[6] is DIG0_SEG[6] at PIN_A4
+--operation mode is output
+
+DIG0_SEG[6] = OUTPUT(B2L7);
+
+
+--DIG0_SEG[5] is DIG0_SEG[5] at PIN_B5
+--operation mode is output
+
+DIG0_SEG[5] = OUTPUT(!B2L6);
+
+
+--DIG0_SEG[4] is DIG0_SEG[4] at PIN_D3
+--operation mode is output
+
+DIG0_SEG[4] = OUTPUT(!B2L5);
+
+
+--DIG0_SEG[3] is DIG0_SEG[3] at PIN_C3
+--operation mode is output
+
+DIG0_SEG[3] = OUTPUT(!B2L4);
+
+
+--DIG0_SEG[2] is DIG0_SEG[2] at PIN_B4
+--operation mode is output
+
+DIG0_SEG[2] = OUTPUT(!B2L3);
+
+
+--DIG0_SEG[1] is DIG0_SEG[1] at PIN_B8
+--operation mode is output
+
+DIG0_SEG[1] = OUTPUT(!B2L2);
+
+
+--DIG0_SEG[0] is DIG0_SEG[0] at PIN_E7
+--operation mode is output
+
+DIG0_SEG[0] = OUTPUT(!B2L1);
+
+
+--DIG1_SEG[7] is DIG1_SEG[7] at PIN_D8
+--operation mode is output
+
+DIG1_SEG[7] = OUTPUT(GND);
+
+
+--DIG1_SEG[6] is DIG1_SEG[6] at PIN_F9
+--operation mode is output
+
+DIG1_SEG[6] = OUTPUT(B1L7);
+
+
+--DIG1_SEG[5] is DIG1_SEG[5] at PIN_A9
+--operation mode is output
+
+DIG1_SEG[5] = OUTPUT(!B1L6);
+
+
+--DIG1_SEG[4] is DIG1_SEG[4] at PIN_C6
+--operation mode is output
+
+DIG1_SEG[4] = OUTPUT(!B1L5);
+
+
+--DIG1_SEG[3] is DIG1_SEG[3] at PIN_B7
+--operation mode is output
+
+DIG1_SEG[3] = OUTPUT(!B1L4);
+
+
+--DIG1_SEG[2] is DIG1_SEG[2] at PIN_F8
+--operation mode is output
+
+DIG1_SEG[2] = OUTPUT(!B1L3);
+
+
+--DIG1_SEG[1] is DIG1_SEG[1] at PIN_B10
+--operation mode is output
+
+DIG1_SEG[1] = OUTPUT(!B1L2);
+
+
+--DIG1_SEG[0] is DIG1_SEG[0] at PIN_E10
+--operation mode is output
+
+DIG1_SEG[0] = OUTPUT(!B1L1);
+
+
+--DIG2_SEG[7] is DIG2_SEG[7] at PIN_A11
+--operation mode is output
+
+DIG2_SEG[7] = OUTPUT(GND);
+
+
+--DIG2_SEG[6] is DIG2_SEG[6] at PIN_D9
+--operation mode is output
+
+DIG2_SEG[6] = OUTPUT(B4L7);
+
+
+--DIG2_SEG[5] is DIG2_SEG[5] at PIN_F11
+--operation mode is output
+
+DIG2_SEG[5] = OUTPUT(!B4L6);
+
+
+--DIG2_SEG[4] is DIG2_SEG[4] at PIN_C8
+--operation mode is output
+
+DIG2_SEG[4] = OUTPUT(!B4L5);
+
+
+--DIG2_SEG[3] is DIG2_SEG[3] at PIN_D10
+--operation mode is output
+
+DIG2_SEG[3] = OUTPUT(!B4L4);
+
+
+--DIG2_SEG[2] is DIG2_SEG[2] at PIN_C11
+--operation mode is output
+
+DIG2_SEG[2] = OUTPUT(!B4L3);
+
+
+--DIG2_SEG[1] is DIG2_SEG[1] at PIN_D12
+--operation mode is output
+
+DIG2_SEG[1] = OUTPUT(!B4L2);
+
+
+--DIG2_SEG[0] is DIG2_SEG[0] at PIN_B11
+--operation mode is output
+
+DIG2_SEG[0] = OUTPUT(!B4L1);
+
+
+--DIG3_SEG[7] is DIG3_SEG[7] at PIN_E13
+--operation mode is output
+
+DIG3_SEG[7] = OUTPUT(GND);
+
+
+--DIG3_SEG[6] is DIG3_SEG[6] at PIN_A12
+--operation mode is output
+
+DIG3_SEG[6] = OUTPUT(B3L7);
+
+
+--DIG3_SEG[5] is DIG3_SEG[5] at PIN_C13
+--operation mode is output
+
+DIG3_SEG[5] = OUTPUT(!B3L6);
+
+
+--DIG3_SEG[4] is DIG3_SEG[4] at PIN_C12
+--operation mode is output
+
+DIG3_SEG[4] = OUTPUT(!B3L5);
+
+
+--DIG3_SEG[3] is DIG3_SEG[3] at PIN_E11
+--operation mode is output
+
+DIG3_SEG[3] = OUTPUT(!B3L4);
+
+
+--DIG3_SEG[2] is DIG3_SEG[2] at PIN_B13
+--operation mode is output
+
+DIG3_SEG[2] = OUTPUT(!B3L3);
+
+
+--DIG3_SEG[1] is DIG3_SEG[1] at PIN_A13
+--operation mode is output
+
+DIG3_SEG[1] = OUTPUT(!B3L2);
+
+
+--DIG3_SEG[0] is DIG3_SEG[0] at PIN_D13
+--operation mode is output
+
+DIG3_SEG[0] = OUTPUT(!B3L1);
+
+
+--DIG4_SEG[7] is DIG4_SEG[7] at PIN_D17
+--operation mode is output
+
+DIG4_SEG[7] = OUTPUT(GND);
+
+
+--DIG4_SEG[6] is DIG4_SEG[6] at PIN_C14
+--operation mode is output
+
+DIG4_SEG[6] = OUTPUT(B6L7);
+
+
+--DIG4_SEG[5] is DIG4_SEG[5] at PIN_B15
+--operation mode is output
+
+DIG4_SEG[5] = OUTPUT(!B6L6);
+
+
+--DIG4_SEG[4] is DIG4_SEG[4] at PIN_B14
+--operation mode is output
+
+DIG4_SEG[4] = OUTPUT(!B6L5);
+
+
+--DIG4_SEG[3] is DIG4_SEG[3] at PIN_B16
+--operation mode is output
+
+DIG4_SEG[3] = OUTPUT(!B6L4);
+
+
+--DIG4_SEG[2] is DIG4_SEG[2] at PIN_C17
+--operation mode is output
+
+DIG4_SEG[2] = OUTPUT(!B6L3);
+
+
+--DIG4_SEG[1] is DIG4_SEG[1] at PIN_C15
+--operation mode is output
+
+DIG4_SEG[1] = OUTPUT(!B6L2);
+
+
+--DIG4_SEG[0] is DIG4_SEG[0] at PIN_D14
+--operation mode is output
+
+DIG4_SEG[0] = OUTPUT(!B6L1);
+
+
+--DIG5_SEG[7] is DIG5_SEG[7] at PIN_F14
+--operation mode is output
+
+DIG5_SEG[7] = OUTPUT(GND);
+
+
+--DIG5_SEG[6] is DIG5_SEG[6] at PIN_C16
+--operation mode is output
+
+DIG5_SEG[6] = OUTPUT(B5L7);
+
+
+--DIG5_SEG[5] is DIG5_SEG[5] at PIN_E14
+--operation mode is output
+
+DIG5_SEG[5] = OUTPUT(!B5L6);
+
+
+--DIG5_SEG[4] is DIG5_SEG[4] at PIN_F13
+--operation mode is output
+
+DIG5_SEG[4] = OUTPUT(!B5L5);
+
+
+--DIG5_SEG[3] is DIG5_SEG[3] at PIN_D15
+--operation mode is output
+
+DIG5_SEG[3] = OUTPUT(!B5L4);
+
+
+--DIG5_SEG[2] is DIG5_SEG[2] at PIN_E15
+--operation mode is output
+
+DIG5_SEG[2] = OUTPUT(!B5L3);
+
+
+--DIG5_SEG[1] is DIG5_SEG[1] at PIN_G14
+--operation mode is output
+
+DIG5_SEG[1] = OUTPUT(!B5L2);
+
+
+--DIG5_SEG[0] is DIG5_SEG[0] at PIN_E16
+--operation mode is output
+
+DIG5_SEG[0] = OUTPUT(!B5L1);
+
+
+
+

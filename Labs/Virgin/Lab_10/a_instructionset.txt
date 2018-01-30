@@ -1,0 +1,48 @@
+Instruction Set for UC128A CPU
+All numbers are in hexidecimal
+
+Bus type			# bits		Range
+
+Data address			4 bits		0 to F
+Data value			4 bits		0 to F
+
+Program counter (address)	6 bits		00 to 3F
+Instruction (value)		8 bits		00 to FF
+
+
+
+Mnemonic, hexidecimal code, and description of operations:
+c is 4 bit constant
+v is 4 bit data address
+aa is 6 bit program counter address
+
+
+Arithmetic instructions (results stored in accumulator)
+
+ADDC	8c	add constant c to accumulator
+ADD	9v	add data at v  to accumulator
+ANDC	Ac	AND constant c with accumulator
+AND	Bv	AND data at v  with accumulator
+ ORC	Cc	OR  constant c with accumulator
+ OR	Dv	OR  data at v  with accumulator
+XORC	Ec	XOR constant c with accumulator
+XOR	Fv	XOR data at v  with accumulator
+
+Derived instructions (based on above instructions)
+
+CLR	A0	Clears accumulator to 0,    ANDC 0
+SET	CF	Sets accumulaotr to F,       ORC F
+NOT	EF	Logical NOT to accumulator, XORC F
+
+
+Program Flow instructions
+
+JMP     aa	Jump to address aa (aa ranges from 00 to 3F)
+SKZ	60	Skip next instruction if accumulator is zero
+SKC	70	skip next instruction if accumulator carried
+
+
+Miscellaneous instructions
+NOP	40	No operation
+STA	5v	Store accumulator in data address v
+

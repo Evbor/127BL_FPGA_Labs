@@ -1,0 +1,1415 @@
+--GB2_dffs[5] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[5]
+--operation mode is normal
+
+GB2_dffs[5]_carry_eqn = GB2L11;
+GB2_dffs[5]_lut_out = GB2_dffs[5] $ (GB2_dffs[5]_carry_eqn);
+GB2_dffs[5] = DFFEAS(GB2_dffs[5]_lut_out, E1_inst1, VCC, , , VB1_q_a[5], , !SW_USER[1], TB1_w_anode1w[2]);
+
+
+--GB2_dffs[4] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[4]
+--operation mode is arithmetic
+
+GB2_dffs[4]_carry_eqn = GB2L9;
+GB2_dffs[4]_lut_out = GB2_dffs[4] $ (!GB2_dffs[4]_carry_eqn);
+GB2_dffs[4] = DFFEAS(GB2_dffs[4]_lut_out, E1_inst1, VCC, , , VB1_q_a[4], , !SW_USER[1], TB1_w_anode1w[2]);
+
+--GB2L11 is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[4]~COUT
+--operation mode is arithmetic
+
+GB2L11 = CARRY(GB2_dffs[4] & !GB2L9);
+
+
+--F3L1 is 7segment:inst10|_~0
+--operation mode is normal
+
+F3L1 = GB2_dffs[5] # GB2_dffs[4];
+
+
+--F3_leds[3] is 7segment:inst10|leds[3]
+--operation mode is normal
+
+F3_leds[3] = GB2_dffs[5] # !GB2_dffs[4];
+
+
+--F3_leds[2] is 7segment:inst10|leds[2]
+--operation mode is normal
+
+F3_leds[2] = GB2_dffs[4] # !GB2_dffs[5];
+
+
+--GB2_dffs[3] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[3]
+--operation mode is arithmetic
+
+GB2_dffs[3]_carry_eqn = GB2L7;
+GB2_dffs[3]_lut_out = GB2_dffs[3] $ (GB2_dffs[3]_carry_eqn);
+GB2_dffs[3] = DFFEAS(GB2_dffs[3]_lut_out, E1_inst1, VCC, , , VB1_q_a[3], , !SW_USER[1], TB1_w_anode1w[2]);
+
+--GB2L9 is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[3]~COUT
+--operation mode is arithmetic
+
+GB2L9 = CARRY(!GB2L7 # !GB2_dffs[3]);
+
+
+--GB2_dffs[1] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[1]
+--operation mode is arithmetic
+
+GB2_dffs[1]_carry_eqn = GB2L3;
+GB2_dffs[1]_lut_out = GB2_dffs[1] $ B1L2 $ GB2_dffs[1]_carry_eqn;
+GB2_dffs[1] = DFFEAS(GB2_dffs[1]_lut_out, E1_inst1, VCC, , , VB1_q_a[1], , !SW_USER[1], TB1_w_anode1w[2]);
+
+--GB2L5 is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[1]~COUT
+--operation mode is arithmetic
+
+GB2L5 = CARRY(GB2_dffs[1] & !B1L2 & !GB2L3 # !GB2_dffs[1] & !GB2L3 # !B1L2);
+
+
+--GB2_dffs[2] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[2]
+--operation mode is arithmetic
+
+GB2_dffs[2]_carry_eqn = GB2L5;
+GB2_dffs[2]_lut_out = GB2_dffs[2] $ (!GB2_dffs[2]_carry_eqn);
+GB2_dffs[2] = DFFEAS(GB2_dffs[2]_lut_out, E1_inst1, VCC, , , VB1_q_a[2], , !SW_USER[1], TB1_w_anode1w[2]);
+
+--GB2L7 is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[2]~COUT
+--operation mode is arithmetic
+
+GB2L7 = CARRY(GB2_dffs[2] & !GB2L5);
+
+
+--GB2_dffs[0] is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[0]
+--operation mode is arithmetic
+
+GB2_dffs[0]_lut_out = GB2_dffs[0] $ !B1L2;
+GB2_dffs[0] = DFFEAS(GB2_dffs[0]_lut_out, E1_inst1, VCC, , , VB1_q_a[0], , !SW_USER[1], TB1_w_anode1w[2]);
+
+--GB2L3 is UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[0]~COUT
+--operation mode is arithmetic
+
+GB2L3 = CARRY(GB2_dffs[0] & !B1L2);
+
+
+--F2L7 is 7segment:inst9|leds[6]~176
+--operation mode is normal
+
+F2L7 = GB2_dffs[3] # GB2_dffs[1] & !GB2_dffs[0] # !GB2_dffs[2] # !GB2_dffs[1] & GB2_dffs[2];
+
+
+--F2L6 is 7segment:inst9|leds[5]~98
+--operation mode is normal
+
+F2L6 = GB2_dffs[1] & !GB2_dffs[3] & GB2_dffs[0] # !GB2_dffs[2] # !GB2_dffs[1] & GB2_dffs[2] & GB2_dffs[3] # !GB2_dffs[2] & GB2_dffs[0] & !GB2_dffs[3];
+
+
+--F2L5 is 7segment:inst9|leds[4]~100
+--operation mode is normal
+
+F2L5 = GB2_dffs[1] & GB2_dffs[0] & !GB2_dffs[3] # !GB2_dffs[1] & GB2_dffs[2] & !GB2_dffs[3] # !GB2_dffs[2] & GB2_dffs[0];
+
+
+--F2L4 is 7segment:inst9|leds[3]~102
+--operation mode is normal
+
+F2L4 = GB2_dffs[0] & GB2_dffs[1] $ !GB2_dffs[2] # !GB2_dffs[0] & GB2_dffs[1] & !GB2_dffs[2] & GB2_dffs[3] # !GB2_dffs[1] & GB2_dffs[2] & !GB2_dffs[3];
+
+
+--F2L3 is 7segment:inst9|leds[2]~104
+--operation mode is normal
+
+F2L3 = GB2_dffs[2] & GB2_dffs[3] & GB2_dffs[1] # !GB2_dffs[0] # !GB2_dffs[2] & !GB2_dffs[0] & GB2_dffs[1] & !GB2_dffs[3];
+
+
+--F2L2 is 7segment:inst9|leds[1]~106
+--operation mode is normal
+
+F2L2 = GB2_dffs[1] & GB2_dffs[0] & GB2_dffs[3] # !GB2_dffs[0] & GB2_dffs[2] # !GB2_dffs[1] & GB2_dffs[2] & GB2_dffs[0] $ GB2_dffs[3];
+
+
+--F2L1 is 7segment:inst9|leds[0]~108
+--operation mode is normal
+
+F2L1 = GB2_dffs[1] & GB2_dffs[0] & !GB2_dffs[2] & GB2_dffs[3] # !GB2_dffs[1] & GB2_dffs[2] $ (GB2_dffs[0] & !GB2_dffs[3]);
+
+
+--VB1_q_a[7] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[7]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[7]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[7]_PORT_A_address_reg = DFFE(VB1_q_a[7]_PORT_A_address, VB1_q_a[7]_clock_0, , , );
+VB1_q_a[7]_clock_0 = fclk;
+VB1_q_a[7]_PORT_A_data_out = MEMORY(, , VB1_q_a[7]_PORT_A_address_reg, , , , , , VB1_q_a[7]_clock_0, , , , , );
+VB1_q_a[7] = VB1_q_a[7]_PORT_A_data_out[0];
+
+
+--VB1_q_a[5] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[5]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[5]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[5]_PORT_A_address_reg = DFFE(VB1_q_a[5]_PORT_A_address, VB1_q_a[5]_clock_0, , , );
+VB1_q_a[5]_clock_0 = fclk;
+VB1_q_a[5]_PORT_A_data_out = MEMORY(, , VB1_q_a[5]_PORT_A_address_reg, , , , , , VB1_q_a[5]_clock_0, , , , , );
+VB1_q_a[5] = VB1_q_a[5]_PORT_A_data_out[0];
+
+
+--VB1_q_a[6] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[6]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[6]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[6]_PORT_A_address_reg = DFFE(VB1_q_a[6]_PORT_A_address, VB1_q_a[6]_clock_0, , , );
+VB1_q_a[6]_clock_0 = fclk;
+VB1_q_a[6]_PORT_A_data_out = MEMORY(, , VB1_q_a[6]_PORT_A_address_reg, , , , , , VB1_q_a[6]_clock_0, , , , , );
+VB1_q_a[6] = VB1_q_a[6]_PORT_A_data_out[0];
+
+
+--VB1_q_a[4] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[4]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[4]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[4]_PORT_A_address_reg = DFFE(VB1_q_a[4]_PORT_A_address, VB1_q_a[4]_clock_0, , , );
+VB1_q_a[4]_clock_0 = fclk;
+VB1_q_a[4]_PORT_A_data_out = MEMORY(, , VB1_q_a[4]_PORT_A_address_reg, , , , , , VB1_q_a[4]_clock_0, , , , , );
+VB1_q_a[4] = VB1_q_a[4]_PORT_A_data_out[0];
+
+
+--F1L7 is 7segment:inst4|leds[6]~176
+--operation mode is normal
+
+F1L7 = VB1_q_a[7] # VB1_q_a[5] & !VB1_q_a[4] # !VB1_q_a[6] # !VB1_q_a[5] & VB1_q_a[6];
+
+
+--F1L6 is 7segment:inst4|leds[5]~98
+--operation mode is normal
+
+F1L6 = VB1_q_a[7] & VB1_q_a[6] & !VB1_q_a[5] # !VB1_q_a[7] & VB1_q_a[6] & VB1_q_a[5] & VB1_q_a[4] # !VB1_q_a[6] & VB1_q_a[5] # VB1_q_a[4];
+
+
+--F1L5 is 7segment:inst4|leds[4]~100
+--operation mode is normal
+
+F1L5 = VB1_q_a[5] & !VB1_q_a[7] & VB1_q_a[4] # !VB1_q_a[5] & VB1_q_a[6] & !VB1_q_a[7] # !VB1_q_a[6] & VB1_q_a[4];
+
+
+--F1L4 is 7segment:inst4|leds[3]~102
+--operation mode is normal
+
+F1L4 = VB1_q_a[4] & VB1_q_a[6] $ !VB1_q_a[5] # !VB1_q_a[4] & VB1_q_a[7] & !VB1_q_a[6] & VB1_q_a[5] # !VB1_q_a[7] & VB1_q_a[6] & !VB1_q_a[5];
+
+
+--F1L3 is 7segment:inst4|leds[2]~104
+--operation mode is normal
+
+F1L3 = VB1_q_a[7] & VB1_q_a[6] & VB1_q_a[5] # !VB1_q_a[4] # !VB1_q_a[7] & !VB1_q_a[6] & VB1_q_a[5] & !VB1_q_a[4];
+
+
+--F1L2 is 7segment:inst4|leds[1]~106
+--operation mode is normal
+
+F1L2 = VB1_q_a[7] & VB1_q_a[4] & VB1_q_a[5] # !VB1_q_a[4] & VB1_q_a[6] # !VB1_q_a[7] & VB1_q_a[6] & VB1_q_a[5] $ VB1_q_a[4];
+
+
+--F1L1 is 7segment:inst4|leds[0]~108
+--operation mode is normal
+
+F1L1 = VB1_q_a[6] & !VB1_q_a[5] & VB1_q_a[7] # !VB1_q_a[4] # !VB1_q_a[6] & VB1_q_a[4] & VB1_q_a[7] $ !VB1_q_a[5];
+
+
+--VB1_q_a[3] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[3]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[3]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[3]_PORT_A_address_reg = DFFE(VB1_q_a[3]_PORT_A_address, VB1_q_a[3]_clock_0, , , );
+VB1_q_a[3]_clock_0 = fclk;
+VB1_q_a[3]_PORT_A_data_out = MEMORY(, , VB1_q_a[3]_PORT_A_address_reg, , , , , , VB1_q_a[3]_clock_0, , , , , );
+VB1_q_a[3] = VB1_q_a[3]_PORT_A_data_out[0];
+
+
+--VB1_q_a[1] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[1]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[1]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[1]_PORT_A_address_reg = DFFE(VB1_q_a[1]_PORT_A_address, VB1_q_a[1]_clock_0, , , );
+VB1_q_a[1]_clock_0 = fclk;
+VB1_q_a[1]_PORT_A_data_out = MEMORY(, , VB1_q_a[1]_PORT_A_address_reg, , , , , , VB1_q_a[1]_clock_0, , , , , );
+VB1_q_a[1] = VB1_q_a[1]_PORT_A_data_out[0];
+
+
+--VB1_q_a[2] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[2]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[2]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[2]_PORT_A_address_reg = DFFE(VB1_q_a[2]_PORT_A_address, VB1_q_a[2]_clock_0, , , );
+VB1_q_a[2]_clock_0 = fclk;
+VB1_q_a[2]_PORT_A_data_out = MEMORY(, , VB1_q_a[2]_PORT_A_address_reg, , , , , , VB1_q_a[2]_clock_0, , , , , );
+VB1_q_a[2] = VB1_q_a[2]_PORT_A_data_out[0];
+
+
+--VB1_q_a[0] is lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|q_a[0]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 64, Port A Width: 1
+--Port A Logical Depth: 64, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+VB1_q_a[0]_PORT_A_address = BUS(GB2_dffs[0], GB2_dffs[1], GB2_dffs[2], GB2_dffs[3], GB2_dffs[4], GB2_dffs[5]);
+VB1_q_a[0]_PORT_A_address_reg = DFFE(VB1_q_a[0]_PORT_A_address, VB1_q_a[0]_clock_0, , , );
+VB1_q_a[0]_clock_0 = fclk;
+VB1_q_a[0]_PORT_A_data_out = MEMORY(, , VB1_q_a[0]_PORT_A_address_reg, , , , , , VB1_q_a[0]_clock_0, , , , , );
+VB1_q_a[0] = VB1_q_a[0]_PORT_A_data_out[0];
+
+
+--F6L7 is 7segment:inst16|leds[6]~176
+--operation mode is normal
+
+F6L7 = VB1_q_a[3] # VB1_q_a[1] & !VB1_q_a[0] # !VB1_q_a[2] # !VB1_q_a[1] & VB1_q_a[2];
+
+
+--F6L6 is 7segment:inst16|leds[5]~98
+--operation mode is normal
+
+F6L6 = VB1_q_a[3] & VB1_q_a[2] & !VB1_q_a[1] # !VB1_q_a[3] & VB1_q_a[2] & VB1_q_a[1] & VB1_q_a[0] # !VB1_q_a[2] & VB1_q_a[1] # VB1_q_a[0];
+
+
+--F6L5 is 7segment:inst16|leds[4]~100
+--operation mode is normal
+
+F6L5 = VB1_q_a[1] & !VB1_q_a[3] & VB1_q_a[0] # !VB1_q_a[1] & VB1_q_a[2] & !VB1_q_a[3] # !VB1_q_a[2] & VB1_q_a[0];
+
+
+--F6L4 is 7segment:inst16|leds[3]~102
+--operation mode is normal
+
+F6L4 = VB1_q_a[0] & VB1_q_a[2] $ !VB1_q_a[1] # !VB1_q_a[0] & VB1_q_a[3] & !VB1_q_a[2] & VB1_q_a[1] # !VB1_q_a[3] & VB1_q_a[2] & !VB1_q_a[1];
+
+
+--F6L3 is 7segment:inst16|leds[2]~104
+--operation mode is normal
+
+F6L3 = VB1_q_a[3] & VB1_q_a[2] & VB1_q_a[1] # !VB1_q_a[0] # !VB1_q_a[3] & !VB1_q_a[2] & VB1_q_a[1] & !VB1_q_a[0];
+
+
+--F6L2 is 7segment:inst16|leds[1]~106
+--operation mode is normal
+
+F6L2 = VB1_q_a[3] & VB1_q_a[0] & VB1_q_a[1] # !VB1_q_a[0] & VB1_q_a[2] # !VB1_q_a[3] & VB1_q_a[2] & VB1_q_a[1] $ VB1_q_a[0];
+
+
+--F6L1 is 7segment:inst16|leds[0]~108
+--operation mode is normal
+
+F6L1 = VB1_q_a[2] & !VB1_q_a[1] & VB1_q_a[3] # !VB1_q_a[0] # !VB1_q_a[2] & VB1_q_a[0] & VB1_q_a[3] $ !VB1_q_a[1];
+
+
+--SB1L1 is UC127B:inst|lpm_dec1:inst9|lpm_decode:lpm_decode_component|decode_b2b:auto_generated|w_anode61w[3]~25
+--operation mode is normal
+
+SB1L1 = VB1_q_a[4] & VB1_q_a[6] & !VB1_q_a[5] & !VB1_q_a[7];
+
+
+--WB1_q_a[3] is lpm_ram1:inst2|altsyncram:altsyncram_component|altsyncram_tmu:auto_generated|q_a[3]
+--RAM Block Operation Mode: Single Port
+--Port A Depth: 8, Port A Width: 1
+--Port A Logical Depth: 8, Port A Logical Width: 4
+--Port A Input: Registered, Port A Output: Un-registered
+WB1_q_a[3]_PORT_A_data_in = GB1_dffs[3];
+WB1_q_a[3]_PORT_A_data_in_reg = DFFE(WB1_q_a[3]_PORT_A_data_in, WB1_q_a[3]_clock_0, , , );
+WB1_q_a[3]_PORT_A_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[3]_PORT_A_address_reg = DFFE(WB1_q_a[3]_PORT_A_address, WB1_q_a[3]_clock_0, , , );
+WB1_q_a[3]_PORT_B_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[3]_PORT_B_address_reg = DFFE(WB1_q_a[3]_PORT_B_address, WB1_q_a[3]_clock_0, , , );
+WB1_q_a[3]_PORT_A_write_enable = G1_5;
+WB1_q_a[3]_PORT_A_write_enable_reg = DFFE(WB1_q_a[3]_PORT_A_write_enable, WB1_q_a[3]_clock_0, , , );
+WB1_q_a[3]_clock_0 = fclk;
+WB1_q_a[3]_PORT_A_data_out = MEMORY(WB1_q_a[3]_PORT_A_data_in_reg, , WB1_q_a[3]_PORT_A_address_reg, WB1_q_a[3]_PORT_B_address_reg, WB1_q_a[3]_PORT_A_write_enable_reg, , , , WB1_q_a[3]_clock_0, , , , , );
+WB1_q_a[3] = WB1_q_a[3]_PORT_A_data_out[0];
+
+
+--SB2L1 is lpm_dec3:inst6|lpm_decode:lpm_decode_component|decode_b2b:auto_generated|w_anode162w[3]~20
+--operation mode is normal
+
+SB2L1 = VB1_q_a[1] & VB1_q_a[0] & VB1_q_a[2] & VB1_q_a[3];
+
+
+--HB3L7 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result49w~80
+--operation mode is normal
+
+HB3L7 = SW_USER[5] & SB2L1 & SW_DIP[3] # !SB2L1 & WB1_q_a[3];
+
+
+--GB1_dffs[3] is UC127B:inst|apu:inst|lpm_ffe1:inst5|lpm_ff:lpm_ff_component|dffs[3]
+--operation mode is normal
+
+GB1_dffs[3]_lut_out = FB1L8;
+GB1_dffs[3] = DFFEAS(GB1_dffs[3]_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--HB3L8 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result49w~81
+--operation mode is normal
+
+HB3L8 = HB3L7 # GB1_dffs[3] & !SW_USER[5];
+
+
+--WB1_q_a[1] is lpm_ram1:inst2|altsyncram:altsyncram_component|altsyncram_tmu:auto_generated|q_a[1]
+--RAM Block Operation Mode: Single Port
+--Port A Depth: 8, Port A Width: 1
+--Port A Logical Depth: 8, Port A Logical Width: 4
+--Port A Input: Registered, Port A Output: Un-registered
+WB1_q_a[1]_PORT_A_data_in = GB1_dffs[1];
+WB1_q_a[1]_PORT_A_data_in_reg = DFFE(WB1_q_a[1]_PORT_A_data_in, WB1_q_a[1]_clock_0, , , );
+WB1_q_a[1]_PORT_A_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[1]_PORT_A_address_reg = DFFE(WB1_q_a[1]_PORT_A_address, WB1_q_a[1]_clock_0, , , );
+WB1_q_a[1]_PORT_B_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[1]_PORT_B_address_reg = DFFE(WB1_q_a[1]_PORT_B_address, WB1_q_a[1]_clock_0, , , );
+WB1_q_a[1]_PORT_A_write_enable = G1_5;
+WB1_q_a[1]_PORT_A_write_enable_reg = DFFE(WB1_q_a[1]_PORT_A_write_enable, WB1_q_a[1]_clock_0, , , );
+WB1_q_a[1]_clock_0 = fclk;
+WB1_q_a[1]_PORT_A_data_out = MEMORY(WB1_q_a[1]_PORT_A_data_in_reg, , WB1_q_a[1]_PORT_A_address_reg, WB1_q_a[1]_PORT_B_address_reg, WB1_q_a[1]_PORT_A_write_enable_reg, , , , WB1_q_a[1]_clock_0, , , , , );
+WB1_q_a[1] = WB1_q_a[1]_PORT_A_data_out[0];
+
+
+--HB3L3 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result25w~69
+--operation mode is normal
+
+HB3L3 = SW_USER[5] & SB2L1 & SW_DIP[1] # !SB2L1 & WB1_q_a[1];
+
+
+--GB1_dffs[1] is UC127B:inst|apu:inst|lpm_ffe1:inst5|lpm_ff:lpm_ff_component|dffs[1]
+--operation mode is normal
+
+GB1_dffs[1]_lut_out = FB1L4;
+GB1_dffs[1] = DFFEAS(GB1_dffs[1]_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--HB3L4 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result25w~70
+--operation mode is normal
+
+HB3L4 = HB3L3 # GB1_dffs[1] & !SW_USER[5];
+
+
+--WB1_q_a[2] is lpm_ram1:inst2|altsyncram:altsyncram_component|altsyncram_tmu:auto_generated|q_a[2]
+--RAM Block Operation Mode: Single Port
+--Port A Depth: 8, Port A Width: 1
+--Port A Logical Depth: 8, Port A Logical Width: 4
+--Port A Input: Registered, Port A Output: Un-registered
+WB1_q_a[2]_PORT_A_data_in = GB1_dffs[2];
+WB1_q_a[2]_PORT_A_data_in_reg = DFFE(WB1_q_a[2]_PORT_A_data_in, WB1_q_a[2]_clock_0, , , );
+WB1_q_a[2]_PORT_A_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[2]_PORT_A_address_reg = DFFE(WB1_q_a[2]_PORT_A_address, WB1_q_a[2]_clock_0, , , );
+WB1_q_a[2]_PORT_B_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[2]_PORT_B_address_reg = DFFE(WB1_q_a[2]_PORT_B_address, WB1_q_a[2]_clock_0, , , );
+WB1_q_a[2]_PORT_A_write_enable = G1_5;
+WB1_q_a[2]_PORT_A_write_enable_reg = DFFE(WB1_q_a[2]_PORT_A_write_enable, WB1_q_a[2]_clock_0, , , );
+WB1_q_a[2]_clock_0 = fclk;
+WB1_q_a[2]_PORT_A_data_out = MEMORY(WB1_q_a[2]_PORT_A_data_in_reg, , WB1_q_a[2]_PORT_A_address_reg, WB1_q_a[2]_PORT_B_address_reg, WB1_q_a[2]_PORT_A_write_enable_reg, , , , WB1_q_a[2]_clock_0, , , , , );
+WB1_q_a[2] = WB1_q_a[2]_PORT_A_data_out[0];
+
+
+--HB3L5 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result37w~72
+--operation mode is normal
+
+HB3L5 = SW_USER[5] & SB2L1 & SW_DIP[2] # !SB2L1 & WB1_q_a[2];
+
+
+--GB1_dffs[2] is UC127B:inst|apu:inst|lpm_ffe1:inst5|lpm_ff:lpm_ff_component|dffs[2]
+--operation mode is normal
+
+GB1_dffs[2]_lut_out = FB1L6;
+GB1_dffs[2] = DFFEAS(GB1_dffs[2]_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--HB3L6 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result37w~73
+--operation mode is normal
+
+HB3L6 = HB3L5 # GB1_dffs[2] & !SW_USER[5];
+
+
+--WB1_q_a[0] is lpm_ram1:inst2|altsyncram:altsyncram_component|altsyncram_tmu:auto_generated|q_a[0]
+--RAM Block Operation Mode: Single Port
+--Port A Depth: 8, Port A Width: 1
+--Port A Logical Depth: 8, Port A Logical Width: 4
+--Port A Input: Registered, Port A Output: Un-registered
+WB1_q_a[0]_PORT_A_data_in = GB1_dffs[0];
+WB1_q_a[0]_PORT_A_data_in_reg = DFFE(WB1_q_a[0]_PORT_A_data_in, WB1_q_a[0]_clock_0, , , );
+WB1_q_a[0]_PORT_A_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[0]_PORT_A_address_reg = DFFE(WB1_q_a[0]_PORT_A_address, WB1_q_a[0]_clock_0, , , );
+WB1_q_a[0]_PORT_B_address = BUS(VB1_q_a[0], VB1_q_a[1], VB1_q_a[2]);
+WB1_q_a[0]_PORT_B_address_reg = DFFE(WB1_q_a[0]_PORT_B_address, WB1_q_a[0]_clock_0, , , );
+WB1_q_a[0]_PORT_A_write_enable = G1_5;
+WB1_q_a[0]_PORT_A_write_enable_reg = DFFE(WB1_q_a[0]_PORT_A_write_enable, WB1_q_a[0]_clock_0, , , );
+WB1_q_a[0]_clock_0 = fclk;
+WB1_q_a[0]_PORT_A_data_out = MEMORY(WB1_q_a[0]_PORT_A_data_in_reg, , WB1_q_a[0]_PORT_A_address_reg, WB1_q_a[0]_PORT_B_address_reg, WB1_q_a[0]_PORT_A_write_enable_reg, , , , WB1_q_a[0]_clock_0, , , , , );
+WB1_q_a[0] = WB1_q_a[0]_PORT_A_data_out[0];
+
+
+--HB3L1 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result11w~72
+--operation mode is normal
+
+HB3L1 = SW_USER[5] & SB2L1 & SW_DIP[0] # !SB2L1 & WB1_q_a[0];
+
+
+--GB1_dffs[0] is UC127B:inst|apu:inst|lpm_ffe1:inst5|lpm_ff:lpm_ff_component|dffs[0]
+--operation mode is normal
+
+GB1_dffs[0]_lut_out = FB1L2;
+GB1_dffs[0] = DFFEAS(GB1_dffs[0]_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--HB3L2 is lpm_mux2:inst23|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result11w~73
+--operation mode is normal
+
+HB3L2 = HB3L1 # GB1_dffs[0] & !SW_USER[5];
+
+
+--F4L7 is 7segment:inst12|leds[6]~296
+--operation mode is normal
+
+F4L7 = HB3L8 # HB3L4 & !HB3L2 # !HB3L6 # !HB3L4 & HB3L6;
+
+
+--F4L6 is 7segment:inst12|leds[5]~98
+--operation mode is normal
+
+F4L6 = HB3L4 & !HB3L8 & HB3L2 # !HB3L6 # !HB3L4 & HB3L6 & HB3L8 # !HB3L6 & HB3L2 & !HB3L8;
+
+
+--F4L5 is 7segment:inst12|leds[4]~100
+--operation mode is normal
+
+F4L5 = HB3L4 & HB3L2 & !HB3L8 # !HB3L4 & HB3L6 & !HB3L8 # !HB3L6 & HB3L2;
+
+
+--F4L4 is 7segment:inst12|leds[3]~102
+--operation mode is normal
+
+F4L4 = HB3L2 & HB3L4 $ !HB3L6 # !HB3L2 & HB3L4 & !HB3L6 & HB3L8 # !HB3L4 & HB3L6 & !HB3L8;
+
+
+--F4L3 is 7segment:inst12|leds[2]~104
+--operation mode is normal
+
+F4L3 = HB3L6 & HB3L8 & HB3L4 # !HB3L2 # !HB3L6 & !HB3L2 & HB3L4 & !HB3L8;
+
+
+--F4L2 is 7segment:inst12|leds[1]~106
+--operation mode is normal
+
+F4L2 = HB3L4 & HB3L2 & HB3L8 # !HB3L2 & HB3L6 # !HB3L4 & HB3L6 & HB3L2 $ HB3L8;
+
+
+--F4L1 is 7segment:inst12|leds[0]~108
+--operation mode is normal
+
+F4L1 = HB3L4 & HB3L2 & !HB3L6 & HB3L8 # !HB3L4 & HB3L6 $ (HB3L2 & !HB3L8);
+
+
+--GB3_dffs[3] is lpm_ff2:inst8|lpm_ff:lpm_ff_component|dffs[3]
+--operation mode is normal
+
+GB3_dffs[3]_lut_out = GB1_dffs[3];
+GB3_dffs[3] = DFFEAS(GB3_dffs[3]_lut_out, fclk, VCC, , inst22, , , , );
+
+
+--GB3_dffs[2] is lpm_ff2:inst8|lpm_ff:lpm_ff_component|dffs[2]
+--operation mode is normal
+
+GB3_dffs[2]_lut_out = GB1_dffs[2];
+GB3_dffs[2] = DFFEAS(GB3_dffs[2]_lut_out, fclk, VCC, , inst22, , , , );
+
+
+--GB3_dffs[1] is lpm_ff2:inst8|lpm_ff:lpm_ff_component|dffs[1]
+--operation mode is normal
+
+GB3_dffs[1]_lut_out = GB1_dffs[1];
+GB3_dffs[1] = DFFEAS(GB3_dffs[1]_lut_out, fclk, VCC, , inst22, , , , );
+
+
+--GB3_dffs[0] is lpm_ff2:inst8|lpm_ff:lpm_ff_component|dffs[0]
+--operation mode is normal
+
+GB3_dffs[0]_lut_out = GB1_dffs[0];
+GB3_dffs[0] = DFFEAS(GB3_dffs[0]_lut_out, fclk, VCC, , inst22, , , , );
+
+
+--E1_inst1 is SlowClock:inst3|inst1
+--operation mode is normal
+
+E1_inst1_lut_out = YB1_stateout & !E1_inst5;
+E1_inst1 = DFFEAS(E1_inst1_lut_out, fclk, VCC, , , , , , );
+
+
+--TB1_w_anode1w[2] is UC127B:inst|lpm_dec2:inst10|lpm_decode:lpm_decode_component|decode_m0b:auto_generated|w_anode1w[2]
+--operation mode is normal
+
+TB1_w_anode1w[2] = !VB1_q_a[6] & !VB1_q_a[7];
+
+
+--L1_inst7 is UC127B:inst|apu:inst|inst7
+--operation mode is normal
+
+L1_inst7_lut_out = DB3L9;
+L1_inst7 = DFFEAS(L1_inst7_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--L1_inst6 is UC127B:inst|apu:inst|inst6
+--operation mode is normal
+
+L1_inst6_lut_out = !FB1L4 & !FB1L6 & !FB1L2 & !FB1L8;
+L1_inst6 = DFFEAS(L1_inst6_lut_out, E1_inst1, VCC, , VB1_q_a[7], , , , );
+
+
+--B1L1 is UC127B:inst|inst13~48
+--operation mode is normal
+
+B1L1 = VB1_q_a[4] & L1_inst7 # !VB1_q_a[4] & L1_inst6;
+
+
+--B1L2 is UC127B:inst|inst13~49
+--operation mode is normal
+
+B1L2 = VB1_q_a[5] & VB1_q_a[6] & B1L1 & !VB1_q_a[7];
+
+
+--G1_5 is inhb:inst5|5
+--operation mode is normal
+
+G1_5 = SB1L1 & !VB1_q_a[3];
+
+
+--HB1L7 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result49w~79
+--operation mode is normal
+
+HB1L7 = VB1_q_a[4] & SB2L1 & SW_DIP[3] # !SB2L1 & WB1_q_a[3];
+
+
+--HB1L8 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result49w~80
+--operation mode is normal
+
+HB1L8 = HB1L7 # VB1_q_a[3] & !VB1_q_a[4];
+
+
+--DB3L7 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~57
+--operation mode is arithmetic
+
+DB3L7_carry_eqn = DB3L6;
+DB3L7 = HB1L8 $ GB1_dffs[3] $ DB3L7_carry_eqn;
+
+--DB3L8 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~57COUT
+--operation mode is arithmetic
+
+DB3L8 = CARRY(HB1L8 & !GB1_dffs[3] & !DB3L6 # !HB1L8 & !DB3L6 # !GB1_dffs[3]);
+
+
+--DB3L3 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~55
+--operation mode is arithmetic
+
+DB3L3_carry_eqn = DB3L2;
+DB3L3 = HB1L4 $ GB1_dffs[1] $ DB3L3_carry_eqn;
+
+--DB3L4 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~55COUT
+--operation mode is arithmetic
+
+DB3L4 = CARRY(HB1L4 & !GB1_dffs[1] & !DB3L2 # !HB1L4 & !DB3L2 # !GB1_dffs[1]);
+
+
+--HB1L3 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result25w~78
+--operation mode is normal
+
+HB1L3 = VB1_q_a[4] & SB2L1 & SW_DIP[1] # !SB2L1 & WB1_q_a[1];
+
+
+--HB1L4 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result25w~79
+--operation mode is normal
+
+HB1L4 = HB1L3 # VB1_q_a[1] & !VB1_q_a[4];
+
+
+--FB1L3 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result45w~400
+--operation mode is normal
+
+FB1L3 = GB1_dffs[1] & VB1_q_a[6] $ (VB1_q_a[5] & HB1L4) # !GB1_dffs[1] & VB1_q_a[6] & HB1L4;
+
+
+--DB3L5 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~56
+--operation mode is arithmetic
+
+DB3L5_carry_eqn = DB3L4;
+DB3L5 = HB1L6 $ GB1_dffs[2] $ !DB3L5_carry_eqn;
+
+--DB3L6 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~56COUT
+--operation mode is arithmetic
+
+DB3L6 = CARRY(HB1L6 & GB1_dffs[2] # !DB3L4 # !HB1L6 & GB1_dffs[2] & !DB3L4);
+
+
+--HB1L5 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result37w~78
+--operation mode is normal
+
+HB1L5 = VB1_q_a[4] & SB2L1 & SW_DIP[2] # !SB2L1 & WB1_q_a[2];
+
+
+--HB1L6 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result37w~79
+--operation mode is normal
+
+HB1L6 = HB1L5 # VB1_q_a[2] & !VB1_q_a[4];
+
+
+--FB1L5 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result70w~406
+--operation mode is normal
+
+FB1L5 = GB1_dffs[2] & VB1_q_a[6] $ (VB1_q_a[5] & HB1L6) # !GB1_dffs[2] & VB1_q_a[6] & HB1L6;
+
+
+--DB3L1 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~54
+--operation mode is arithmetic
+
+DB3L1 = HB1L2 $ GB1_dffs[0];
+
+--DB3L2 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~54COUT
+--operation mode is arithmetic
+
+DB3L2 = CARRY(HB1L2 & GB1_dffs[0]);
+
+
+--HB1L1 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result11w~77
+--operation mode is normal
+
+HB1L1 = VB1_q_a[4] & SB2L1 & SW_DIP[0] # !SB2L1 & WB1_q_a[0];
+
+
+--HB1L2 is UC127B:inst|lpm_mux2:inst1|lpm_mux:lpm_mux_component|mux_6fc:auto_generated|w_result11w~78
+--operation mode is normal
+
+HB1L2 = HB1L1 # VB1_q_a[0] & !VB1_q_a[4];
+
+
+--FB1L1 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result15w~312
+--operation mode is normal
+
+FB1L1 = VB1_q_a[6] & GB1_dffs[0] # HB1L2 # !VB1_q_a[6] & GB1_dffs[0] & HB1L2;
+
+
+--FB1L2 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result15w~313
+--operation mode is normal
+
+FB1L2 = VB1_q_a[5] & VB1_q_a[6] & DB3L1 # !VB1_q_a[6] & FB1L1 # !VB1_q_a[5] & VB1_q_a[6] & FB1L1 # !VB1_q_a[6] & DB3L1;
+
+
+--inst22 is inst22
+--operation mode is normal
+
+inst22 = SB1L1 & SB2L1;
+
+
+--YB1_stateout is SlowClock:inst3|seqdebounce:inst3|stateout
+--operation mode is normal
+
+YB1_stateout_lut_out = YB1_statecnt & E1_inst4 # !YB1_statecnt & YB1_stateout;
+YB1_stateout = DFFEAS(YB1_stateout_lut_out, fclk, VCC, , , , , , );
+
+
+--E1_inst5 is SlowClock:inst3|inst5
+--operation mode is normal
+
+E1_inst5_lut_out = YB1_stateout;
+E1_inst5 = DFFEAS(E1_inst5_lut_out, fclk, VCC, , , , , , );
+
+
+--DB3L9 is UC127B:inst|apu:inst|lpm_add1:inst3|lpm_add_sub:lpm_add_sub_component|addcore:adder|a_csnbuffer:result_node|cs_buffer[0]~58
+--operation mode is normal
+
+DB3L9_carry_eqn = DB3L8;
+DB3L9 = !DB3L9_carry_eqn;
+
+
+--E1_inst4 is SlowClock:inst3|inst4
+--operation mode is normal
+
+E1_inst4_lut_out = !SW_USER[0] # !SW_USER[1];
+E1_inst4 = DFFEAS(E1_inst4_lut_out, fclk, VCC, , , , , , );
+
+
+--YB1_statecnt is SlowClock:inst3|seqdebounce:inst3|statecnt
+--operation mode is normal
+
+YB1_statecnt_lut_out = YB1_statecnt & YB1_stateout $ !E1_inst4 # !YB1_statecnt & AC1_cout;
+YB1_statecnt = DFFEAS(YB1_statecnt_lut_out, fclk, VCC, , , , , , );
+
+
+--AC1_cout is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|cout
+--operation mode is normal
+
+AC1_cout_carry_eqn = AC1L04;
+AC1_cout = !AC1_cout_carry_eqn;
+
+
+--AC1_safe_q[19] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[19]
+--operation mode is arithmetic
+
+AC1_safe_q[19]_carry_eqn = AC1L83;
+AC1_safe_q[19]_lut_out = AC1_safe_q[19] $ (AC1_safe_q[19]_carry_eqn);
+AC1_safe_q[19] = DFFEAS(AC1_safe_q[19]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L04 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella19~COUT
+--operation mode is arithmetic
+
+AC1L04 = CARRY(!AC1L83 # !AC1_safe_q[19]);
+
+
+--AC1_safe_q[18] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[18]
+--operation mode is arithmetic
+
+AC1_safe_q[18]_carry_eqn = AC1L63;
+AC1_safe_q[18]_lut_out = AC1_safe_q[18] $ (!AC1_safe_q[18]_carry_eqn);
+AC1_safe_q[18] = DFFEAS(AC1_safe_q[18]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L83 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella18~COUT
+--operation mode is arithmetic
+
+AC1L83 = CARRY(AC1_safe_q[18] & !AC1L63);
+
+
+--AC1_safe_q[17] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[17]
+--operation mode is arithmetic
+
+AC1_safe_q[17]_carry_eqn = AC1L43;
+AC1_safe_q[17]_lut_out = AC1_safe_q[17] $ (AC1_safe_q[17]_carry_eqn);
+AC1_safe_q[17] = DFFEAS(AC1_safe_q[17]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L63 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella17~COUT
+--operation mode is arithmetic
+
+AC1L63 = CARRY(!AC1L43 # !AC1_safe_q[17]);
+
+
+--AC1_safe_q[16] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[16]
+--operation mode is arithmetic
+
+AC1_safe_q[16]_carry_eqn = AC1L23;
+AC1_safe_q[16]_lut_out = AC1_safe_q[16] $ (!AC1_safe_q[16]_carry_eqn);
+AC1_safe_q[16] = DFFEAS(AC1_safe_q[16]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L43 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella16~COUT
+--operation mode is arithmetic
+
+AC1L43 = CARRY(AC1_safe_q[16] & !AC1L23);
+
+
+--AC1_safe_q[15] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[15]
+--operation mode is arithmetic
+
+AC1_safe_q[15]_carry_eqn = AC1L03;
+AC1_safe_q[15]_lut_out = AC1_safe_q[15] $ (AC1_safe_q[15]_carry_eqn);
+AC1_safe_q[15] = DFFEAS(AC1_safe_q[15]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L23 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella15~COUT
+--operation mode is arithmetic
+
+AC1L23 = CARRY(!AC1L03 # !AC1_safe_q[15]);
+
+
+--AC1_safe_q[14] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[14]
+--operation mode is arithmetic
+
+AC1_safe_q[14]_carry_eqn = AC1L82;
+AC1_safe_q[14]_lut_out = AC1_safe_q[14] $ (!AC1_safe_q[14]_carry_eqn);
+AC1_safe_q[14] = DFFEAS(AC1_safe_q[14]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L03 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella14~COUT
+--operation mode is arithmetic
+
+AC1L03 = CARRY(AC1_safe_q[14] & !AC1L82);
+
+
+--AC1_safe_q[13] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[13]
+--operation mode is arithmetic
+
+AC1_safe_q[13]_carry_eqn = AC1L62;
+AC1_safe_q[13]_lut_out = AC1_safe_q[13] $ (AC1_safe_q[13]_carry_eqn);
+AC1_safe_q[13] = DFFEAS(AC1_safe_q[13]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L82 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella13~COUT
+--operation mode is arithmetic
+
+AC1L82 = CARRY(!AC1L62 # !AC1_safe_q[13]);
+
+
+--AC1_safe_q[12] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[12]
+--operation mode is arithmetic
+
+AC1_safe_q[12]_carry_eqn = AC1L42;
+AC1_safe_q[12]_lut_out = AC1_safe_q[12] $ (!AC1_safe_q[12]_carry_eqn);
+AC1_safe_q[12] = DFFEAS(AC1_safe_q[12]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L62 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella12~COUT
+--operation mode is arithmetic
+
+AC1L62 = CARRY(AC1_safe_q[12] & !AC1L42);
+
+
+--AC1_safe_q[11] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[11]
+--operation mode is arithmetic
+
+AC1_safe_q[11]_carry_eqn = AC1L22;
+AC1_safe_q[11]_lut_out = AC1_safe_q[11] $ (AC1_safe_q[11]_carry_eqn);
+AC1_safe_q[11] = DFFEAS(AC1_safe_q[11]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L42 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella11~COUT
+--operation mode is arithmetic
+
+AC1L42 = CARRY(!AC1L22 # !AC1_safe_q[11]);
+
+
+--AC1_safe_q[10] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[10]
+--operation mode is arithmetic
+
+AC1_safe_q[10]_carry_eqn = AC1L02;
+AC1_safe_q[10]_lut_out = AC1_safe_q[10] $ (!AC1_safe_q[10]_carry_eqn);
+AC1_safe_q[10] = DFFEAS(AC1_safe_q[10]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L22 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella10~COUT
+--operation mode is arithmetic
+
+AC1L22 = CARRY(AC1_safe_q[10] & !AC1L02);
+
+
+--AC1_safe_q[9] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[9]
+--operation mode is arithmetic
+
+AC1_safe_q[9]_carry_eqn = AC1L81;
+AC1_safe_q[9]_lut_out = AC1_safe_q[9] $ (AC1_safe_q[9]_carry_eqn);
+AC1_safe_q[9] = DFFEAS(AC1_safe_q[9]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L02 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella9~COUT
+--operation mode is arithmetic
+
+AC1L02 = CARRY(!AC1L81 # !AC1_safe_q[9]);
+
+
+--AC1_safe_q[8] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[8]
+--operation mode is arithmetic
+
+AC1_safe_q[8]_carry_eqn = AC1L61;
+AC1_safe_q[8]_lut_out = AC1_safe_q[8] $ (!AC1_safe_q[8]_carry_eqn);
+AC1_safe_q[8] = DFFEAS(AC1_safe_q[8]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L81 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella8~COUT
+--operation mode is arithmetic
+
+AC1L81 = CARRY(AC1_safe_q[8] & !AC1L61);
+
+
+--AC1_safe_q[7] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[7]
+--operation mode is arithmetic
+
+AC1_safe_q[7]_carry_eqn = AC1L41;
+AC1_safe_q[7]_lut_out = AC1_safe_q[7] $ (AC1_safe_q[7]_carry_eqn);
+AC1_safe_q[7] = DFFEAS(AC1_safe_q[7]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L61 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella7~COUT
+--operation mode is arithmetic
+
+AC1L61 = CARRY(!AC1L41 # !AC1_safe_q[7]);
+
+
+--AC1_safe_q[6] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[6]
+--operation mode is arithmetic
+
+AC1_safe_q[6]_carry_eqn = AC1L21;
+AC1_safe_q[6]_lut_out = AC1_safe_q[6] $ (!AC1_safe_q[6]_carry_eqn);
+AC1_safe_q[6] = DFFEAS(AC1_safe_q[6]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L41 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella6~COUT
+--operation mode is arithmetic
+
+AC1L41 = CARRY(AC1_safe_q[6] & !AC1L21);
+
+
+--AC1_safe_q[5] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[5]
+--operation mode is arithmetic
+
+AC1_safe_q[5]_carry_eqn = AC1L01;
+AC1_safe_q[5]_lut_out = AC1_safe_q[5] $ (AC1_safe_q[5]_carry_eqn);
+AC1_safe_q[5] = DFFEAS(AC1_safe_q[5]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L21 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella5~COUT
+--operation mode is arithmetic
+
+AC1L21 = CARRY(!AC1L01 # !AC1_safe_q[5]);
+
+
+--AC1_safe_q[4] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[4]
+--operation mode is arithmetic
+
+AC1_safe_q[4]_carry_eqn = AC1L8;
+AC1_safe_q[4]_lut_out = AC1_safe_q[4] $ (!AC1_safe_q[4]_carry_eqn);
+AC1_safe_q[4] = DFFEAS(AC1_safe_q[4]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L01 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella4~COUT
+--operation mode is arithmetic
+
+AC1L01 = CARRY(AC1_safe_q[4] & !AC1L8);
+
+
+--AC1_safe_q[3] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[3]
+--operation mode is arithmetic
+
+AC1_safe_q[3]_carry_eqn = AC1L6;
+AC1_safe_q[3]_lut_out = AC1_safe_q[3] $ (AC1_safe_q[3]_carry_eqn);
+AC1_safe_q[3] = DFFEAS(AC1_safe_q[3]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L8 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella3~COUT
+--operation mode is arithmetic
+
+AC1L8 = CARRY(!AC1L6 # !AC1_safe_q[3]);
+
+
+--AC1_safe_q[2] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[2]
+--operation mode is arithmetic
+
+AC1_safe_q[2]_carry_eqn = AC1L4;
+AC1_safe_q[2]_lut_out = AC1_safe_q[2] $ (!AC1_safe_q[2]_carry_eqn);
+AC1_safe_q[2] = DFFEAS(AC1_safe_q[2]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L6 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella2~COUT
+--operation mode is arithmetic
+
+AC1L6 = CARRY(AC1_safe_q[2] & !AC1L4);
+
+
+--AC1_safe_q[1] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[1]
+--operation mode is arithmetic
+
+AC1_safe_q[1]_carry_eqn = AC1L2;
+AC1_safe_q[1]_lut_out = AC1_safe_q[1] $ (AC1_safe_q[1]_carry_eqn);
+AC1_safe_q[1] = DFFEAS(AC1_safe_q[1]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L4 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella1~COUT
+--operation mode is arithmetic
+
+AC1L4 = CARRY(!AC1L2 # !AC1_safe_q[1]);
+
+
+--AC1_safe_q[0] is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|safe_q[0]
+--operation mode is arithmetic
+
+AC1_safe_q[0]_lut_out = !AC1_safe_q[0];
+AC1_safe_q[0] = DFFEAS(AC1_safe_q[0]_lut_out, fclk, VCC, , , , , YB1_statecnt, );
+
+--AC1L2 is SlowClock:inst3|lpm_cn1:inst|lpm_counter:lpm_counter_component|cntr_9r7:auto_generated|counter_cella0~COUT
+--operation mode is arithmetic
+
+AC1L2 = CARRY(AC1_safe_q[0]);
+
+
+--FB1L4 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result45w~401
+--operation mode is normal
+
+FB1L4 = FB1L3 # !VB1_q_a[5] & !VB1_q_a[6] & DB3L3;
+
+
+--FB1L6 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result70w~407
+--operation mode is normal
+
+FB1L6 = FB1L5 # !VB1_q_a[5] & !VB1_q_a[6] & DB3L5;
+
+
+--FB1L7 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result95w~383
+--operation mode is normal
+
+FB1L7 = HB1L8 & VB1_q_a[6] $ GB1_dffs[3] # !VB1_q_a[5] # !HB1L8 & VB1_q_a[6] & GB1_dffs[3] # !VB1_q_a[6] & !VB1_q_a[5];
+
+
+--FB1L8 is UC127B:inst|apu:inst|lpm_mux1:inst4|lpm_mux:lpm_mux_component|mux_9fc:auto_generated|w_result95w~384
+--operation mode is normal
+
+FB1L8 = FB1L7 & VB1_q_a[6] # VB1_q_a[5] # DB3L7;
+
+
+--SW_USER[4] is SW_USER[4]
+--operation mode is input
+
+SW_USER[4] = INPUT();
+
+
+--SW_USER[3] is SW_USER[3]
+--operation mode is input
+
+SW_USER[3] = INPUT();
+
+
+--SW_USER[2] is SW_USER[2]
+--operation mode is input
+
+SW_USER[2] = INPUT();
+
+
+--SW_USER[5] is SW_USER[5]
+--operation mode is input
+
+SW_USER[5] = INPUT();
+
+
+--SW_DIP[3] is SW_DIP[3]
+--operation mode is input
+
+SW_DIP[3] = INPUT();
+
+
+--SW_DIP[1] is SW_DIP[1]
+--operation mode is input
+
+SW_DIP[1] = INPUT();
+
+
+--SW_DIP[2] is SW_DIP[2]
+--operation mode is input
+
+SW_DIP[2] = INPUT();
+
+
+--SW_DIP[0] is SW_DIP[0]
+--operation mode is input
+
+SW_DIP[0] = INPUT();
+
+
+--SW_USER[1] is SW_USER[1]
+--operation mode is input
+
+SW_USER[1] = INPUT();
+
+
+--fclk is fclk
+--operation mode is input
+
+fclk = INPUT();
+
+
+--SW_USER[0] is SW_USER[0]
+--operation mode is input
+
+SW_USER[0] = INPUT();
+
+
+--DIG0_SEG[7] is DIG0_SEG[7]
+--operation mode is output
+
+DIG0_SEG[7] = OUTPUT(GND);
+
+
+--DIG0_SEG[6] is DIG0_SEG[6]
+--operation mode is output
+
+DIG0_SEG[6] = OUTPUT(GB2_dffs[5]);
+
+
+--DIG0_SEG[5] is DIG0_SEG[5]
+--operation mode is output
+
+DIG0_SEG[5] = OUTPUT(!F3L1);
+
+
+--DIG0_SEG[4] is DIG0_SEG[4]
+--operation mode is output
+
+DIG0_SEG[4] = OUTPUT(!GB2_dffs[4]);
+
+
+--DIG0_SEG[3] is DIG0_SEG[3]
+--operation mode is output
+
+DIG0_SEG[3] = OUTPUT(F3_leds[3]);
+
+
+--DIG0_SEG[2] is DIG0_SEG[2]
+--operation mode is output
+
+DIG0_SEG[2] = OUTPUT(F3_leds[2]);
+
+
+--DIG0_SEG[1] is DIG0_SEG[1]
+--operation mode is output
+
+DIG0_SEG[1] = OUTPUT(VCC);
+
+
+--DIG0_SEG[0] is DIG0_SEG[0]
+--operation mode is output
+
+DIG0_SEG[0] = OUTPUT(F3_leds[3]);
+
+
+--DIG1_SEG[7] is DIG1_SEG[7]
+--operation mode is output
+
+DIG1_SEG[7] = OUTPUT(GND);
+
+
+--DIG1_SEG[6] is DIG1_SEG[6]
+--operation mode is output
+
+DIG1_SEG[6] = OUTPUT(F2L7);
+
+
+--DIG1_SEG[5] is DIG1_SEG[5]
+--operation mode is output
+
+DIG1_SEG[5] = OUTPUT(!F2L6);
+
+
+--DIG1_SEG[4] is DIG1_SEG[4]
+--operation mode is output
+
+DIG1_SEG[4] = OUTPUT(!F2L5);
+
+
+--DIG1_SEG[3] is DIG1_SEG[3]
+--operation mode is output
+
+DIG1_SEG[3] = OUTPUT(!F2L4);
+
+
+--DIG1_SEG[2] is DIG1_SEG[2]
+--operation mode is output
+
+DIG1_SEG[2] = OUTPUT(!F2L3);
+
+
+--DIG1_SEG[1] is DIG1_SEG[1]
+--operation mode is output
+
+DIG1_SEG[1] = OUTPUT(!F2L2);
+
+
+--DIG1_SEG[0] is DIG1_SEG[0]
+--operation mode is output
+
+DIG1_SEG[0] = OUTPUT(!F2L1);
+
+
+--DIG2_SEG[7] is DIG2_SEG[7]
+--operation mode is output
+
+DIG2_SEG[7] = OUTPUT(GND);
+
+
+--DIG2_SEG[6] is DIG2_SEG[6]
+--operation mode is output
+
+DIG2_SEG[6] = OUTPUT(F1L7);
+
+
+--DIG2_SEG[5] is DIG2_SEG[5]
+--operation mode is output
+
+DIG2_SEG[5] = OUTPUT(!F1L6);
+
+
+--DIG2_SEG[4] is DIG2_SEG[4]
+--operation mode is output
+
+DIG2_SEG[4] = OUTPUT(!F1L5);
+
+
+--DIG2_SEG[3] is DIG2_SEG[3]
+--operation mode is output
+
+DIG2_SEG[3] = OUTPUT(!F1L4);
+
+
+--DIG2_SEG[2] is DIG2_SEG[2]
+--operation mode is output
+
+DIG2_SEG[2] = OUTPUT(!F1L3);
+
+
+--DIG2_SEG[1] is DIG2_SEG[1]
+--operation mode is output
+
+DIG2_SEG[1] = OUTPUT(!F1L2);
+
+
+--DIG2_SEG[0] is DIG2_SEG[0]
+--operation mode is output
+
+DIG2_SEG[0] = OUTPUT(!F1L1);
+
+
+--DIG3_SEG[7] is DIG3_SEG[7]
+--operation mode is output
+
+DIG3_SEG[7] = OUTPUT(GND);
+
+
+--DIG3_SEG[6] is DIG3_SEG[6]
+--operation mode is output
+
+DIG3_SEG[6] = OUTPUT(F6L7);
+
+
+--DIG3_SEG[5] is DIG3_SEG[5]
+--operation mode is output
+
+DIG3_SEG[5] = OUTPUT(!F6L6);
+
+
+--DIG3_SEG[4] is DIG3_SEG[4]
+--operation mode is output
+
+DIG3_SEG[4] = OUTPUT(!F6L5);
+
+
+--DIG3_SEG[3] is DIG3_SEG[3]
+--operation mode is output
+
+DIG3_SEG[3] = OUTPUT(!F6L4);
+
+
+--DIG3_SEG[2] is DIG3_SEG[2]
+--operation mode is output
+
+DIG3_SEG[2] = OUTPUT(!F6L3);
+
+
+--DIG3_SEG[1] is DIG3_SEG[1]
+--operation mode is output
+
+DIG3_SEG[1] = OUTPUT(!F6L2);
+
+
+--DIG3_SEG[0] is DIG3_SEG[0]
+--operation mode is output
+
+DIG3_SEG[0] = OUTPUT(!F6L1);
+
+
+--DIG4_SEG[7] is DIG4_SEG[7]
+--operation mode is output
+
+DIG4_SEG[7] = OUTPUT(SB1L1);
+
+
+--DIG4_SEG[6] is DIG4_SEG[6]
+--operation mode is output
+
+DIG4_SEG[6] = OUTPUT(F6L7);
+
+
+--DIG4_SEG[5] is DIG4_SEG[5]
+--operation mode is output
+
+DIG4_SEG[5] = OUTPUT(!F6L6);
+
+
+--DIG4_SEG[4] is DIG4_SEG[4]
+--operation mode is output
+
+DIG4_SEG[4] = OUTPUT(!F6L5);
+
+
+--DIG4_SEG[3] is DIG4_SEG[3]
+--operation mode is output
+
+DIG4_SEG[3] = OUTPUT(!F6L4);
+
+
+--DIG4_SEG[2] is DIG4_SEG[2]
+--operation mode is output
+
+DIG4_SEG[2] = OUTPUT(!F6L3);
+
+
+--DIG4_SEG[1] is DIG4_SEG[1]
+--operation mode is output
+
+DIG4_SEG[1] = OUTPUT(!F6L2);
+
+
+--DIG4_SEG[0] is DIG4_SEG[0]
+--operation mode is output
+
+DIG4_SEG[0] = OUTPUT(!F6L1);
+
+
+--DIG5_SEG[7] is DIG5_SEG[7]
+--operation mode is output
+
+DIG5_SEG[7] = OUTPUT(GND);
+
+
+--DIG5_SEG[6] is DIG5_SEG[6]
+--operation mode is output
+
+DIG5_SEG[6] = OUTPUT(F4L7);
+
+
+--DIG5_SEG[5] is DIG5_SEG[5]
+--operation mode is output
+
+DIG5_SEG[5] = OUTPUT(!F4L6);
+
+
+--DIG5_SEG[4] is DIG5_SEG[4]
+--operation mode is output
+
+DIG5_SEG[4] = OUTPUT(!F4L5);
+
+
+--DIG5_SEG[3] is DIG5_SEG[3]
+--operation mode is output
+
+DIG5_SEG[3] = OUTPUT(!F4L4);
+
+
+--DIG5_SEG[2] is DIG5_SEG[2]
+--operation mode is output
+
+DIG5_SEG[2] = OUTPUT(!F4L3);
+
+
+--DIG5_SEG[1] is DIG5_SEG[1]
+--operation mode is output
+
+DIG5_SEG[1] = OUTPUT(!F4L2);
+
+
+--DIG5_SEG[0] is DIG5_SEG[0]
+--operation mode is output
+
+DIG5_SEG[0] = OUTPUT(!F4L1);
+
+
+--LED[3] is LED[3]
+--operation mode is output
+
+LED[3] = OUTPUT(GB3_dffs[3]);
+
+
+--LED[2] is LED[2]
+--operation mode is output
+
+LED[2] = OUTPUT(GB3_dffs[2]);
+
+
+--LED[1] is LED[1]
+--operation mode is output
+
+LED[1] = OUTPUT(GB3_dffs[1]);
+
+
+--LED[0] is LED[0]
+--operation mode is output
+
+LED[0] = OUTPUT(GB3_dffs[0]);
+
+

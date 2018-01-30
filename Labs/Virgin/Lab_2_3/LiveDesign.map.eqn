@@ -1,0 +1,408 @@
+--B2L7 is 7segment:inst1|leds[6]~107
+--operation mode is normal
+
+B2L7 = SW_DIP[3] # SW_DIP[1] & !SW_DIP[0] # !SW_DIP[2] # !SW_DIP[1] & SW_DIP[2];
+
+
+--B2L6 is 7segment:inst1|leds[5]~29
+--operation mode is normal
+
+B2L6 = SW_DIP[1] & !SW_DIP[3] & SW_DIP[0] # !SW_DIP[2] # !SW_DIP[1] & SW_DIP[2] & SW_DIP[3] # !SW_DIP[2] & SW_DIP[0] & !SW_DIP[3];
+
+
+--B2L5 is 7segment:inst1|leds[4]~31
+--operation mode is normal
+
+B2L5 = SW_DIP[1] & SW_DIP[0] & !SW_DIP[3] # !SW_DIP[1] & SW_DIP[2] & !SW_DIP[3] # !SW_DIP[2] & SW_DIP[0];
+
+
+--B2L4 is 7segment:inst1|leds[3]~33
+--operation mode is normal
+
+B2L4 = SW_DIP[0] & SW_DIP[1] $ !SW_DIP[2] # !SW_DIP[0] & SW_DIP[1] & !SW_DIP[2] & SW_DIP[3] # !SW_DIP[1] & SW_DIP[2] & !SW_DIP[3];
+
+
+--B2L3 is 7segment:inst1|leds[2]~35
+--operation mode is normal
+
+B2L3 = SW_DIP[2] & SW_DIP[3] & SW_DIP[1] # !SW_DIP[0] # !SW_DIP[2] & !SW_DIP[0] & SW_DIP[1] & !SW_DIP[3];
+
+
+--B2L2 is 7segment:inst1|leds[1]~37
+--operation mode is normal
+
+B2L2 = SW_DIP[1] & SW_DIP[0] & SW_DIP[3] # !SW_DIP[0] & SW_DIP[2] # !SW_DIP[1] & SW_DIP[2] & SW_DIP[0] $ SW_DIP[3];
+
+
+--B2L1 is 7segment:inst1|leds[0]~39
+--operation mode is normal
+
+B2L1 = SW_DIP[1] & SW_DIP[0] & !SW_DIP[2] & SW_DIP[3] # !SW_DIP[1] & SW_DIP[2] $ (SW_DIP[0] & !SW_DIP[3]);
+
+
+--B1L7 is 7segment:inst|leds[6]~107
+--operation mode is normal
+
+B1L7 = SW_DIP[7] # SW_DIP[5] & !SW_DIP[4] # !SW_DIP[6] # !SW_DIP[5] & SW_DIP[6];
+
+
+--B1L6 is 7segment:inst|leds[5]~29
+--operation mode is normal
+
+B1L6 = SW_DIP[5] & !SW_DIP[7] & SW_DIP[4] # !SW_DIP[6] # !SW_DIP[5] & SW_DIP[6] & SW_DIP[7] # !SW_DIP[6] & SW_DIP[4] & !SW_DIP[7];
+
+
+--B1L5 is 7segment:inst|leds[4]~31
+--operation mode is normal
+
+B1L5 = SW_DIP[5] & SW_DIP[4] & !SW_DIP[7] # !SW_DIP[5] & SW_DIP[6] & !SW_DIP[7] # !SW_DIP[6] & SW_DIP[4];
+
+
+--B1L4 is 7segment:inst|leds[3]~33
+--operation mode is normal
+
+B1L4 = SW_DIP[4] & SW_DIP[5] $ !SW_DIP[6] # !SW_DIP[4] & SW_DIP[5] & !SW_DIP[6] & SW_DIP[7] # !SW_DIP[5] & SW_DIP[6] & !SW_DIP[7];
+
+
+--B1L3 is 7segment:inst|leds[2]~35
+--operation mode is normal
+
+B1L3 = SW_DIP[6] & SW_DIP[7] & SW_DIP[5] # !SW_DIP[4] # !SW_DIP[6] & !SW_DIP[4] & SW_DIP[5] & !SW_DIP[7];
+
+
+--B1L2 is 7segment:inst|leds[1]~37
+--operation mode is normal
+
+B1L2 = SW_DIP[5] & SW_DIP[4] & SW_DIP[7] # !SW_DIP[4] & SW_DIP[6] # !SW_DIP[5] & SW_DIP[6] & SW_DIP[4] $ SW_DIP[7];
+
+
+--B1L1 is 7segment:inst|leds[0]~39
+--operation mode is normal
+
+B1L1 = SW_DIP[5] & SW_DIP[4] & !SW_DIP[6] & SW_DIP[7] # !SW_DIP[5] & SW_DIP[6] $ (SW_DIP[4] & !SW_DIP[7]);
+
+
+--C2L1 is Adder:inst3|cout~73
+--operation mode is normal
+
+C2L1 = SW_DIP[1] & SW_DIP[5] # SW_DIP[0] & SW_DIP[4] # !SW_DIP[1] & SW_DIP[5] & SW_DIP[0] & SW_DIP[4];
+
+
+--C3L1 is Adder:inst9|cout~107
+--operation mode is normal
+
+C3L1 = SW_DIP[2] & SW_DIP[6] # C2L1 # !SW_DIP[2] & SW_DIP[6] & C2L1;
+
+
+--C4L1 is Adder:inst11|cout~283
+--operation mode is normal
+
+C4L1 = SW_DIP[3] & SW_DIP[7] # C3L1 # !SW_DIP[3] & SW_DIP[7] & C3L1;
+
+
+--C4L2 is Adder:inst11|sum~187
+--operation mode is normal
+
+C4L2 = SW_DIP[3] $ SW_DIP[7] $ C3L1;
+
+
+--C2L2 is Adder:inst3|sum~195
+--operation mode is normal
+
+C2L2 = SW_DIP[1] $ SW_DIP[5] $ (SW_DIP[0] & SW_DIP[4]);
+
+
+--C3L2 is Adder:inst9|sum~256
+--operation mode is normal
+
+C3L2 = SW_DIP[2] $ SW_DIP[6] $ C2L1;
+
+
+--C1L1 is Adder:inst2|sum~13
+--operation mode is normal
+
+C1L1 = SW_DIP[0] $ SW_DIP[4];
+
+
+--B3L7 is 7segment:inst7|leds[6]~189
+--operation mode is normal
+
+B3L7 = C4L2 # C2L2 & !C1L1 # !C3L2 # !C2L2 & C3L2;
+
+
+--B3L6 is 7segment:inst7|leds[5]~29
+--operation mode is normal
+
+B3L6 = C2L2 & !C4L2 & C1L1 # !C3L2 # !C2L2 & C3L2 & C4L2 # !C3L2 & C1L1 & !C4L2;
+
+
+--B3L5 is 7segment:inst7|leds[4]~31
+--operation mode is normal
+
+B3L5 = C2L2 & C1L1 & !C4L2 # !C2L2 & C3L2 & !C4L2 # !C3L2 & C1L1;
+
+
+--B3L4 is 7segment:inst7|leds[3]~33
+--operation mode is normal
+
+B3L4 = C1L1 & C2L2 $ !C3L2 # !C1L1 & C2L2 & !C3L2 & C4L2 # !C2L2 & C3L2 & !C4L2;
+
+
+--B3L3 is 7segment:inst7|leds[2]~35
+--operation mode is normal
+
+B3L3 = C3L2 & C4L2 & C2L2 # !C1L1 # !C3L2 & !C1L1 & C2L2 & !C4L2;
+
+
+--B3L2 is 7segment:inst7|leds[1]~37
+--operation mode is normal
+
+B3L2 = C2L2 & C1L1 & C4L2 # !C1L1 & C3L2 # !C2L2 & C3L2 & C1L1 $ C4L2;
+
+
+--B3L1 is 7segment:inst7|leds[0]~39
+--operation mode is normal
+
+B3L1 = C2L2 & C1L1 & !C3L2 & C4L2 # !C2L2 & C3L2 $ (C1L1 & !C4L2);
+
+
+--SW_DIP[3] is SW_DIP[3]
+--operation mode is input
+
+SW_DIP[3] = INPUT();
+
+
+--SW_DIP[1] is SW_DIP[1]
+--operation mode is input
+
+SW_DIP[1] = INPUT();
+
+
+--SW_DIP[2] is SW_DIP[2]
+--operation mode is input
+
+SW_DIP[2] = INPUT();
+
+
+--SW_DIP[0] is SW_DIP[0]
+--operation mode is input
+
+SW_DIP[0] = INPUT();
+
+
+--SW_DIP[7] is SW_DIP[7]
+--operation mode is input
+
+SW_DIP[7] = INPUT();
+
+
+--SW_DIP[5] is SW_DIP[5]
+--operation mode is input
+
+SW_DIP[5] = INPUT();
+
+
+--SW_DIP[6] is SW_DIP[6]
+--operation mode is input
+
+SW_DIP[6] = INPUT();
+
+
+--SW_DIP[4] is SW_DIP[4]
+--operation mode is input
+
+SW_DIP[4] = INPUT();
+
+
+--DIG0_SEG[7] is DIG0_SEG[7]
+--operation mode is output
+
+DIG0_SEG[7] = OUTPUT(GND);
+
+
+--DIG0_SEG[6] is DIG0_SEG[6]
+--operation mode is output
+
+DIG0_SEG[6] = OUTPUT(B2L7);
+
+
+--DIG0_SEG[5] is DIG0_SEG[5]
+--operation mode is output
+
+DIG0_SEG[5] = OUTPUT(!B2L6);
+
+
+--DIG0_SEG[4] is DIG0_SEG[4]
+--operation mode is output
+
+DIG0_SEG[4] = OUTPUT(!B2L5);
+
+
+--DIG0_SEG[3] is DIG0_SEG[3]
+--operation mode is output
+
+DIG0_SEG[3] = OUTPUT(!B2L4);
+
+
+--DIG0_SEG[2] is DIG0_SEG[2]
+--operation mode is output
+
+DIG0_SEG[2] = OUTPUT(!B2L3);
+
+
+--DIG0_SEG[1] is DIG0_SEG[1]
+--operation mode is output
+
+DIG0_SEG[1] = OUTPUT(!B2L2);
+
+
+--DIG0_SEG[0] is DIG0_SEG[0]
+--operation mode is output
+
+DIG0_SEG[0] = OUTPUT(!B2L1);
+
+
+--DIG2_SEG[7] is DIG2_SEG[7]
+--operation mode is output
+
+DIG2_SEG[7] = OUTPUT(GND);
+
+
+--DIG2_SEG[6] is DIG2_SEG[6]
+--operation mode is output
+
+DIG2_SEG[6] = OUTPUT(B1L7);
+
+
+--DIG2_SEG[5] is DIG2_SEG[5]
+--operation mode is output
+
+DIG2_SEG[5] = OUTPUT(!B1L6);
+
+
+--DIG2_SEG[4] is DIG2_SEG[4]
+--operation mode is output
+
+DIG2_SEG[4] = OUTPUT(!B1L5);
+
+
+--DIG2_SEG[3] is DIG2_SEG[3]
+--operation mode is output
+
+DIG2_SEG[3] = OUTPUT(!B1L4);
+
+
+--DIG2_SEG[2] is DIG2_SEG[2]
+--operation mode is output
+
+DIG2_SEG[2] = OUTPUT(!B1L3);
+
+
+--DIG2_SEG[1] is DIG2_SEG[1]
+--operation mode is output
+
+DIG2_SEG[1] = OUTPUT(!B1L2);
+
+
+--DIG2_SEG[0] is DIG2_SEG[0]
+--operation mode is output
+
+DIG2_SEG[0] = OUTPUT(!B1L1);
+
+
+--DIG4_SEG[7] is DIG4_SEG[7]
+--operation mode is output
+
+DIG4_SEG[7] = OUTPUT(GND);
+
+
+--DIG4_SEG[6] is DIG4_SEG[6]
+--operation mode is output
+
+DIG4_SEG[6] = OUTPUT(GND);
+
+
+--DIG4_SEG[5] is DIG4_SEG[5]
+--operation mode is output
+
+DIG4_SEG[5] = OUTPUT(GND);
+
+
+--DIG4_SEG[4] is DIG4_SEG[4]
+--operation mode is output
+
+DIG4_SEG[4] = OUTPUT(GND);
+
+
+--DIG4_SEG[3] is DIG4_SEG[3]
+--operation mode is output
+
+DIG4_SEG[3] = OUTPUT(GND);
+
+
+--DIG4_SEG[2] is DIG4_SEG[2]
+--operation mode is output
+
+DIG4_SEG[2] = OUTPUT(C4L1);
+
+
+--DIG4_SEG[1] is DIG4_SEG[1]
+--operation mode is output
+
+DIG4_SEG[1] = OUTPUT(C4L1);
+
+
+--DIG4_SEG[0] is DIG4_SEG[0]
+--operation mode is output
+
+DIG4_SEG[0] = OUTPUT(GND);
+
+
+--DIG5_SEG[7] is DIG5_SEG[7]
+--operation mode is output
+
+DIG5_SEG[7] = OUTPUT(GND);
+
+
+--DIG5_SEG[6] is DIG5_SEG[6]
+--operation mode is output
+
+DIG5_SEG[6] = OUTPUT(B3L7);
+
+
+--DIG5_SEG[5] is DIG5_SEG[5]
+--operation mode is output
+
+DIG5_SEG[5] = OUTPUT(!B3L6);
+
+
+--DIG5_SEG[4] is DIG5_SEG[4]
+--operation mode is output
+
+DIG5_SEG[4] = OUTPUT(!B3L5);
+
+
+--DIG5_SEG[3] is DIG5_SEG[3]
+--operation mode is output
+
+DIG5_SEG[3] = OUTPUT(!B3L4);
+
+
+--DIG5_SEG[2] is DIG5_SEG[2]
+--operation mode is output
+
+DIG5_SEG[2] = OUTPUT(!B3L3);
+
+
+--DIG5_SEG[1] is DIG5_SEG[1]
+--operation mode is output
+
+DIG5_SEG[1] = OUTPUT(!B3L2);
+
+
+--DIG5_SEG[0] is DIG5_SEG[0]
+--operation mode is output
+
+DIG5_SEG[0] = OUTPUT(!B3L1);
+
+

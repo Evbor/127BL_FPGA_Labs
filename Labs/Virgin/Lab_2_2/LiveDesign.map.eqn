@@ -1,0 +1,138 @@
+--B1L7 is 7segment:inst|leds[6]~79
+--operation mode is normal
+
+B1L7 = SW_DIP[3] # SW_DIP[1] # SW_DIP[2] & SW_DIP[0];
+
+
+--B1L6 is 7segment:inst|leds[5]~29
+--operation mode is normal
+
+B1L6 = SW_DIP[1] & !SW_DIP[2] # !SW_DIP[1] & !SW_DIP[3] & SW_DIP[2] $ SW_DIP[0];
+
+
+--B1L5 is 7segment:inst|leds[4]~31
+--operation mode is normal
+
+B1L5 = SW_DIP[2] & SW_DIP[3] $ (SW_DIP[1] # !SW_DIP[0]) # !SW_DIP[2] & !SW_DIP[3] & SW_DIP[1] $ SW_DIP[0];
+
+
+--B1L4 is 7segment:inst|leds[3]~33
+--operation mode is normal
+
+B1L4 = SW_DIP[2] & SW_DIP[0] $ !SW_DIP[3] # !SW_DIP[2] & !SW_DIP[1] & SW_DIP[0] $ SW_DIP[3];
+
+
+--B1L3 is 7segment:inst|leds[2]~35
+--operation mode is normal
+
+B1L3 = !SW_DIP[2] & SW_DIP[3] $ (SW_DIP[1] & SW_DIP[0]);
+
+
+--B1L2 is 7segment:inst|leds[1]~37
+--operation mode is normal
+
+B1L2 = SW_DIP[3] & SW_DIP[1] & !SW_DIP[0] # !SW_DIP[1] & !SW_DIP[2] # !SW_DIP[3] & SW_DIP[2] & SW_DIP[0];
+
+
+--B1L1 is 7segment:inst|leds[0]~39
+--operation mode is normal
+
+B1L1 = SW_DIP[2] & SW_DIP[1] & !SW_DIP[0] # !SW_DIP[2] & SW_DIP[1] & SW_DIP[3] # !SW_DIP[1] & SW_DIP[0] & !SW_DIP[3];
+
+
+--SW_DIP[3] is SW_DIP[3]
+--operation mode is input
+
+SW_DIP[3] = INPUT();
+
+
+--SW_DIP[1] is SW_DIP[1]
+--operation mode is input
+
+SW_DIP[1] = INPUT();
+
+
+--SW_DIP[2] is SW_DIP[2]
+--operation mode is input
+
+SW_DIP[2] = INPUT();
+
+
+--SW_DIP[0] is SW_DIP[0]
+--operation mode is input
+
+SW_DIP[0] = INPUT();
+
+
+--DIG5_SEG[7] is DIG5_SEG[7]
+--operation mode is output
+
+DIG5_SEG[7] = OUTPUT(GND);
+
+
+--DIG5_SEG[6] is DIG5_SEG[6]
+--operation mode is output
+
+DIG5_SEG[6] = OUTPUT(B1L7);
+
+
+--DIG5_SEG[5] is DIG5_SEG[5]
+--operation mode is output
+
+DIG5_SEG[5] = OUTPUT(!B1L6);
+
+
+--DIG5_SEG[4] is DIG5_SEG[4]
+--operation mode is output
+
+DIG5_SEG[4] = OUTPUT(!B1L5);
+
+
+--DIG5_SEG[3] is DIG5_SEG[3]
+--operation mode is output
+
+DIG5_SEG[3] = OUTPUT(!B1L4);
+
+
+--DIG5_SEG[2] is DIG5_SEG[2]
+--operation mode is output
+
+DIG5_SEG[2] = OUTPUT(!B1L3);
+
+
+--DIG5_SEG[1] is DIG5_SEG[1]
+--operation mode is output
+
+DIG5_SEG[1] = OUTPUT(!B1L2);
+
+
+--DIG5_SEG[0] is DIG5_SEG[0]
+--operation mode is output
+
+DIG5_SEG[0] = OUTPUT(!B1L1);
+
+
+--LED[3] is LED[3]
+--operation mode is output
+
+LED[3] = OUTPUT(SW_DIP[3]);
+
+
+--LED[2] is LED[2]
+--operation mode is output
+
+LED[2] = OUTPUT(SW_DIP[2]);
+
+
+--LED[1] is LED[1]
+--operation mode is output
+
+LED[1] = OUTPUT(SW_DIP[1]);
+
+
+--LED[0] is LED[0]
+--operation mode is output
+
+LED[0] = OUTPUT(SW_DIP[0]);
+
+

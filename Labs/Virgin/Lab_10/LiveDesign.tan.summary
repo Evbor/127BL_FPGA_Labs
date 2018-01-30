@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.539 ns
+From           : SW_DIP[0]
+To             : UC127B:inst|apu:inst|inst6
+From Clock     : 
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 19.381 ns
+From           : lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|ram_block1a7~porta_address_reg5
+To             : DIG5_SEG[1]
+From Clock     : fclk
+To Clock       : 
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 20.556 ns
+From           : SW_DIP[0]
+To             : DIG5_SEG[1]
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.057 ns
+From           : SW_USER[1]
+To             : UC127B:inst|ProgCnt:inst2|lpm_ff3:inst3|lpm_ff:lpm_ff_component|dffs[4]
+From Clock     : 
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'fclk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 99.86 MHz ( period = 10.014 ns )
+From           : lpm_rom1:inst1|altsyncram:altsyncram_component|altsyncram_vmq:auto_generated|ram_block1a7~porta_address_reg5
+To             : UC127B:inst|apu:inst|inst6
+From Clock     : fclk
+To Clock       : fclk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

@@ -1,13 +1,14 @@
-Flow Status : Successful - Wed Jan 12 18:54:29 2005
-Quartus II Version : 4.2 Build 156 11/29/2004 SJ Web Edition
+Analysis & Synthesis Status : Failed - Wed Jan 31 18:54:20 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : LiveDesign
 Top-level Entity Name : LEDtest
-Family : Cyclone
-Device : EP1C12F324C8
-Timing Models : Final
-Met timing requirements : N/A
-Total logic elements : 7
-Total pins : 16
-Total virtual pins : 0
-Total memory bits : 0
-Total PLLs : 0
+Family : Cyclone IV E
+Total logic elements : N/A until Partition Merge
+    Total combinational functions : N/A until Partition Merge
+    Dedicated logic registers : N/A until Partition Merge
+Total registers : N/A until Partition Merge
+Total pins : N/A until Partition Merge
+Total virtual pins : N/A until Partition Merge
+Total memory bits : N/A until Partition Merge
+Embedded Multiplier 9-bit elements : N/A until Partition Merge
+Total PLLs : N/A until Partition Merge

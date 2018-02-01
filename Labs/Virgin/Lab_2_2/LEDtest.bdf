@@ -372,11 +372,6 @@ refer to the applicable agreement for further details.
 	(pt 440 560)
 )
 (connector
-	(text "b[3]" (rect 750 472 768 484)(font "Arial" ))
-	(pt 400 488)
-	(pt 776 488)
-)
-(connector
 	(text "SW[2]" (rect 368 560 397 577)(font "Intel Clear" ))
 	(pt 440 576)
 	(pt 360 576)
@@ -392,7 +387,12 @@ refer to the applicable agreement for further details.
 	(pt 360 736)
 )
 (connector
-	(text "SW[3]" (rect 367 472 396 489)(font "Intel Clear" ))
+	(text "b[3]" (rect 750 472 768 484)(font "Arial" ))
+	(pt 400 488)
+	(pt 776 488)
+)
+(connector
+	(text "SW[3]" (rect 376 472 405 489)(font "Intel Clear" ))
 	(pt 360 488)
 	(pt 400 488)
 )

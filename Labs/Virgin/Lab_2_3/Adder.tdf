@@ -12,7 +12,13 @@ BEGIN
 	a,b,cin	=> sum,cout;	%Truth table 1 bit adder%
 	
 	0,0,0	=> 0,0;			%sum has value=1, cout has value=2%
-	1,0,0	=> 1,0;	
+	1,0,0	=> 1,0;
+	0,1,0 => 1,0;
+	1,1,0 => 0,1;
+	1,1,1 => 1,1;
+	0,0,1 => 1,0;
+	0,1,1 => 0,1;
+	1,0,1 => 0,1;
 			
 	END TABLE;
 	

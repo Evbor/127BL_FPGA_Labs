@@ -1,0 +1,19 @@
+SUBDESIGN Adder %1 bit adder%
+(
+	a		: INPUT;  %1 bit input%
+	b		: INPUT;  %1 bit input%
+	cin		: INPUT;  %carry input%
+	cout	: OUTPUT; %carry output%
+	sum		: OUTPUT; %sum output%
+)
+BEGIN
+
+	TABLE							
+	a,b,cin	=> sum,cout;	%Truth table 1 bit adder%
+	
+	0,0,0	=> 0,0;			%sum has value=1, cout has value=2%
+	1,0,0	=> 1,0;	
+			
+	END TABLE;
+	
+END;

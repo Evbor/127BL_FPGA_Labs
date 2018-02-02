@@ -1,0 +1,96 @@
+--SW_DIP[7] is SW_DIP[7]
+--operation mode is input
+
+SW_DIP[7] = INPUT();
+
+
+--SW_DIP[6] is SW_DIP[6]
+--operation mode is input
+
+SW_DIP[6] = INPUT();
+
+
+--SW_DIP[5] is SW_DIP[5]
+--operation mode is input
+
+SW_DIP[5] = INPUT();
+
+
+--SW_DIP[4] is SW_DIP[4]
+--operation mode is input
+
+SW_DIP[4] = INPUT();
+
+
+--SW_DIP[3] is SW_DIP[3]
+--operation mode is input
+
+SW_DIP[3] = INPUT();
+
+
+--SW_DIP[2] is SW_DIP[2]
+--operation mode is input
+
+SW_DIP[2] = INPUT();
+
+
+--SW_DIP[1] is SW_DIP[1]
+--operation mode is input
+
+SW_DIP[1] = INPUT();
+
+
+--SW_DIP[0] is SW_DIP[0]
+--operation mode is input
+
+SW_DIP[0] = INPUT();
+
+
+--LED[7] is LED[7]
+--operation mode is output
+
+LED[7] = OUTPUT(SW_DIP[7]);
+
+
+--LED[6] is LED[6]
+--operation mode is output
+
+LED[6] = OUTPUT(SW_DIP[6]);
+
+
+--LED[5] is LED[5]
+--operation mode is output
+
+LED[5] = OUTPUT(SW_DIP[5]);
+
+
+--LED[4] is LED[4]
+--operation mode is output
+
+LED[4] = OUTPUT(SW_DIP[4]);
+
+
+--LED[3] is LED[3]
+--operation mode is output
+
+LED[3] = OUTPUT(SW_DIP[3]);
+
+
+--LED[2] is LED[2]
+--operation mode is output
+
+LED[2] = OUTPUT(SW_DIP[2]);
+
+
+--LED[1] is LED[1]
+--operation mode is output
+
+LED[1] = OUTPUT(SW_DIP[1]);
+
+
+--LED[0] is LED[0]
+--operation mode is output
+
+LED[0] = OUTPUT(SW_DIP[0]);
+
+

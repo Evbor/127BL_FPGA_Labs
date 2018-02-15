@@ -1,8 +1,14 @@
-Flow Status : Flow Failed - Fri Jan 28 19:38:26 2005
-Quartus II Version : 4.2 Build 156 11/29/2004 SJ Web Edition
+Analysis & Synthesis Status : Successful - Wed Feb 14 17:28:55 2018
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Standard Edition
 Revision Name : LiveDesign
 Top-level Entity Name : Counter
-Family : Cyclone
-Device : EP1C12F324C8
-Timing Models : Final
-Met timing requirements : N/A
+Family : Cyclone IV E
+Total logic elements : 77
+    Total combinational functions : 77
+    Dedicated logic registers : 40
+Total registers : 40
+Total pins : 91
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

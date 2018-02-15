@@ -12,11 +12,12 @@ functions, and any output files from any of the foregoing
 associated documentation or information are expressly subject 
 to the terms and conditions of the Intel Program License 
 Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
-agreement, including, without limitation, that your use is for
-the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details.
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
 */
 (header "graphic" (version "1.4"))
 (pin
@@ -34,7 +35,7 @@ refer to the applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 464 200 552 328))
+	(annotation_block (location)(rect 168 472 256 600))
 )
 (pin
 	(input)
@@ -51,7 +52,7 @@ refer to the applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 328 200 416 328))
+	(annotation_block (location)(rect 192 416 280 544))
 )
 (pin
 	(input)
@@ -68,7 +69,7 @@ refer to the applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 160 192 248 320))
+	(annotation_block (location)(rect 160 376 248 504))
 )
 (pin
 	(input)
@@ -85,7 +86,7 @@ refer to the applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 8 256 96 384))
+	(annotation_block (location)(rect 120 328 208 456))
 )
 (pin
 	(output)
@@ -392,8 +393,11 @@ refer to the applicable agreement for further details.
 	(pt 776 488)
 )
 (connector
-	(text "SW[3]" (rect 376 472 405 489)(font "Intel Clear" ))
-	(pt 360 488)
+	(pt 240 488)
+	(pt 240 472)
+)
+(connector
+	(pt 240 488)
 	(pt 400 488)
 )
 (junction (pt 856 640))

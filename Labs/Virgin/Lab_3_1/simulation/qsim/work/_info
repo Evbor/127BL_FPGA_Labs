@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim
+vCounter
+Z1 !s110 1518658690
+!i10b 1
+!s100 GSdK:JjbdX4`AGb`QbRSe1
+IXVPDKgCW^C;5Ce_U_Ekoz1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1518658688
+Z4 8LiveDesign.vo
+Z5 FLiveDesign.vo
+L0 32
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1518658690.000000
+Z8 !s107 LiveDesign.vo|
+Z9 !s90 -work|work|LiveDesign.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@counter
+vCounter_vlg_vec_tst
+!s110 1518658691
+!i10b 1
+!s100 EzgC[SKi?IjWboN74QSJh1
+IM1JF[VHDdW_CM<9h?;7HE3
+R2
+R0
+w1518658684
+8LiveDesign.vwf.vt
+FLiveDesign.vwf.vt
+L0 30
+R6
+r1
+!s85 0
+31
+R7
+!s107 LiveDesign.vwf.vt|
+!s90 -work|work|LiveDesign.vwf.vt|
+!i113 1
+R10
+R11
+n@counter_vlg_vec_tst
+vhard_block
+R1
+!i10b 1
+!s100 8@=l_0OcQBBG`ngVkQ9]U0
+I;?=oYBF^@FCjQTfa3fF5l2
+R2
+R0
+R3
+R4
+R5
+L0 3964
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

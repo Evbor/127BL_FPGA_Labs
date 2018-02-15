@@ -1,0 +1,13 @@
+
+
+C:/Users/student/Desktop/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_2_4/mf_mult.vhd
+
+Feb 01 02PM:12:28>: The following design file, which has identical name but a different extension 
+from the specified variation file, already exists in the working directory:
+
+mf_mult.tdf
+
+This may create a conflict of design files and/or lead to undesirable side
+effects.
+
+Is it OK to continue file generation?

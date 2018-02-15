@@ -1,6 +1,6 @@
 Flow report for LiveDesign
-Fri Jan 28 19:38:26 2005
-Version 4.2 Build 156 11/29/2004 SJ Web Edition
+Wed Feb 14 17:38:08 2018
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
 
 
 ---------------------
@@ -9,48 +9,55 @@ Version 4.2 Build 156 11/29/2004 SJ Web Edition
   1. Legal Notice
   2. Flow Summary
   3. Flow Settings
-  4. Flow Elapsed Time
-  5. Flow Log
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2004 Altera Corporation
-Any  megafunction  design,  and related netlist (encrypted  or  decrypted),
-support information,  device programming or simulation file,  and any other
-associated  documentation or information  provided by  Altera  or a partner
-under  Altera's   Megafunction   Partnership   Program  may  be  used  only
-to program  PLD  devices (but not masked  PLD  devices) from  Altera.   Any
-other  use  of such  megafunction  design,  netlist,  support  information,
-device programming or simulation file,  or any other  related documentation
-or information  is prohibited  for  any  other purpose,  including, but not
-limited to  modification,  reverse engineering,  de-compiling, or use  with
-any other  silicon devices,  unless such use is  explicitly  licensed under
-a separate agreement with  Altera  or a megafunction partner.  Title to the
-intellectual property,  including patents,  copyrights,  trademarks,  trade
-secrets,  or maskworks,  embodied in any such megafunction design, netlist,
-support  information,  device programming or simulation file,  or any other
-related documentation or information provided by  Altera  or a megafunction
-partner, remains with Altera, the megafunction partner, or their respective
-licensors. No other licenses, including any licenses needed under any third
-party's intellectual property, are provided herein.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
 
 
 
-+-------------------------------------------------------------------+
-; Flow Summary                                                      ;
-+-------------------------+-----------------------------------------+
-; Flow Status             ; Flow Failed - Fri Jan 28 19:38:26 2005  ;
-; Quartus II Version      ; 4.2 Build 156 11/29/2004 SJ Web Edition ;
-; Revision Name           ; LiveDesign                              ;
-; Top-level Entity Name   ; Counter                                 ;
-; Family                  ; Cyclone                                 ;
-; Device                  ; EP1C12F324C8                            ;
-; Timing Models           ; Final                                   ;
-; Met timing requirements ; N/A                                     ;
-+-------------------------+-----------------------------------------+
++--------------------------------------------------------------------------------------+
+; Flow Summary                                                                         ;
++------------------------------------+-------------------------------------------------+
+; Flow Status                        ; Successful - Wed Feb 14 17:38:08 2018           ;
+; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Standard Edition ;
+; Revision Name                      ; LiveDesign                                      ;
+; Top-level Entity Name              ; Counter                                         ;
+; Family                             ; Cyclone IV E                                    ;
+; Device                             ; EP4CE115F29C7                                   ;
+; Timing Models                      ; Final                                           ;
+; Total logic elements               ; 77 / 114,480 ( < 1 % )                          ;
+;     Total combinational functions  ; 77 / 114,480 ( < 1 % )                          ;
+;     Dedicated logic registers      ; 40 / 114,480 ( < 1 % )                          ;
+; Total registers                    ; 40                                              ;
+; Total pins                         ; 91 / 529 ( 17 % )                               ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                           ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                 ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
++------------------------------------+-------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -58,26 +65,81 @@ party's intellectual property, are provided herein.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 01/28/2005 19:38:26 ;
+; Start date & time ; 02/14/2018 17:28:46 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LiveDesign          ;
 +-------------------+---------------------+
 
 
-+-------------------------------------+
-; Flow Elapsed Time                   ;
-+----------------------+--------------+
-; Module Name          ; Elapsed Time ;
-+----------------------+--------------+
-; Analysis & Synthesis ; 00:00:00     ;
-; Total                ; 00:00:00     ;
-+----------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 128531081012424.151865812503476        ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; MISC_FILE                           ; mf_counter.tdf                         ; --            ; --          ; --         ;
+; MISC_FILE                           ; mf_counter.bsf                         ; --            ; --          ; --         ;
+; MISC_FILE                           ; mf_counter_inst.tdf                    ; --            ; --          ; --         ;
+; MISC_FILE                           ; mf_counter.inc                         ; --            ; --          ; --         ;
+; MISC_FILE                           ; lpmcounter.bsf                         ; --            ; --          ; --         ;
+; MISC_FILE                           ; lpmcounter_bb.v                        ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; Counter     ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; Counter     ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; Counter     ; Top        ;
+; STATE_MACHINE_PROCESSING            ; User-Encoded                           ; Auto          ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; Counter                                ; LiveDesign    ; --          ; --         ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 657 MB              ; 00:00:17                           ;
+; Fitter                    ; 00:00:23     ; 1.0                     ; 1674 MB             ; 00:00:18                           ;
+; Assembler                 ; 00:00:20     ; 1.0                     ; 608 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:07     ; 1.0                     ; 767 MB              ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 556 MB              ; 00:00:00                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 566 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 556 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 557 MB              ; 00:00:00                           ;
+; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 579 MB              ; 00:00:01                           ;
+; Total                     ; 00:01:16     ; --                      ; --                  ; 00:00:44                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                         ;
++---------------------------+------------------+------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++---------------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis      ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; indium           ; Windows 10 ; 10.0       ; x86_64         ;
++---------------------------+------------------+------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --import_settings_files=on --export_settings_files=off LiveDesign -c LiveDesign
+quartus_map --read_settings_files=on --write_settings_files=off LiveDesign -c LiveDesign
+quartus_fit --read_settings_files=off --write_settings_files=off LiveDesign -c LiveDesign
+quartus_asm --read_settings_files=off --write_settings_files=off LiveDesign -c LiveDesign
+quartus_sta LiveDesign -c LiveDesign
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off LiveDesign -c LiveDesign --vector_source=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/LiveDesign.vwf --testbench_file=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim/LiveDesign.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim/ LiveDesign -c LiveDesign
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off LiveDesign -c LiveDesign --vector_source=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/Waveform.vwf --testbench_file=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim/Waveform.vwf.vt
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off LiveDesign -c LiveDesign --vector_source=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/LiveDesign.vwf --testbench_file=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim/LiveDesign.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory=D:/127BL_FPGA_Labs-mine/127BL_FPGA_Labs-mine/Labs/Virgin/Lab_3_1/simulation/qsim/ LiveDesign -c LiveDesign
 
 
 

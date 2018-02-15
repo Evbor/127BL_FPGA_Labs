@@ -1,5 +1,5 @@
-Analysis & Synthesis Status : Successful - Thu Feb 15 10:58:22 2018
-Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+Analysis & Synthesis Status : Successful - Thu Feb 15 13:59:04 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : LiveDesign
 Top-level Entity Name : Counter
 Family : Cyclone IV E
@@ -7,7 +7,7 @@ Total logic elements : 67
     Total combinational functions : 67
     Dedicated logic registers : 31
 Total registers : 31
-Total pins : 30
+Total pins : 35
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

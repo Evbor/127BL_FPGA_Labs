@@ -34,7 +34,7 @@
 set_global_assignment -name PROJECT_SHOW_ENTITY_NAME ON
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 4.2
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:51:11  DECEMBER 16, 2004"
-set_global_assignment -name LAST_QUARTUS_VERSION "17.0.0 Standard Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
 set_global_assignment -name BDF_FILE LEDtest.bdf
 set_global_assignment -name AHDL_FILE 7segment.tdf
 set_global_assignment -name BDF_FILE Counter.bdf

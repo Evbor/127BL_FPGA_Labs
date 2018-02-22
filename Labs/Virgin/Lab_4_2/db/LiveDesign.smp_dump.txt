@@ -1,0 +1,7 @@
+
+State Machine - |Counter|seqdebounce:inst20|ss
+Name stateout statecnt 
+low 0 1 
+highw 1 0 
+high 1 1 
+loww 0 0 

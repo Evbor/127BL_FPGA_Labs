@@ -12,12 +12,11 @@ functions, and any output files from any of the foregoing
 associated documentation or information are expressly subject 
 to the terms and conditions of the Intel Program License 
 Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel MegaCore Function License Agreement, or other 
-applicable license agreement, including, without limitation, 
-that your use is for the sole purpose of programming logic 
-devices manufactured by Intel and sold by Intel or its 
-authorized distributors.  Please refer to the applicable 
-agreement for further details.
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
 */
 (header "graphic" (version "1.4"))
 (pin
@@ -72,7 +71,7 @@ agreement for further details.
 	(input)
 	(rect 24 840 192 856)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[0]" (rect 5 0 36 12)(font "Arial" ))
+	(text "SW[0]" (rect 5 0 35 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -88,7 +87,7 @@ agreement for further details.
 	(input)
 	(rect 24 864 192 880)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[1]" (rect 5 0 35 17)(font "Intel Clear" ))
+	(text "SW[1]" (rect 5 0 34 17)(font "Intel Clear" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -104,7 +103,7 @@ agreement for further details.
 	(input)
 	(rect 24 888 192 904)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[2]" (rect 5 0 35 17)(font "Intel Clear" ))
+	(text "SW[2]" (rect 5 0 34 17)(font "Intel Clear" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -153,6 +152,38 @@ agreement for further details.
 	(rect 560 328 736 344)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "HEX2[7..0]" (rect 90 0 143 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 536 624 715 640)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "counter_out[3..0]" (rect 90 0 173 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 208 -56 384 -40)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "cout" (rect 90 0 111 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -1140,10 +1171,6 @@ agreement for further details.
 	(pt 112 224)
 )
 (connector
-	(pt 168 168)
-	(pt 8 168)
-)
-(connector
 	(pt 168 128)
 	(pt 168 168)
 )
@@ -1201,12 +1228,6 @@ agreement for further details.
 	(pt 232 848)
 )
 (connector
-	(text "bout[3..0]" (rect 327 192 371 209)(font "Intel Clear" ))
-	(pt 384 208)
-	(pt 304 208)
-	(bus)
-)
-(connector
 	(text "bout[6]" (rect 198 856 232 873)(font "Intel Clear" ))
 	(pt 192 872)
 	(pt 232 872)
@@ -1226,6 +1247,61 @@ agreement for further details.
 	(text "bout[0]" (rect 184 192 218 209)(font "Intel Clear" ))
 	(pt 96 208)
 	(pt 240 208)
+)
+(connector
+	(pt 320 208)
+	(pt 320 264)
+	(bus)
+)
+(connector
+	(pt 320 264)
+	(pt 256 264)
+	(bus)
+)
+(connector
+	(pt 384 208)
+	(pt 320 208)
+	(bus)
+)
+(connector
+	(text "bout[3..0]" (rect 327 192 371 209)(font "Intel Clear" ))
+	(pt 320 208)
+	(pt 304 208)
+	(bus)
+)
+(connector
+	(pt 256 264)
+	(pt 256 632)
+	(bus)
+)
+(connector
+	(pt 256 632)
+	(pt 536 632)
+	(bus)
+)
+(connector
+	(pt 240 168)
+	(pt 240 0)
+)
+(connector
+	(pt 8 168)
+	(pt 168 168)
+)
+(connector
+	(pt 168 168)
+	(pt 240 168)
+)
+(connector
+	(pt 240 0)
+	(pt 168 0)
+)
+(connector
+	(pt 168 0)
+	(pt 168 -48)
+)
+(connector
+	(pt 168 -48)
+	(pt 208 -48)
 )
 (junction (pt 352 368))
 (junction (pt 352 240))
@@ -1248,3 +1324,4 @@ agreement for further details.
 (junction (pt 96 336))
 (junction (pt 96 464))
 (junction (pt 96 592))
+(junction (pt 320 208))

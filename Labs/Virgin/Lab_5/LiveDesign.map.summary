@@ -1,13 +1,14 @@
-Flow Status : Successful - Mon Feb 07 18:37:37 2005
-Quartus II Version : 4.2 Build 156 11/29/2004 SJ Web Edition
+Analysis & Synthesis Status : Successful - Mon Jan 23 18:02:43 2017
+Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 Revision Name : LiveDesign
-Top-level Entity Name : TopLevel
-Family : Cyclone
-Device : EP1C12F324C8
-Timing Models : Final
-Met timing requirements : N/A
-Total logic elements : 146
-Total pins : 51
+Top-level Entity Name : Counter
+Family : Cyclone IV E
+Total logic elements : 84
+    Total combinational functions : 84
+    Dedicated logic registers : 40
+Total registers : 40
+Total pins : 91
 Total virtual pins : 0
 Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0

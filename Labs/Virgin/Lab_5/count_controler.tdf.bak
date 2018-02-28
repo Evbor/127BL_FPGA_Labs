@@ -1,0 +1,31 @@
+SUBDESIGN seqdebounce
+(
+	in			: INPUT; %input%
+	stateclr	: OUTPUT; %state machine output%
+	statecnt	: OUTPUT; %state machine output%
+)
+	
+VARIABLE
+	ss: MACHINE OF BITS (stateclr,statecnt)
+		WITH STATES	(count-clear 	= B"10",	%clears counter state          (clear  counter)%
+					 count-start	= B"01",	%counter start state (clear counter)%
+					 count-stop	= B"00");	%counter stop state  (clear counter)%
+
+BEGIN
+	
+	TABLE
+		ss   ,in => ss;
+		
+		count-clear  , 0   => count-clear;
+		count-clear  , 1   => count-start;
+		count-start  , 0   => count-start;
+		count-start  , 1   => count-stop;
+		count-stop   , 0   => count-stop;
+		count-stop   , 1   => count-clear;
+	
+%INSERT REST OF TRUTH TABLE HERE%
+
+
+	END TABLE;
+END;
+			

@@ -23,7 +23,14 @@ BEGIN
 		low  , 0, x   => low;
 		low  , 1, x   => highw;
 		highw, x, 0   => highw;
+		highw, x, 1   => high;
+		high , 1, x   => high;
+		high , 0, x   => loww;
+		loww , x, 0   => loww;
+		loww , x, 1   => low;
+	
 %INSERT REST OF TRUTH TABLE HERE%
+
 
 	END TABLE;
 END;

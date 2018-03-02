@@ -1,5 +1,6 @@
 SUBDESIGN count_controler
 (
+	clock		: INPUT; %input clock%
 	in			: INPUT; %input%
 	stateclr	: OUTPUT; %state machine output%
 	statecnt	: OUTPUT; %state machine output%
@@ -12,7 +13,8 @@ VARIABLE
 					 countstop	= B"00");	%counter stop state  (clear counter)%
 
 BEGIN
-	
+    ss.clk = clock;		%connects clock to all D flip flops of state machine%
+
 	TABLE
 		ss   ,in => ss;
 		

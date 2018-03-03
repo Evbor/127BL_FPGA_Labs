@@ -34,7 +34,7 @@
 set_global_assignment -name PROJECT_SHOW_ENTITY_NAME ON
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 4.2
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:51:11  DECEMBER 16, 2004"
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION 15.1.0
 
 # Pin & Location Assignments
 # ==========================
@@ -1122,6 +1122,7 @@ set_instance_assignment -name IO_STANDARD LVDS -to HSMC_TX_D_N[16]
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_RX_D_N[16]
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_CLKOUT_N2
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_CLKOUT_N1
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name BDF_FILE TopLevel.bdf
 set_global_assignment -name AHDL_FILE 7segment.tdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE WaveformCount.vwf
@@ -1130,12 +1131,3 @@ set_global_assignment -name QIP_FILE mf_counter.qip
 set_global_assignment -name QIP_FILE mf_count1.qip
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name QIP_FILE BCD_Count.qip
-set_global_assignment -name QIP_FILE BC7_Count.qip
-set_global_assignment -name BDF_FILE new_day.bdf
-set_global_assignment -name QIP_FILE const_4.qip
-set_global_assignment -name QIP_FILE const_2.qip
-set_global_assignment -name QIP_FILE count_driver.qip
-set_global_assignment -name BDF_FILE stopwatch_controler.bdf
-set_global_assignment -name AHDL_FILE count_controler.tdf
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

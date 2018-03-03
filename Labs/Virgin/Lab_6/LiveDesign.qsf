@@ -34,7 +34,7 @@
 set_global_assignment -name PROJECT_SHOW_ENTITY_NAME ON
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 4.2
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:51:11  DECEMBER 16, 2004"
-set_global_assignment -name LAST_QUARTUS_VERSION 15.1.0
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
 
 # Pin & Location Assignments
 # ==========================
@@ -1131,3 +1131,6 @@ set_global_assignment -name QIP_FILE mf_counter.qip
 set_global_assignment -name QIP_FILE mf_count1.qip
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name QIP_FILE oscillator.qip
+set_global_assignment -name QIP_FILE multiplexer.qip
+set_global_assignment -name QIP_FILE const_0.qip

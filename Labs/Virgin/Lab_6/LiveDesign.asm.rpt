@@ -1,6 +1,6 @@
 Assembler report for LiveDesign
-Mon Jan 23 18:04:52 2017
-Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+Mon Mar 05 17:39:19 2018
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
 
 
 ---------------------
@@ -10,8 +10,8 @@ Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.sof
-  6. Assembler Device Options: C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.pof
+  5. Assembler Device Options: D:/Labs/Virgin/Lab_6/LiveDesign.sof
+  6. Assembler Device Options: D:/Labs/Virgin/Lab_6/LiveDesign.pof
   7. Assembler Messages
 
 
@@ -19,18 +19,18 @@ Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
-Your use of Altera Corporation's design tools, logic functions 
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus Prime License Agreement,
-the Altera MegaCore Function License Agreement, or other 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
 applicable license agreement, including, without limitation, 
 that your use is for the sole purpose of programming logic 
-devices manufactured by Altera and sold by Altera or its 
+devices manufactured by Intel and sold by Intel or its 
 authorized distributors.  Please refer to the applicable 
 agreement for further details.
 
@@ -39,9 +39,9 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Jan 23 18:04:52 2017 ;
+; Assembler Status      ; Successful - Mon Mar 05 17:39:19 2018 ;
 ; Revision Name         ; LiveDesign                            ;
-; Top-level Entity Name ; Counter                               ;
+; Top-level Entity Name ; TopLevel                              ;
 ; Family                ; Cyclone IV E                          ;
 ; Device                ; EP4CE115F29C7                         ;
 +-----------------------+---------------------------------------+
@@ -54,37 +54,35 @@ agreement for further details.
 +--------+---------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Assembler Generated Files                                             ;
-+-----------------------------------------------------------------------+
-; File Name                                                             ;
-+-----------------------------------------------------------------------+
-; C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.sof ;
-; C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.pof ;
-+-----------------------------------------------------------------------+
++-------------------------------------+
+; Assembler Generated Files           ;
++-------------------------------------+
+; File Name                           ;
++-------------------------------------+
+; D:/Labs/Virgin/Lab_6/LiveDesign.sof ;
+; D:/Labs/Virgin/Lab_6/LiveDesign.pof ;
++-------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.sof ;
-+----------------+--------------------------------------------------------------------------------+
-; Option         ; Setting                                                                        ;
-+----------------+--------------------------------------------------------------------------------+
-; Device         ; EP4CE115F29C7                                                                  ;
-; JTAG usercode  ; 0x005762CC                                                                     ;
-; Checksum       ; 0x005762CC                                                                     ;
-+----------------+--------------------------------------------------------------------------------+
++---------------------------------------------------------------+
+; Assembler Device Options: D:/Labs/Virgin/Lab_6/LiveDesign.sof ;
++----------------+----------------------------------------------+
+; Option         ; Setting                                      ;
++----------------+----------------------------------------------+
+; JTAG usercode  ; 0x00566825                                   ;
+; Checksum       ; 0x00566825                                   ;
++----------------+----------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/student/Desktop/127B_2017_orig/Virgin/Lab_3_1/LiveDesign.pof ;
-+--------------------+----------------------------------------------------------------------------+
-; Option             ; Setting                                                                    ;
-+--------------------+----------------------------------------------------------------------------+
-; Device             ; EPCS64                                                                     ;
-; JTAG usercode      ; 0x00000000                                                                 ;
-; Checksum           ; 0x712DA935                                                                 ;
-; Compression Ratio  ; 3                                                                          ;
-+--------------------+----------------------------------------------------------------------------+
++---------------------------------------------------------------+
+; Assembler Device Options: D:/Labs/Virgin/Lab_6/LiveDesign.pof ;
++--------------------+------------------------------------------+
+; Option             ; Setting                                  ;
++--------------------+------------------------------------------+
+; JTAG usercode      ; 0x00000000                               ;
+; Checksum           ; 0x712E28F1                               ;
+; Compression Ratio  ; 3                                        ;
++--------------------+------------------------------------------+
 
 
 +--------------------+
@@ -92,15 +90,20 @@ agreement for further details.
 +--------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
-    Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Mon Jan 23 18:03:51 2017
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+    Info: Processing started: Mon Mar 05 17:39:01 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off LiveDesign -c LiveDesign
+Warning (125092): Tcl Script File mf_counter.qip not found
+    Info (125063): set_global_assignment -name QIP_FILE mf_counter.qip
+Warning (125092): Tcl Script File mf_count1.qip not found
+    Info (125063): set_global_assignment -name QIP_FILE mf_count1.qip
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
-Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 749 megabytes
-    Info: Processing ended: Mon Jan 23 18:04:52 2017
-    Info: Elapsed time: 00:01:01
-    Info: Total CPU time (on all processors): 00:00:07
+Info: Quartus Prime Assembler was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 609 megabytes
+    Info: Processing ended: Mon Mar 05 17:39:20 2018
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:04
 
 
